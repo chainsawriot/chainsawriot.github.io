@@ -95,7 +95,7 @@ d3.csv("pocketsorted.csv", function(error, data) {
 	.on("mouseover", function(d) {
 	    d3.select(this).attr("opacity", onmousopaque);
 	    infobox.style("visibility", "visible")
-		.html("<b>贊助機構: </b> " + d.sponsor + "<br />" + "<b>研究機構: </b>" + d.org + "<br />"  + "<b>問題: </b>" + d.question + "<br /><b>開始訪問日期: </b>" + d.datestart + "<br /><b>結束訪問日期: </b>" + d.dateend + "<br /><b>支持比率: </b>" + d.support);
+		.html("<b>贊助機構: </b> " + d.sponsor + "<br />" + "<b>研究機構: </b>" + d.org + "<br />"  + "<b>問題: </b>" + d.question + "<br /><b>開始訪問日期: </b>" + d.datestart + "<br /><b>結束訪問日期: </b>" + d.dateend + "<br /><b>支持比率: </b>" + d.support + "<br /><b>有否加權: </b>" + d.wei);
 	})
 	.on("mouseout", function(d) {
 	    d3.select(this).attr("opacity", normalopaque);
