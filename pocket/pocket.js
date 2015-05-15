@@ -38,7 +38,7 @@ var svg = d3.select("body")
 
 var rScale = d3.scale.linear()
     .domain([200, 1600])
-    .range([2, 20]);
+    .range([5, 20]);
 
 
 
@@ -83,7 +83,7 @@ d3.csv("pocketsorted.csv", function(error, data) {
 	.enter().append("circle")
 	.attr("cx", function(d) { return xScale(d.date); })
 	.attr("cy", function(d) { return yScale(d.value); })
-	.attr("r", function(d) { return rScale(d.samplesize); })
+	.attr("r", function(d) { return rScale(d.esamplesize); })
 	.attr("opacity", normalopaque)
 	.attr("fill", function(d) {
 	    if (d.uni == 1) {
