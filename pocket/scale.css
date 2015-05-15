@@ -1,0 +1,28 @@
+body {
+  font: 13px sans-serif;
+}
+
+
+.trendline.path { 
+    stroke: blue;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    shape-rendering: crispEdges;
+    stroke-width: 1;
+    }
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+    }
+.area.confidence {
+    zoom: 1;
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+    fill: yellow
+}
