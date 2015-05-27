@@ -75,7 +75,7 @@ d3.csv("smoothed.csv", function(error, data) {
 
 d3.csv("pocketsorted.csv", function(error, data) {
     data.forEach(function(d) {
-	d.date = format.parse(d.datestart);
+	d.date = d3.time.format("%Y-%m-%d").parse(d.midDate);
 	d.value = +d.support;
     });
     svg.selectAll("circle")
