@@ -17,7 +17,7 @@ var xScale = d3.time.scale()
     .range([padding, w - padding * 2]);
 
 var yScale = d3.scale.linear()
-    .domain([10, 80])
+    .domain([10, 70])
     .range([h - padding, padding]);
 
 var xAxis = d3.svg.axis()
