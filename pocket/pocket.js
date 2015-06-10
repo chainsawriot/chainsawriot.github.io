@@ -127,5 +127,5 @@ svg.append("g")
     .attr("transform", "translate(" + padding + ",0)")
     .call(yAxis);
 
-svg.append("text").attr("x", xScale(format.parse("08/26/2014"))).attr("y", yScale(80)).text("Support, %");
+svg.append("text").attr("x", xScale(format.parse("08/26/2014"))).attr("y", yScale(15)).text("Support, %");
 
