@@ -37,8 +37,8 @@ var svg = d3.select("body")
 
 
 var rScale = d3.scale.linear()
-    .domain([200, 2200])
-    .range([5, 25]);
+    .domain([200, 5200])
+    .range([5, 60]);
 
 
 
