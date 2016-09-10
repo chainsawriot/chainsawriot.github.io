@@ -11,7 +11,7 @@ function recount (meta_db, db, selected) {
 }
 
 function print_recount(recount_res) {
-    return(recount_res.map(function(item) { return("<li>" + item['name'] + ":" +item['vote']) + "</li>" }).join(''))
+    return("<ol>" + recount_res.map(function(item) { return("<li>" + item['name'] + ":" +item['vote']) + "</li>" }).join('') + "</ol>")
 }
 
 $(document).ready(function(){
