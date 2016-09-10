@@ -1,0 +1,22 @@
+.content{
+    background:#ccd7e0;
+    max-width:800px;
+    padding-left:10px;
+    padding-top:10px;
+    margin:50px auto;
+    position:relative;
+}
+
+.marker{
+    position:absolute;
+    width:200px;
+    right:0;
+}
+
+.fixedmarker{
+    background:#64879E;
+    color:#fff;
+    position:fixed;
+    padding-left:10px;
+    width:200px;
+}
