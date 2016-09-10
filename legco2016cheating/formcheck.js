@@ -10,8 +10,12 @@ function recount (meta_db, db, selected) {
     return(sorted_vote_db.map(function(item) { return({'name': item['name'], 'vote': item['vote'] }) }))
 }
 
+function print_recount(recount_res) {
+    return(recount_res.map(function(item) { return("<li>" + item['name'] + ":" +item['vote']) + "</li>" }).join(''))
+}
+
 $(document).ready(function(){
-    $("p").html(recount(nte_metadb, nte_db, nte_db().select('code')).map(function(item) { return(item['name'] + ":" +item['vote']) }).join('<br>'))
+    $("p").html(print_recount(recount(nte_metadb, nte_db, nte_db().select('code'))))
     var options = nte_db().map(function(item) { return({'name': 'station', 'caption':item["cname"], 'value': item['code'], 'type': 'checkbox', 'checked': 'checked'}) })
     var foptions = []
     options.forEach(function(item) {
@@ -29,6 +33,6 @@ $(document).ready(function(){
 	$("[name=station]:checkbox:checked").each(function(){ selected.push($(this).val()) })
 //	var res = nte_db({'code':selected})
 //	var stations = res.map(function (item) { return(item['cname']) })
-	    $("p").html(recount(nte_metadb, nte_db, selected).map(function(item) { return("<li>" + item['name'] + ":" +item['vote']) + "</li>" }).join(''))
+	    $("p").html(print_recount(recount(nte_metadb, nte_db, selected)))
     })
 })
