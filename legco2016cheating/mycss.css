@@ -1,6 +1,6 @@
 .content{
     background:#ccd7e0;
-    max-width:800px;
+    max-width:900px;
     padding-left:10px;
     padding-top:10px;
     margin:50px auto;
@@ -9,7 +9,7 @@
 
 .marker{
     position:absolute;
-    width:200px;
+    width:400px;
     right:0;
 }
 
@@ -18,5 +18,9 @@
     color:#fff;
     position:fixed;
     padding-left:10px;
-    width:200px;
+    width:400px;
+}
+
+.fixedmarker li.won {
+    background-color: rgb(255,0,255);
 }
