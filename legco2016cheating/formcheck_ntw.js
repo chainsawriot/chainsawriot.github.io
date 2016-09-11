@@ -68,8 +68,8 @@ function print_recount(recount_res) {
 }
 
 $(document).ready(function(){
-    $("p").html(print_recount(recount(nte_metadb, nte_db, nte_db().select('code'))))
-    var options = nte_db().map(function(item) { return({'name': 'station', 'caption':item["cname"], 'value': item['code'], 'type': 'checkbox', 'checked': 'checked'}) })
+    $("p").html(print_recount(recount(ntw_metadb, ntw_db, ntw_db().select('code'))))
+    var options = ntw_db().map(function(item) { return({'name': 'station', 'caption':item["cname"], 'value': item['code'], 'type': 'checkbox', 'checked': 'checked'}) })
     var foptions = []
     options.forEach(function(item) {
 	foptions.push(item)
@@ -84,9 +84,9 @@ $(document).ready(function(){
     $("input[type='checkbox']").change(function(){
 	var selected=[]
 	$("[name=station]:checkbox:checked").each(function(){ selected.push($(this).val()) })
-//	var res = nte_db({'code':selected})
+//	var res = ntw_db({'code':selected})
 //	var stations = res.map(function (item) { return(item['cname']) })
-	    $("p").html(print_recount(recount(nte_metadb, nte_db, selected)))
+	    $("p").html(print_recount(recount(ntw_metadb, ntw_db, selected)))
     })
 })
 

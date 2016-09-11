@@ -7,7 +7,7 @@ function recount (meta_db, db, selected) {
     var cand = meta_db().select('name1')
     var vote_db = TAFFY(cand.map(function(item) { return({'name': item, 'vote': counting(item, db, selected), 'numcand': meta_db({'name1': item}).select('numcand')[0]})}))
 //    console.log(vote_db().select('name'))
-    var res = countw(vote_db, 9)
+    var res = countw(vote_db, 6)
     //    console.log(res().select('name'))
     //    console.log(res().select('elected'))
     // console.log(res({'name': '方國珊'}).select('elected')[0])
@@ -68,8 +68,8 @@ function print_recount(recount_res) {
 }
 
 $(document).ready(function(){
-    $("p").html(print_recount(recount(nte_metadb, nte_db, nte_db().select('code'))))
-    var options = nte_db().map(function(item) { return({'name': 'station', 'caption':item["cname"], 'value': item['code'], 'type': 'checkbox', 'checked': 'checked'}) })
+    $("p").html(print_recount(recount(kww_metadb, kww_db, kww_db().select('code'))))
+    var options = kww_db().map(function(item) { return({'name': 'station', 'caption':item["cname"], 'value': item['code'], 'type': 'checkbox', 'checked': 'checked'}) })
     var foptions = []
     options.forEach(function(item) {
 	foptions.push(item)
@@ -84,9 +84,9 @@ $(document).ready(function(){
     $("input[type='checkbox']").change(function(){
 	var selected=[]
 	$("[name=station]:checkbox:checked").each(function(){ selected.push($(this).val()) })
-//	var res = nte_db({'code':selected})
+//	var res = kww_db({'code':selected})
 //	var stations = res.map(function (item) { return(item['cname']) })
-	    $("p").html(print_recount(recount(nte_metadb, nte_db, selected)))
+	    $("p").html(print_recount(recount(kww_metadb, kww_db, selected)))
     })
 })
 

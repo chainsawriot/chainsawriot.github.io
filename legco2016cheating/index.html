@@ -1,28 +1,25 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>2016年立法會選舉舞弊模疑器</title>
-    <link href="jquery-ui.css" rel="stylesheet">
-    <link href="mycss.css" rel="stylesheet">
-    <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="jquery-ui.js"></script>
-    <script type="text/javascript" src="taffy-min.js"></script>
-    <script type="text/javascript" src="jquery.dform-1.1.0.min.js"></script>
-    <script type="text/javascript" src="nte.js"></script>
-    <script type="text/javascript" src="formcheck.js"></script>
+  <title>選舉舞弊模疑器</title>
+  <script language="javascript" src = 'dropdown.js'></script>
+  <script type="text/javascript" src = 'konami.js'></script>
+  <script type="text/javascript">
+    konami = new Konami()
+    konami.load("https://www.facebook.com/chanchainsaw/");
+    </script>
   </head>
   <body>
-    <div class="content">
-      <div class="marker">
-	<div class="fixedmarker">
-	  <p></p>
-	</div>
-      </div>
-      <h3>選舉舞弊 Go! 試玩版(新界東)</h3><br>
-      <form id="myform"></form>      
-    </div>
-    <center><h6>2016 <a href='https://github.com/chainsawriot'>@chainsawriot</a></h6></center>
-  </body>
+    <font size = 2>Created by <a href='https://github.com/chainsawriot'>@chainsawriot</a> (Chung-hong Chan, PhD Candidate, JMSC, HKU)</font></a><br>
+    <form name="form763">
+      <p><select NAME="select763" SIZE="1" onChange="goToPage763(this.form.select763)">
+	  <option VALUE="nte.html" SELECTED>新界東</option>
+	  <option VALUE="ntw.html">新界西</option>
+	  <option VALUE="kww.html">九龍西</option>
+	  <option VALUE="kwe.html">九龍東</option>
+	  <option VALUE="hk.html">香港島</option>
+	  </option>
+      </select> </p>
+	<IFRAME NAME="iframe2" SRC="nte.html" ALIGN="top" HEIGHT="100%" WIDTH="95%" HSPACE="0" VSPACE="0" align="middle" frameBorder="0"></IFRAME></p>
+    </form>
+</body>
 </html>
