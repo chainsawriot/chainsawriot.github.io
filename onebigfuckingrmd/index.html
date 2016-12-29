@@ -267,7 +267,7 @@ asians %in%<span class="st"> </span>democracy</code></pre></div>
 <p>而這些使用 infix notation 的 function (其實也可以稱做 operator 吧)，是可以轉成為 prefix notation 使用。</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">%in%</span><span class="st">`</span>(asians, democracy)</code></pre></div>
 <pre><code>## [1] FALSE FALSE  TRUE  TRUE</code></pre>
-<p>這種轉 prefix notation 的玩法，可以將一些只產行 side effect 的 procedure ，變成 pure function 。以下是一個例，如 <code>class&lt;-</code> ，這個東西本來的用途是將一個東西加上 S3 的 Object 名稱。</p>
+<p>這種轉 prefix notation 的玩法，可以將一些只產生 side effect 的 procedure ，變成 pure function 。以下是一個例，如 <code>class&lt;-</code> ，這個東西本來的用途是將一個東西加上 S3 的 Object 名稱。</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hello &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)
 <span class="kw">class</span>(hello) &lt;-<span class="st"> 'adele'</span></code></pre></div>
 <p>留意，正常用途最後一句是沒有 return value 的，所以這個並不是 pure function 。但若果將 <code>class&lt;-</code> 變成 prefix notation 使用，卻會變成 pure function 。</p>
