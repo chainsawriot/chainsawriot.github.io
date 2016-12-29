@@ -43,7 +43,7 @@ asians %in% democracy
 `%in%`(asians, democracy)
 ```
 
-這種轉 prefix notation 的玩法，可以將一些只產行 side effect 的 procedure ，變成 pure function 。以下是一個例，如 `class<-` ，這個東西本來的用途是將一個東西加上 S3 的 Object 名稱。
+這種轉 prefix notation 的玩法，可以將一些只產生 side effect 的 procedure ，變成 pure function 。以下是一個例，如 `class<-` ，這個東西本來的用途是將一個東西加上 S3 的 Object 名稱。
 
 ```{r infix4}
 hello <- c(1,2,3,4)
