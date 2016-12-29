@@ -9,13 +9,73 @@ output:
     toc_float: true
 ---
 
+# Infix notation
+
+29-December-2016 @chainsawriot
+
+又是從 [pipe](https://github.com/tidyverse/magrittr/blob/master/R/pipe.R) 發現的東西。
+
+`magrittr` 的 pipe operatior `%>%` 是以 infix notation 運作的，而 R 的 function 標準是以 prefix notation 運作。
+
+先談談甚麼是 infix/prefix notation 。除非你用的是很 purist 的語言如 lisp ，只會提供 prefix notation ，市面上的大部份程式語言都有 infix 和 prefix 之分。先講 prefix ，就是使用 function 時以 function 名稱為先，之後的都是 arguments 。例如
+
+```{r prefix}
+mean(c(1,2,3,4,5), trim = 0.025)
+```
+
+除 prefix 之外，也有 infix ，是 function 名稱夾在兩個 argument 之間。例如加減乘除四則運算
+
+```{r infix1}
+689 + 928 * (200 / 689) - 2046
+```
+
+除了四則之外， R 有些邏輯運算子，也是用 infix notation 的。我自己最常用的，就是 `%in%` 。
+
+```{r infix2}
+democracy <- c('japan', 'taiwan')
+asians <- c('hk', 'china', 'taiwan', 'japan')
+asians %in% democracy
+```
+
+而這些使用 infix notation 的 function (其實也可以稱做 operator 吧)，是可以轉成為 prefix notation 使用。
+
+```{r infix3}
+`%in%`(asians, democracy)
+```
+
+這種轉 prefix notation 的玩法，可以將一些只產行 side effect 的 procedure ，變成 pure function 。以下是一個例，如 `class<-` ，這個東西本來的用途是將一個東西加上 S3 的 Object 名稱。
+
+```{r infix4}
+hello <- c(1,2,3,4)
+class(hello) <- 'adele'
+```
+
+留意，正常用途最後一句是沒有 return value 的，所以這個並不是 pure function 。但若果將 `class<-` 變成 prefix notation 使用，卻會變成 pure function 。
+
+```{r infix5}
+`class<-`(c(1,2,3,4), 'adele')
+```
+
+好了，到底我們自己可否定義使用 infix notation 的 function 呢？答案當然是可以的。（否則 `%>%` 就沒得玩了。）玩法是定義一個只有兩個 argument 的 function ，但要用 backtick 包著。
+
+```{r infix6}
+`%+%` <- function(x, y) {
+	paste0(x, y)
+}
+'Hong Kong ' %+% 'is ' %+% 'not ' %+% 'Shina.'
+```
+
+好了。如果想將以上的 `%+%` 將 characters ，變成好像 Python 的 string 那樣可以加減，直接用 + 來做 concatenation 。那又是不是只需要 define 一個用 backtick 包著的 + 就成？
+
+事情不是這麼簡單。因為 + 在 R 是 Primintive function ，是內建的東西，不能隨意地 hijack 。但其實仍有方法可 hijack ，可以參考[這個 stackoverflow 問答](http://stackoverflow.com/questions/4730551/making-a-string-concatenation-operator-in-r)來看看。
+
 # Code reading 的好處和原來 R 有 hash table 
 
 28-December-2016 @chainsawriot
 
 如果你已覺得自己用 R 已用得「不錯」，其實代表你還有很多東西仍未探索。到了這個位置，其實讀書已沒有甚麼作用，更合理的做法是去讀 source code 自行探索。最近與幾個朋友在讀 source code ，才發現我的 R 知識其實甚低。確認無知是智慧的開端，一群人讀 source 可以相互發問，學習效果不錯。只是讀一小段，已學到很多前所未見的 R 。
 
-以下是第一件在閱讀 `magrittr` 的 [pipe](https://github.com/tidyverse/magrittr/blob/master/R/pipe.R) 時發現的第一件事，就是 R 原來有 hash table 。
+以下是第一件在閱讀 `magrittr` 的 [pipe](https://github.com/tidyverse/magrittr/blob/master/R/pipe.R) 時發現的事，就是 R 原來有 hash table 。
 
 一直以為 R 只有 list ，但 R 的 list 之 name (key) 沒有 hash ，所以 lookup 時是要從所有的 names 找出你想要的 name ，如果用 big-o notation ，這就是 O(n) 。
 

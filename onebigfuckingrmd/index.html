@@ -248,11 +248,47 @@ div.tocify {
 </div>
 
 
+<div id="infix-notation" class="section level1">
+<h1>Infix notation</h1>
+<p>29-December-2016 <span class="citation">@chainsawriot</span></p>
+<p>又是從 <a href="https://github.com/tidyverse/magrittr/blob/master/R/pipe.R">pipe</a> 發現的東西。</p>
+<p><code>magrittr</code> 的 pipe operatior <code>%&gt;%</code> 是以 infix notation 運作的，而 R 的 function 標準是以 prefix notation 運作。</p>
+<p>先談談甚麼是 infix/prefix notation 。除非你用的是很 purist 的語言如 lisp ，只會提供 prefix notation ，市面上的大部份程式語言都有 infix 和 prefix 之分。先講 prefix ，就是使用 function 時以 function 名稱為先，之後的都是 arguments 。例如</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>), <span class="dt">trim =</span> <span class="fl">0.025</span>)</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>除 prefix 之外，也有 infix ，是 function 名稱夾在兩個 argument 之間。例如加減乘除四則運算</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">689</span> +<span class="st"> </span><span class="dv">928</span> *<span class="st"> </span>(<span class="dv">200</span> /<span class="st"> </span><span class="dv">689</span>) -<span class="st"> </span><span class="dv">2046</span></code></pre></div>
+<pre><code>## [1] -1087.624</code></pre>
+<p>除了四則之外， R 有些邏輯運算子，也是用 infix notation 的。我自己最常用的，就是 <code>%in%</code> 。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">democracy &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'japan'</span>, <span class="st">'taiwan'</span>)
+asians &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'hk'</span>, <span class="st">'china'</span>, <span class="st">'taiwan'</span>, <span class="st">'japan'</span>)
+asians %in%<span class="st"> </span>democracy</code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE  TRUE</code></pre>
+<p>而這些使用 infix notation 的 function (其實也可以稱做 operator 吧)，是可以轉成為 prefix notation 使用。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">%in%</span><span class="st">`</span>(asians, democracy)</code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE  TRUE</code></pre>
+<p>這種轉 prefix notation 的玩法，可以將一些只產行 side effect 的 procedure ，變成 pure function 。以下是一個例，如 <code>class&lt;-</code> ，這個東西本來的用途是將一個東西加上 S3 的 Object 名稱。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hello &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)
+<span class="kw">class</span>(hello) &lt;-<span class="st"> 'adele'</span></code></pre></div>
+<p>留意，正常用途最後一句是沒有 return value 的，所以這個並不是 pure function 。但若果將 <code>class&lt;-</code> 變成 prefix notation 使用，卻會變成 pure function 。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">class&lt;-</span><span class="st">`</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="st">'adele'</span>)</code></pre></div>
+<pre><code>## [1] 1 2 3 4
+## attr(,&quot;class&quot;)
+## [1] &quot;adele&quot;</code></pre>
+<p>好了，到底我們自己可否定義使用 infix notation 的 function 呢？答案當然是可以的。（否則 <code>%&gt;%</code> 就沒得玩了。）玩法是定義一個只有兩個 argument 的 function ，但要用 backtick 包著。</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">%+%</span><span class="st">`</span> &lt;-<span class="st"> </span>function(x, y) {
+    <span class="kw">paste0</span>(x, y)
+}
+<span class="st">'Hong Kong '</span> %+%<span class="st"> 'is '</span> %+%<span class="st"> 'not '</span> %+%<span class="st"> 'Shina.'</span></code></pre></div>
+<pre><code>## [1] &quot;Hong Kong is not Shina.&quot;</code></pre>
+<p>好了。如果想將以上的 <code>%+%</code> 將 characters ，變成好像 Python 的 string 那樣可以加減，直接用 + 來做 concatenation 。那又是不是只需要 define 一個用 backtick 包著的 + 就成？</p>
+<p>事情不是這麼簡單。因為 + 在 R 是 Primintive function ，是內建的東西，不能隨意地 hijack 。但其實仍有方法可 hijack ，可以參考<a href="http://stackoverflow.com/questions/4730551/making-a-string-concatenation-operator-in-r">這個 stackoverflow 問答</a>來看看。</p>
+</div>
 <div id="code-reading--r--hash-table" class="section level1">
 <h1>Code reading 的好處和原來 R 有 hash table</h1>
 <p>28-December-2016 <span class="citation">@chainsawriot</span></p>
 <p>如果你已覺得自己用 R 已用得「不錯」，其實代表你還有很多東西仍未探索。到了這個位置，其實讀書已沒有甚麼作用，更合理的做法是去讀 source code 自行探索。最近與幾個朋友在讀 source code ，才發現我的 R 知識其實甚低。確認無知是智慧的開端，一群人讀 source 可以相互發問，學習效果不錯。只是讀一小段，已學到很多前所未見的 R 。</p>
-<p>以下是第一件在閱讀 <code>magrittr</code> 的 <a href="https://github.com/tidyverse/magrittr/blob/master/R/pipe.R">pipe</a> 時發現的第一件事，就是 R 原來有 hash table 。</p>
+<p>以下是第一件在閱讀 <code>magrittr</code> 的 <a href="https://github.com/tidyverse/magrittr/blob/master/R/pipe.R">pipe</a> 時發現的事，就是 R 原來有 hash table 。</p>
 <p>一直以為 R 只有 list ，但 R 的 list 之 name (key) 沒有 hash ，所以 lookup 時是要從所有的 names 找出你想要的 name ，如果用 big-o notation ，這就是 O(n) 。</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">list</span>()
 x[[<span class="st">'hello'</span>]] &lt;-<span class="st"> 'is me'</span>
