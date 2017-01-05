@@ -9,6 +9,114 @@ output:
     toc_float: true
 ---
 
+# Rcpp 應用例
+
+6-January-2017 @chainsawriot
+
+今晚在 [SHOW ME THE CODE](https://github.com/code4hk/showmethecode/issues/11) meetup 講完 Rcpp 。所以暫停寫在 `pipe` 發現的東西（應該還有一件事想寫），先將今晚的分享轉成一份 notes ，是以寫給 R Programmer 看的。
+
+R 始終是 Interpret 的語言，而又沒有進行優化，所以在運行 loop 時會很慢，尤其運行次數極多的時候。
+
+寫 R 的人會跟你說，不要寫 for loop ，要用那些 ?apply 的 higher-order function ，會快一點。這句說話只有一半正確，因為 apply 的 implementation ，其實都是在裡面行 R 的 for loop 。為甚麼會「快」，只是因為它預先創造好輸出東西的大小和類型，省卻每次回圈執行時 appending 新結果的時間。事實上 for loop 如果寫得聰明，像 ?apply 那樣先創造好輸出的東西的大小和類型，是可以寫得到一樣快的 code 。
+
+我認同 Hadley Wickham 的說法，為何用 ?apply 而不用 for loop ，是因為 for loop "bury the lede" 。解釋可看[他的演說](https://www.youtube.com/watch?v=GyNqlOjhPCQ)。
+
+回歸正傳，以下是一個 R 在運行 loop 時極慢的案例。
+
+```{r, eval = FALSE}
+inputdata <- t(sapply(1:300, function(x) rnbinom(1000, mu = 0.1, size = 1)))
+
+cosine <- function(x, y) {
+    return(crossprod(x, y)/sqrt(crossprod(x) * crossprod(y)))
+}
+
+cosine(inputdata[1,], inputdata[2,])
+```
+
+以上的 code 是產行一個叫 `inputdata` 是 300 x 1000 的 Matrix 。之後定義了一個 cosine 的 function ，用以計算兩個 vector 的 cosine similarity 。
+
+計算一次當然沒有太大問題。但假設我要在 inputdata 的 300 行抽出所有的 3 行的 combination ，再將那 3 行數據都分別計算 cosine similarity ，用 R 的寫法是這樣。
+
+```{r, eval = FALSE}
+allcomb <- combn(1:300, 3)
+allcomb[,1]
+ncol(allcomb)
+census <- function(x, allcomb, inputdata) {
+    return(sort(c(cosine(inputdata[allcomb[1,x],], inputdata[allcomb[2,x],]),
+                  cosine(inputdata[allcomb[1,x],], inputdata[allcomb[3,x],]),
+                  cosine(inputdata[allcomb[2,x],], inputdata[allcomb[3,x],])
+                  )))
+}
+census(1, allcomb, inputdata)
+```
+
+以上的 code 是用 `combn` 這個 function 找出 1 至 300 的所有 3 combination 。即是 300n3 ，總共會有 4455100 種組合。再寫一個叫 `census` 的 function 計算一個組合的三組 cosine similarity 。
+
+```{r, eval = FALSE}
+system.time(sapply(1:ncol(allcomb), census, allcomb = allcomb, inputdata = inputdata))
+```
+
+好了，要將這個 `census` 執行 4455100 次。正如上述，不用 for loop ，我用 sapply 。但仍然相當慢，在我的電腦需時十多分鐘。
+
+由於我要做類似的計算非常多次，如果每次都要十幾分鐘，我的人生會浪費大量時間。當然，是可用 `doMC` 之類，運用平行運算省時間。但我認為就算平行運算每個 iteration 的計算仍是太慢，於是研究將這個工序用 C++ 重寫，再用 Rcpp 引入 R 使用。我的 C++ 其實很差，但差都好過甚麼都不寫，所以硬著頭皮寫了。
+
+Rcpp 的好處，是可以令 C++ 認得到 R 輸入來的 data structure ，例如 Matrix 、 Vector 之類。在寫 C++ 時，要使用 Rcpp 提供的相對應 data type ，如 `NumericMatrix` 。
+
+以下是我將 R 的 `cosine` 和 `census` 部份重寫成 C++ 的樣子。
+
+```c++
+#include <Rcpp.h>
+using namespace Rcpp;
+
+double cosine(NumericVector x1, NumericVector x2) {
+  unsigned int v_len = x1.size();
+  double dot = 0.0, deno_a = 0.0, deno_b = 0.0;
+  for(unsigned int i = 0; i < v_len; i++) {
+    dot += x1[i] * x2[i];
+    deno_a += x1[i] * x1[i];
+    deno_b += x2[i] * x2[i];
+  }
+  return dot / (sqrt(deno_a) * sqrt(deno_b));
+}
+
+// [[Rcpp::export]]
+NumericMatrix census_cpp(NumericMatrix engmatrix, NumericMatrix allcomb) {
+  NumericMatrix outm(3, allcomb.ncol());
+  for (unsigned int i = 0; i < allcomb.ncol(); i++) {
+    NumericVector xi = engmatrix(_, allcomb(0,i) - 1);
+    NumericVector xj = engmatrix(_, allcomb(1,i) - 1);
+    NumericVector xk = engmatrix(_, allcomb(2,i) - 1);
+    NumericVector out(3);
+    out[0] = cosine(xi, xj);
+    out[1] = cosine(xi, xk);
+    out[2] = cosine(xj, xk);
+    std::sort(out.begin(), out.end());
+    outm(0, i) = out[0];
+    outm(1, i) = out[1];
+    outm(2, i) = out[2];
+  }
+  return outm;
+}
+```
+
+要將 `census_cpp` 引入 R 使用，要將以上的代碼儲存成一個 C++ 檔案（如 cosine.cpp ），再用 Rcpp compile 和 wrap 成 R function 。
+
+```{r, eval = FALSE}
+require(Rcpp)
+sourceCpp("cosine.cpp")
+```
+
+就可以正在的在 R 使用 `census_cpp`
+
+```{r, eval = FALSE}
+system.time(census_cpp(inputdata, allcomb))
+```
+
+重寫之後，執行速度快了十倍以上，只需要少於 30 秒就可執行完成。
+
+結講是，對 R programmer 來說 C++ 仍是值得一學。要達到以上的加速效果，並不需要使用到很高深的功能（如 p
+搜尋結果 Pointer Arithmetic ，但其實 Rcpp 背後已替你將 R 輸入的東西變成 pass by reference ，減少複製 value ）。我正在研究如何使用 Rcpp 令 readODS 的 XML 處理變得更快。
+
 # Infix notation
 
 29-December-2016 @chainsawriot
