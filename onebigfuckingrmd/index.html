@@ -319,7 +319,7 @@ NumericMatrix census_cpp(NumericMatrix engmatrix, NumericMatrix allcomb) {
 <p>就可以正在的在 R 使用 <code>census_cpp</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">census_cpp</span>(inputdata, allcomb))</code></pre></div>
 <p>重寫之後，執行速度快了十倍以上，只需要少於 30 秒就可執行完成。</p>
-<p>結講是，對 R programmer 來說 C++ 仍是值得一學。要達到以上的加速效果，並不需要使用到很高深的功能（如 p 搜尋結果 Pointer Arithmetic ，但其實 Rcpp 背後已替你將 R 輸入的東西變成 pass by reference ，減少複製 value ）。我正在研究如何使用 Rcpp 令 readODS 的 XML 處理變得更快。</p>
+<p>結講是，對 R programmer 來說 C++ 仍是值得一學。要達到以上的加速效果，並不需要使用到很高深的功能（如 Pointer Arithmetic ，但其實 Rcpp 背後已替你將 R 輸入的東西變成 pass by reference ，減少複製 value ）。我正在研究如何使用 Rcpp 令 readODS 的 XML 處理變得更快。</p>
 </div>
 <div id="infix-notation" class="section level1">
 <h1>Infix notation</h1>
