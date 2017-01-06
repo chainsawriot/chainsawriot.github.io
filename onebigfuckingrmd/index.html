@@ -251,7 +251,7 @@ div.tocify {
 <div id="rcpp-" class="section level1">
 <h1>Rcpp 應用例</h1>
 <p>6-January-2017 <span class="citation">@chainsawriot</span></p>
-<p>今晚在 <a href="https://github.com/code4hk/showmethecode/issues/11">SHOW ME THE CODE</a> meetup 講完 Rcpp 。所以暫停寫在 <code>pipe</code> 發現的東西（應該還有一件事想寫），先將今晚的分享轉成一份 notes ，是以寫給 R Programmer 看的。</p>
+<p>今晚在 <a href="https://github.com/code4hk/showmethecode/issues/11">SHOW ME THE CODE</a> meetup 講完 Rcpp 。所以暫停寫在 <code>pipe</code> 發現的東西（應該還有一件事想寫），先將今晚的分享轉成一份 notes ，是寫給 R Programmer 看的。</p>
 <p>R 始終是 Interpret 的語言，而又沒有進行優化，所以在運行 loop 時會很慢，尤其運行次數極多的時候。</p>
 <p>寫 R 的人會跟你說，不要寫 for loop ，要用那些 ?apply 的 higher-order function ，會快一點。這句說話只有一半正確，因為 apply 的 implementation ，其實都是在裡面行 R 的 for loop 。為甚麼會「快」，只是因為它預先創造好輸出東西的大小和類型，省卻每次回圈執行時 appending 新結果的時間。事實上 for loop 如果寫得聰明，像 ?apply 那樣先創造好輸出的東西的大小和類型，是可以寫得到一樣快的 code 。</p>
 <p>我認同 Hadley Wickham 的說法，為何用 ?apply 而不用 for loop ，是因為 for loop “bury the lede” 。解釋可看<a href="https://www.youtube.com/watch?v=GyNqlOjhPCQ">他的演說</a>。</p>
@@ -280,7 +280,7 @@ census &lt;-<span class="st"> </span>function(x, allcomb, inputdata) {
 <p>好了，要將這個 <code>census</code> 執行 4455100 次。正如上述，不用 for loop ，我用 sapply 。但仍然相當慢，在我的電腦需時十多分鐘。</p>
 <p>由於我要做類似的計算非常多次，如果每次都要十幾分鐘，我的人生會浪費大量時間。當然，是可用 <code>doMC</code> 之類，運用平行運算省時間。但我認為就算平行運算每個 iteration 的計算仍是太慢，於是研究將這個工序用 C++ 重寫，再用 Rcpp 引入 R 使用。我的 C++ 其實很差，但差都好過甚麼都不寫，所以硬著頭皮寫了。</p>
 <p>Rcpp 的好處，是可以令 C++ 認得到 R 輸入來的 data structure ，例如 Matrix 、 Vector 之類。在寫 C++ 時，要使用 Rcpp 提供的相對應 data type ，如 <code>NumericMatrix</code> 。</p>
-<p>以下是我將 R 的 <code>cosine</code> 和 <code>census</code> 部份重寫成 C++ 的樣子。</p>
+<p>以下是我將 R 的 <code>cosine</code> 和 <code>census</code> 部份重寫成 C++ 的樣子。需注意的是，如果 C++ 是想引進 R 使用，是要加入<code>[[Rcpp::export]]</code>的 comment 。</p>
 <div class="sourceCode"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;Rcpp.h&gt;</span>
 <span class="kw">using</span> <span class="kw">namespace</span> Rcpp;
 
@@ -319,7 +319,7 @@ NumericMatrix census_cpp(NumericMatrix engmatrix, NumericMatrix allcomb) {
 <p>就可以正在的在 R 使用 <code>census_cpp</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">census_cpp</span>(inputdata, allcomb))</code></pre></div>
 <p>重寫之後，執行速度快了十倍以上，只需要少於 30 秒就可執行完成。</p>
-<p>結講是，對 R programmer 來說 C++ 仍是值得一學。要達到以上的加速效果，並不需要使用到很高深的功能（如 Pointer Arithmetic ，但其實 Rcpp 背後已替你將 R 輸入的東西變成 pass by reference ，減少複製 value ）。我正在研究如何使用 Rcpp 令 readODS 的 XML 處理變得更快。</p>
+<p>結論是，對 R programmer 來說 C++ 仍是值得一學。要達到以上的加速效果，並不需要使用到很高深的功能（如 Pointer Arithmetic ，但其實 Rcpp 背後已替你將 R 輸入的東西變成 pass by reference ，減少複製 value ）。我正在研究如何使用 Rcpp 令 readODS 的 XML 處理變得更快。</p>
 </div>
 <div id="infix-notation" class="section level1">
 <h1>Infix notation</h1>
