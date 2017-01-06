@@ -13,7 +13,7 @@ output:
 
 6-January-2017 @chainsawriot
 
-今晚在 [SHOW ME THE CODE](https://github.com/code4hk/showmethecode/issues/11) meetup 講完 Rcpp 。所以暫停寫在 `pipe` 發現的東西（應該還有一件事想寫），先將今晚的分享轉成一份 notes ，是以寫給 R Programmer 看的。
+今晚在 [SHOW ME THE CODE](https://github.com/code4hk/showmethecode/issues/11) meetup 講完 Rcpp 。所以暫停寫在 `pipe` 發現的東西（應該還有一件事想寫），先將今晚的分享轉成一份 notes ，是寫給 R Programmer 看的。
 
 R 始終是 Interpret 的語言，而又沒有進行優化，所以在運行 loop 時會很慢，尤其運行次數極多的時候。
 
@@ -62,7 +62,7 @@ system.time(sapply(1:ncol(allcomb), census, allcomb = allcomb, inputdata = input
 
 Rcpp 的好處，是可以令 C++ 認得到 R 輸入來的 data structure ，例如 Matrix 、 Vector 之類。在寫 C++ 時，要使用 Rcpp 提供的相對應 data type ，如 `NumericMatrix` 。
 
-以下是我將 R 的 `cosine` 和 `census` 部份重寫成 C++ 的樣子。
+以下是我將 R 的 `cosine` 和 `census` 部份重寫成 C++ 的樣子。需注意的是，如果 C++ 是想引進 R 使用，是要加入`[[Rcpp::export]]`的 comment 。
 
 ```c++
 #include <Rcpp.h>
@@ -114,7 +114,7 @@ system.time(census_cpp(inputdata, allcomb))
 
 重寫之後，執行速度快了十倍以上，只需要少於 30 秒就可執行完成。
 
-結講是，對 R programmer 來說 C++ 仍是值得一學。要達到以上的加速效果，並不需要使用到很高深的功能（如 Pointer Arithmetic ，但其實 Rcpp 背後已替你將 R 輸入的東西變成 pass by reference ，減少複製 value ）。我正在研究如何使用 Rcpp 令 readODS 的 XML 處理變得更快。
+結論是，對 R programmer 來說 C++ 仍是值得一學。要達到以上的加速效果，並不需要使用到很高深的功能（如 Pointer Arithmetic ，但其實 Rcpp 背後已替你將 R 輸入的東西變成 pass by reference ，減少複製 value ）。我正在研究如何使用 Rcpp 令 readODS 的 XML 處理變得更快。
 
 # Infix notation
 
