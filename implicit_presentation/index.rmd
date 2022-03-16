@@ -321,6 +321,8 @@ class: inverse, middle, center
 
 Does this sentence reinforce a certain stigma of female German-Turks?
 
+.extrasmall[Smith (2007). Language of the lost: An explication of stigma communication. Communication Theory.]
+
 ---
 
 # Foreigners in other countries versus Foreigners in Germany
