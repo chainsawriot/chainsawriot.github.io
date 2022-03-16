@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Differential Racism in the News</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Philipp Müller; Chung-hong Chan; Katharina Ludwig; Rainer Freudenthaler; Hartmut Wessler" />
+    <meta name="date" content="2022-03-16" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.0.14/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.0.14/tile-view.js"></script>
+    <link href="libs/animate.css-xaringan-3.7.2/animate.fade.css" rel="stylesheet" />
+    <script src="libs/footer-0.0.3/footer.js"></script>
+    <link rel="stylesheet" href="mzes_fonts.css" type="text/css" />
+    <link rel="stylesheet" href="mzes.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Differential Racism in the News
+## Using Semi-Supervised Machine Learning to Distinguish Explicit and Implicit Stigmatization of Ethnic and Religious Groups in Journalistic Discourse
+### Philipp Müller; Chung-hong Chan; Katharina Ludwig; Rainer Freudenthaler; Hartmut Wessler
+### 2022-03-16
+
+---
+
+
+<script>
+(function() {
+let tries = 0
+function addLogo() {
+  if (typeof slideshow === 'undefined') {
+    ++tries < 10 ? setTimeout(addLogo, 100) : null
+    return
+  } else {
+  	document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide-logo)')
+    	.forEach(el => el.innerHTML += '<div class="xaringan-extra-logo"></div>')
+  }
+}
+document.addEventListener('DOMContentLoaded', addLogo)
+})()
+</script>
+<style type="text/css">
+.xaringan-extra-logo {
+  width: 280px;
+  height: 128px;
+  z-index: 0;
+  background-image: url(img/mzes_logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top:1em;right:1em;
+}
+</style>
+
+# Empowerment Statements
+
+After this presentation, you will know
+
+* The difference between **Explicit** and **Implicit Stigmatization**
+* Methods to measure them using Semi-Supervised Machine Learning
+* Unresolved problems associated with these methods
+
+---
+
+# Objectives
+
+* Distinguish Explicit and Implicit Stigmatization of Ethnic ~~and Religious~~ Groups in Journalistic Discourse
+   * *Bild, die tageszeitung (taz), Der Spiegel, Die Welt, Die Zeit, Frankfurter Allgemeine Zeitung (FAZ), FOCUS, Süddeutsche Zeitung (SZ), Tagesspiegel,* and *T-Online*
+   * 2017-04-10 to 2018-04-10, 697,913 articles
+* Study country-level factors associated with Explicit and Implicit Stigmatization
+
+---
+
+# Implicit Social Cognition Model of Media Priming (Arendt, 2013)
+
+* .extralarge[**Implicit Stigmatization**] - .large[Strength of the automatic association between a group concept and a negative attribute]
+
+* .extralarge[**Explicit Stigmatization**] - .large[Validation of automatically activated negative associations]
+
+
+.extrasmall[Arendt (2013) 
+Dose-Dependent Media Priming Effects of Stereotypic Newspaper Articles on Implicit and Explicit Stereotypes. Journal of Communication.]
+
+---
+
+# Example of Explicit Stigmatization
+
+.pull-left[
+![](ra1.jpg)
+]
+
+.pull-right[
+* Positional statements
+
+"When Mexico sends its people, they’re not sending their best. They’re not sending you. They’re not sending you. They’re sending people that have lots of problems, and they’re bringing those problems with us. They’re bringing drugs. They’re bringing crime. They’re rapists. And some, I assume, are good people."
+
+]
+
+---
+
+# Example of Implicit Stigmatization
+
+.pull-left[
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/4SuoRTpkyq0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+]
+
+--
+
+.pull-right[
+
+(Automatic) Associational statements.
+
+![](nancy.jpg)
+
+Die Welt der Suzie Wong (1960)
+
+]
+---
+
+# Question
+
+.pull-left[
+**Doc 1:** Die Leute, die häufig in der Shisha-Bar rauchen, sind kriminell. 
+
+**Doc 2:** *Adam* raucht häufig in der Shisha-Bar.
+
+**Doc 3:** *Ben* ist kriminell.
+]
+
+.pull-right[
+![](ra3.png)
+]
+
+---
+
+# Explicit stigmatization: operationalization
+
+*Ben* ist **kriminell**.
+
+* Positional statement: Textual sentiment associated with a group name
+* Ingredients: 
+1. group names
+2. sentiment words
+
+---
+
+# Implicit stigmatization: operationalization
+
+Die Leute, die häufig in der Shisha-Bar rauchen, sind **kriminell**. 
+
+*Adam* raucht häufig in der Shisha-Bar.
+
+* Associational statement(s): Textual sentiment associated with the contexts in which a group name is used
+* Ingredients:
+1. group names
+2. sentiment words
+3. contextual understanding of where a word is used
+
+---
+
+# Ingredient 1: Group names
+
+30 groups in *Mikrozensus* (2018)
+
+All grammtical forms of a demonym (noun)
+
+e.g. *Niederländer, Niederländers, Niederländern, Niederländerin, Niederländerinnen*
+
+*Brite, Briten, Britin, Britinnen, Engländer, Engländers, Engländern, Engländerin, Engländerinnen,
+Waliser, Walisers, Walisern, Waliserin, Waliserinnen, Schotte, Schotten, Schottin, Schottinnen,
+Nordirländer, Nordirländers, Nordirländern, Nordirländerin, Nordirländerinnen*
+
+
+<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [chainsawriot/dewi](https://github.com/chainsawriot/dewi)
+
+---
+
+# Ingredient 2: Sentiment words I
+
+Data-driven seed dictionaries of adjectives related to fear `\(\mathcal{F}\)` and admiration `\(\mathcal{A}\)` (Haselmayer &amp; Jenny, 2017)
+
+Extracted from a handcoded collection of 3,000 sentences containing at least one group name.
+
+- "Training" with 1,500 sentences / validate with the rest of 1,500 sentences
+
+.extrasmall[Haselmayer, Jenny (2017). Sentiment analysis of political communication: combining a dictionary approach with crowdcoding. Quality &amp; Quantity]
+
+---
+
+# Ingredient 2: Sentiment words II
+
+**Fear:** *fürchten, gefährlich, fatal, radikale, radikal, irrational, gewalttätig, akut, brandgefährlichen, bösartige, radikaler, traumatisch, ängstigen,
+ängstlich*
+
+**Admiration:** *würdigen, loben, mutig, beeindrucken, wunderbar, fleißig, geehrt, attraktive, belächeln, bemerkenswerte, eindrucksvoll, ermutigend, herausragende, hervorgetan, lebendig, robust, tadellos, talentiert, tapfer, wunderbare, übermenschlich, erfolgreich, positiv, beeindruckend, bewundern, freundliche, hilfsbereit, höflich, interessant, wertvoll, attraktiv, begeistern, herrlich, unverzichtbar*
+
+All grammatical forms and comparative forms.
+
+<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [chainsawriot/verbformen](https://github.com/chainsawriot/verbformen)
+
+---
+class: hide-footer
+
+# Operationalization I
+
+![](ra_lss.png)
+
+**Explicit stigmatization**: Semi-supervised scaling using Latent Semantic Scaling (Watanabe, 2020) of sentences containing a group name `\(g\)` with respect to the seed dictionaries `\(\mathcal{A}\)` and `\(\mathcal{F}\)`.
+
+<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [koheiw/LSX](https://github.com/koheiw/LSX)
+
+.extrasmall[Watanabe (2020) Latent Semantic Scaling: A Semisupervised Text Analysis Technique for New Domains and Languages. Communication Methods &amp; Measures]
+
+---
+
+# Ingredient 3: Contextual understanding
+
+**Distributional semantics**: words that are used and occur in the same contexts tend to purport similar meanings
+
+**Doc 1**: Berlin ist die Hauptstadt von *Deutschland*
+
+**Doc 2**: Paris ist die Hauptstadt von *Frankreich*
+
+**Doc 3**: Tokio ist die Hauptstadt von *Japan*
+
+**Doc 4**: Die *Katze* zählt zu den beliebtesten Heimtieren.
+
+*Deutschland, Frankreich*, and *Japan* (but not *Katze*) should have similar meanings because they are used in the similar contexts
+
+---
+
+# Quantification of distributional semantic meanings of words I
+
+.pull-left[
+
+![](ra4.png)
+
+.extrasmall[Credit: Chollet. Deep Learning with Python]
+
+]
+
+.pull-right[
+**Word embeddings**: word vectors capturing the distributional semantic meanings of words in a large corpus of textual content.
+
+The input word embedding `\(w\)` is a dense `\(m\times n\)` matrix, where `\(m\)` is the total size of the vocabulary in the training corpus and `\(n\)` is the vector dimension size. Let `\(v_x\)` denote a row vector of `\(w\)`, the word vector of the word `\(x\)`.
+]
+---
+
+# Quantification of distributional semantic meanings of words II
+
+.pull-left[
+![](ra5.png)
+.extrasmall[Chan et al. (2020)  Reproducible Extraction of Cross-lingual Topics (rectr). Communication Methods and Measures]
+]
+
+.pull-right[
+**Semantic similarity**: The distance (e.g. cosine distance) between `\(v_{deutschland}\)` and `\(v_{frankreich}\)` should be shorter than `\(v_{deutschland}\)` and `\(v_{katze}\)`.
+]
+
+---
+
+# Quantification of distributional semantic meanings of words III
+
+.pull-left[
+![](ra6.png)
+]
+
+.pull-right[
+**Word Embedding bias**: Differential association of a word with two sets of attributes in the word embedding spaces.
+
+`\(\mathcal{A} = \{she, daughter, hers, ...\}\)`.
+`\(\mathcal{B} = \{he, son, his, him, ...\}\)`
+
+]
+
+---
+
+# Quantification of distributional semantic meanings of words IV
+
+Normalized Association Score (Caliskan et al., 2017) of a group name `\(g\)`:
+
+Let `\(cos(v_1, v_2)\)` denote the cosine of the angle between vectors `\(v_1\)` and `\(v_2\)`.
+
+`\(NAS(g, \mathcal{A}, \mathcal{F}) = \frac{mean_{a \in \mathcal{A}} cos (v_g, v_a) - mean_{f \in \mathcal{F}} cos (v_g, v_f) }{sd_{x \in \mathcal{A} \cup \mathcal{F}} cos(v_g, v_x)}\)`
+
+<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [chainsawriot/sweater](https://github.com/chainsawriot/sweater)
+
+.extrasmall[Caliskan et al. (2017) Semantics derived automatically from language corpora contain human-like biases. Science]
+
+---
+
+# Operationalization II
+
+**Implicit stigmatization**: `\(NAS(g, \mathcal{A}, \mathcal{F})\)` based on GLoVE word vectors (Pennington et al., 2014) locally trained on the corpus of 697,913 news articles
+
+<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [rexyai/rsparse](https://github.com/rexyai/rsparse)
+
+.extrasmall[Pennington et al. (2014) GloVe: Global Vectors for Word Representation]
+
+---
+background-image: url(ra7.png)
+background-position: center
+background-size: cover
+class: hide-logo, center, bottom, hide-footer
+
+---
+background-image: url(ra8.png)
+background-position: center
+background-size: cover
+class: hide-logo, center, bottom, hide-footer
+
+---
+
+# Explaining the differences (Preregistered)
+
+Dependent variables: Implicit / Explicit 
+
+Independent variables
+
+1. GDP per Capita
+2. Group Size in Germany
+3. Group size in Germany (Forced migration)
+4. Cultural distance with Germany (WVS)
+5. Muslim population
+
+Bayesian multilevel modeling (<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [paul-buerkner/brms](https://github.com/paul-buerkner/brms))
+
+---
+
+# Bayesian models
+
+&lt;table&gt;
+&lt;caption&gt;% of HDI in Region of Practical Eqivalence (Bayesian Models)&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Variable &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Explicit &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Implicit &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Log GDP &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Log Group Size &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 64.5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Log Group Size (F) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 85.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 50.0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Log Distance &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Log Muslim &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 59.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24.6 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+class: inverse, middle, center
+
+# Unresolved problems
+
+---
+
+# Explicit stigmatimization and communication of responsibility (Smith 2007)
+
+"Im Verfahren gegen zwei Brüder der **ermordeten** Deutsch-Türkin Hatun Sürücü wird in Istanbul heute ein Urteil erwartet"
+
+Does this sentence reinforce a certain stigma of female German-Turks?
+
+---
+
+# Foreigners in other countries versus Foreigners in Germany
+
+"Das Halbfinal-Hinspiel der Champions League gewinnt Real Madrid durch drei Tore des **Portugiesen** gegen Stadt-Rivale Atlético mit 3:0."
+
+"Für Bayer machte der **Grieche** zuvor in 51 Partien fünf Treffer."
+
+---
+
+# Validity of Implicit measurement
+
+.pull-left[
+![](ra9.png)
+.extrasmall[Garg et al. (2017) Word embeddings quantify 100 years of gender and ethnic stereotypes. PNAS]
+]
+
+.pull-right[
+* Corpus-based measurement, manual validation not possible
+* Previous attempts: scientific instrumentalism
+]
+
+
+---
+
+# New MZES research group in April
+
+.large[Impliziter und expliziter Rassismus in Nachrichtenmedien und sozialen Medien: Ausmaß und Wirkung]
+
+.small[Forschungsverbund „Diskriminierung und Rassismus“ (FoDiRa)]
+
+.small[Bundesministerium für Familie, Senioren, Frauen und Jugend]
+
+*PIs*: Philipp Müller, Chung-hong Chan, Hartmut Wessler
+
+*Postdoc*: Rainer Freudenthaler
+
+*PhD candidate*: Katharina Ludwig
+
+---
+
+# Contributions
+
+* The difference between **Explicit** and **Implicit Stigmatization**
+   * Positional statements and associational statements
+* Methods to measure them using Semi-Supervised Machine Learning
+   * Latent Semantic Scaling, Word Embedding bias
+   * <svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [chainsawriot/sweater](https://github.com/chainsawriot/sweater)
+* Unresolved problems associated with these methods
+   * Communication of responsibility
+   * Foreigners in other countries vs Foreigners in Germany
+   * Validity of implicit measure and scientific instrumentalism
+
+<svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"/></svg>
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+(function(time) {
+  var d2 = function(number) {
+    return ('0' + number).slice(-2); // left-pad 0 to minutes/seconds
+  },
+
+  time_format = function(total) {
+    var secs = Math.abs(total) / 1000;
+    var h = Math.floor(secs / 3600);
+    var m = Math.floor(secs % 3600 / 60);
+    var s = Math.round(secs % 60);
+    var res = d2(m) + ':' + d2(s);
+    if (h > 0) res = h + ':' + res;
+    return res;  // [hh:]mm:ss
+  },
+
+  slide_number_div = function(i) {
+    return document.getElementsByClassName('remark-slide-number').item(i);
+  },
+
+  current_page_number = function(i) {
+    return slide_number_div(i).firstChild.textContent;  // text "i / N"
+  };
+
+  var timer = document.createElement('span'); timer.id = 'slide-time-left';
+  var time_left = time, k = slideshow.getCurrentSlideIndex(),
+      last_page_number = current_page_number(k);
+
+  setInterval(function() {
+    time_left = time_left - 1000;
+    timer.innerHTML = ' ' + time_format(time_left);
+    if (time_left < 0) timer.style.color = 'red';
+  }, 1000);
+
+  slide_number_div(k).appendChild(timer);
+
+  slideshow.on('showSlide', function(slide) {
+    var i = slide.getSlideIndex(), n = current_page_number(i);
+    // reset timer when a new slide is shown and the page number is changed
+    if (last_page_number !== n) {
+      time_left = time; last_page_number = n;
+      timer.innerHTML = ' ' + time_format(time); timer.style.color = null;
+    }
+    slide_number_div(i).appendChild(timer);
+  });
+})(60000);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
