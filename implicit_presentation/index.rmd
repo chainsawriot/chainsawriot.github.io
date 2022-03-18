@@ -2,7 +2,7 @@
 title: "Distinguish Explicit and Implicit Stigmatization of Ethnic and Religious Groups in Journalistic Discourse"
 subtitle: "Semi-supervised machine learning"
 author: "Philipp Müller; Chung-hong Chan; Katharina Ludwig; Rainer Freudenthaler; Hartmut Wessler"
-date: "`r Sys.Date()`"
+date: "2022-03-21"
 params:
   animation: "fade"
   twitter: "chainsawriot"
@@ -76,17 +76,16 @@ Dose-Dependent Media Priming Effects of Stereotypic Newspaper Articles on Implic
 
 .pull-left[
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4SuoRTpkyq0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ]
 
 --
 
 .pull-right[
-
-(Automatic) Associational statements.
-
+.small[(Automatic) Associational statements.]
 ![](nancy.jpg)
 
-Die Welt der Suzie Wong (1960)
+.small[Die Welt der Suzie Wong (1960)]
 
 ]
 ---
