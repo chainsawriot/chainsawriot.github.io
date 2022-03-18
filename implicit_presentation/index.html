@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Differential Racism in the News</title>
+    <title>Distinguish Explicit and Implicit Stigmatization of Ethnic and Religious Groups in Journalistic Discourse</title>
     <meta charset="utf-8" />
     <meta name="author" content="Philipp Müller; Chung-hong Chan; Katharina Ludwig; Rainer Freudenthaler; Hartmut Wessler" />
-    <meta name="date" content="2022-03-16" />
+    <meta name="date" content="2022-03-18" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/tile-view-0.0.14/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view-0.0.14/tile-view.js"></script>
@@ -17,10 +17,10 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Differential Racism in the News
-## Using Semi-Supervised Machine Learning to Distinguish Explicit and Implicit Stigmatization of Ethnic and Religious Groups in Journalistic Discourse
+# Distinguish Explicit and Implicit Stigmatization of Ethnic and Religious Groups in Journalistic Discourse
+## Semi-supervised machine learning
 ### Philipp Müller; Chung-hong Chan; Katharina Ludwig; Rainer Freudenthaler; Hartmut Wessler
-### 2022-03-16
+### 2022-03-18
 
 ---
 
@@ -70,6 +70,8 @@ After this presentation, you will know
    * 2017-04-10 to 2018-04-10, 697,913 articles
 * Study country-level factors associated with Explicit and Implicit Stigmatization
 
+.extrasmall[Freudenthaler &amp; Wessler (2022). Mapping Emerging and Legacy Outlets Online by Their Democratic Functions—Agonistic, Deliberative, or Corrosive? [doi](https://doi.org/10.1177%2F19401612211015077)]
+
 ---
 
 # Implicit Social Cognition Model of Media Priming (Arendt, 2013)
@@ -80,7 +82,7 @@ After this presentation, you will know
 
 
 .extrasmall[Arendt (2013) 
-Dose-Dependent Media Priming Effects of Stereotypic Newspaper Articles on Implicit and Explicit Stereotypes. Journal of Communication.]
+Dose-Dependent Media Priming Effects of Stereotypic Newspaper Articles on Implicit and Explicit Stereotypes. Journal of Communication [doi](https://doi.org/10.1111/jcom.12056)]
 
 ---
 
@@ -93,7 +95,7 @@ Dose-Dependent Media Priming Effects of Stereotypic Newspaper Articles on Implic
 .pull-right[
 * Positional statements
 
-"When Mexico sends its people, they’re not sending their best. They’re not sending you. They’re not sending you. They’re sending people that have lots of problems, and they’re bringing those problems with us. They’re bringing drugs. They’re bringing crime. They’re rapists. And some, I assume, are good people."
+*"When Mexico sends its people, they’re not sending their best. They’re not sending you. They’re not sending you. They’re sending people that have lots of problems, and they’re bringing those problems with us. They’re bringing drugs. They’re bringing crime. They’re rapists. And some, I assume, are good people."*
 
 ]
 
@@ -184,7 +186,7 @@ Extracted from a handcoded collection of 3,000 sentences containing at least one
 
 - "Training" with 1,500 sentences / validate with the rest of 1,500 sentences
 
-.extrasmall[Haselmayer, Jenny (2017). Sentiment analysis of political communication: combining a dictionary approach with crowdcoding. Quality &amp; Quantity]
+.extrasmall[Haselmayer, Jenny (2017). Sentiment analysis of political communication: combining a dictionary approach with crowdcoding. Quality &amp; Quantity [doi](https://doi.org/10.1007/s11135-016-0412-4)]
 
 ---
 
@@ -206,11 +208,9 @@ class: hide-footer
 
 ![](ra_lss.png)
 
-**Explicit stigmatization**: Semi-supervised scaling using Latent Semantic Scaling (Watanabe, 2020) of sentences containing a group name `\(g\)` with respect to the seed dictionaries `\(\mathcal{A}\)` and `\(\mathcal{F}\)`.
+**Explicit stigmatization**: Semi-supervised scaling using Latent Semantic Scaling (Watanabe, 2020) of sentences containing a group name `\(g\)` with respect to the seed dictionaries `\(\mathcal{A}\)` and `\(\mathcal{F}\)`. <svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [koheiw/LSX](https://github.com/koheiw/LSX)
 
-<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [koheiw/LSX](https://github.com/koheiw/LSX)
-
-.extrasmall[Watanabe (2020) Latent Semantic Scaling: A Semisupervised Text Analysis Technique for New Domains and Languages. Communication Methods &amp; Measures]
+.extrasmall[Watanabe (2020) Latent Semantic Scaling: A Semisupervised Text Analysis Technique for New Domains and Languages. Communication Methods &amp; Measures [doi](https://doi.org/10.1080/19312458.2020.1832976)]
 
 ---
 
@@ -251,7 +251,7 @@ The input word embedding `\(w\)` is a dense `\(m\times n\)` matrix, where `\(m\)
 
 .pull-left[
 ![](ra5.png)
-.extrasmall[Chan et al. (2020)  Reproducible Extraction of Cross-lingual Topics (rectr). Communication Methods and Measures]
+.extrasmall[Chan et al. (2020)  Reproducible Extraction of Cross-lingual Topics (rectr). Communication Methods and Measures [doi](https://doi.org/10.1080/19312458.2020.1812555)]
 ]
 
 .pull-right[
@@ -286,7 +286,7 @@ Let `\(cos(v_1, v_2)\)` denote the cosine of the angle between vectors `\(v_1\)`
 
 <svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [chainsawriot/sweater](https://github.com/chainsawriot/sweater)
 
-.extrasmall[Caliskan et al. (2017) Semantics derived automatically from language corpora contain human-like biases. Science]
+.extrasmall[Caliskan et al. (2017) Semantics derived automatically from language corpora contain human-like biases. Science [doi](https://doi.org/10.1126/science.aal4230)]
 
 ---
 
@@ -296,7 +296,7 @@ Let `\(cos(v_1, v_2)\)` denote the cosine of the angle between vectors `\(v_1\)`
 
 <svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> [rexyai/rsparse](https://github.com/rexyai/rsparse)
 
-.extrasmall[Pennington et al. (2014) GloVe: Global Vectors for Word Representation]
+.extrasmall[Pennington et al. (2014) GloVe: Global Vectors for Word Representation [doi](http://dx.doi.org/10.3115/v1/D14-1162)]
 
 ---
 background-image: url(ra7.png)
@@ -382,7 +382,7 @@ class: inverse, middle, center
 
 Does this sentence reinforce a certain stigma of female German-Turks?
 
-.extrasmall[Smith (2007). Language of the lost: An explication of stigma communication. Communication Theory.]
+.extrasmall[Smith (2007). Language of the lost: An explication of stigma communication. Communication Theory [doi](https://doi.org/10.1111/j.1468-2885.2007.00307.x)]
 
 ---
 
@@ -398,7 +398,7 @@ Does this sentence reinforce a certain stigma of female German-Turks?
 
 .pull-left[
 ![](ra9.png)
-.extrasmall[Garg et al. (2017) Word embeddings quantify 100 years of gender and ethnic stereotypes. PNAS]
+.extrasmall[Garg et al. (2017) Word embeddings quantify 100 years of gender and ethnic stereotypes. PNAS [doi](https://doi.org/10.1073/pnas.1720347115)]
 ]
 
 .pull-right[
@@ -436,6 +436,8 @@ Does this sentence reinforce a certain stigma of female German-Turks?
    * Communication of responsibility
    * Foreigners in other countries vs Foreigners in Germany
    * Validity of implicit measure and scientific instrumentalism
+
+https://chainsawriot.github.io/implicit_presentation/
 
 <svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"/></svg>
     </textarea>

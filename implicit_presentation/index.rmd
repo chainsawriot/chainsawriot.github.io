@@ -1,6 +1,6 @@
 ---
-title: "Differential Racism in the News"
-subtitle: "Using Semi-Supervised Machine Learning to Distinguish Explicit and Implicit Stigmatization of Ethnic and Religious Groups in Journalistic Discourse"
+title: "Distinguish Explicit and Implicit Stigmatization of Ethnic and Religious Groups in Journalistic Discourse"
+subtitle: "Semi-supervised machine learning"
 author: "Philipp Müller; Chung-hong Chan; Katharina Ludwig; Rainer Freudenthaler; Hartmut Wessler"
 date: "`r Sys.Date()`"
 params:
@@ -41,6 +41,8 @@ After this presentation, you will know
    * 2017-04-10 to 2018-04-10, 697,913 articles
 * Study country-level factors associated with Explicit and Implicit Stigmatization
 
+.extrasmall[Freudenthaler & Wessler (2022). Mapping Emerging and Legacy Outlets Online by Their Democratic Functions—Agonistic, Deliberative, or Corrosive? [doi](https://doi.org/10.1177%2F19401612211015077)]
+
 ---
 
 # Implicit Social Cognition Model of Media Priming (Arendt, 2013)
@@ -51,7 +53,7 @@ After this presentation, you will know
 
 
 .extrasmall[Arendt (2013) 
-Dose-Dependent Media Priming Effects of Stereotypic Newspaper Articles on Implicit and Explicit Stereotypes. Journal of Communication.]
+Dose-Dependent Media Priming Effects of Stereotypic Newspaper Articles on Implicit and Explicit Stereotypes. Journal of Communication [doi](https://doi.org/10.1111/jcom.12056)]
 
 ---
 
@@ -64,7 +66,7 @@ Dose-Dependent Media Priming Effects of Stereotypic Newspaper Articles on Implic
 .pull-right[
 * Positional statements
 
-"When Mexico sends its people, they’re not sending their best. They’re not sending you. They’re not sending you. They’re sending people that have lots of problems, and they’re bringing those problems with us. They’re bringing drugs. They’re bringing crime. They’re rapists. And some, I assume, are good people."
+*"When Mexico sends its people, they’re not sending their best. They’re not sending you. They’re not sending you. They’re sending people that have lots of problems, and they’re bringing those problems with us. They’re bringing drugs. They’re bringing crime. They’re rapists. And some, I assume, are good people."*
 
 ]
 
@@ -155,7 +157,7 @@ Extracted from a handcoded collection of 3,000 sentences containing at least one
 
 - "Training" with 1,500 sentences / validate with the rest of 1,500 sentences
 
-.extrasmall[Haselmayer, Jenny (2017). Sentiment analysis of political communication: combining a dictionary approach with crowdcoding. Quality & Quantity]
+.extrasmall[Haselmayer, Jenny (2017). Sentiment analysis of political communication: combining a dictionary approach with crowdcoding. Quality & Quantity [doi](https://doi.org/10.1007/s11135-016-0412-4)]
 
 ---
 
@@ -177,11 +179,9 @@ class: hide-footer
 
 ![](ra_lss.png)
 
-**Explicit stigmatization**: Semi-supervised scaling using Latent Semantic Scaling (Watanabe, 2020) of sentences containing a group name $g$ with respect to the seed dictionaries $\mathcal{A}$ and $\mathcal{F}$.
+**Explicit stigmatization**: Semi-supervised scaling using Latent Semantic Scaling (Watanabe, 2020) of sentences containing a group name $g$ with respect to the seed dictionaries $\mathcal{A}$ and $\mathcal{F}$. `r fontawesome::fa("github")` [koheiw/LSX](https://github.com/koheiw/LSX)
 
-`r fontawesome::fa("github")` [koheiw/LSX](https://github.com/koheiw/LSX)
-
-.extrasmall[Watanabe (2020) Latent Semantic Scaling: A Semisupervised Text Analysis Technique for New Domains and Languages. Communication Methods & Measures]
+.extrasmall[Watanabe (2020) Latent Semantic Scaling: A Semisupervised Text Analysis Technique for New Domains and Languages. Communication Methods & Measures [doi](https://doi.org/10.1080/19312458.2020.1832976)]
 
 ---
 
@@ -222,7 +222,7 @@ The input word embedding $w$ is a dense $m\times n$ matrix, where $m$ is the tot
 
 .pull-left[
 ![](ra5.png)
-.extrasmall[Chan et al. (2020)  Reproducible Extraction of Cross-lingual Topics (rectr). Communication Methods and Measures]
+.extrasmall[Chan et al. (2020)  Reproducible Extraction of Cross-lingual Topics (rectr). Communication Methods and Measures [doi](https://doi.org/10.1080/19312458.2020.1812555)]
 ]
 
 .pull-right[
@@ -257,7 +257,7 @@ $NAS(g, \mathcal{A}, \mathcal{F}) = \frac{mean_{a \in \mathcal{A}} cos (v_g, v_a
 
 `r fontawesome::fa("github")` [chainsawriot/sweater](https://github.com/chainsawriot/sweater)
 
-.extrasmall[Caliskan et al. (2017) Semantics derived automatically from language corpora contain human-like biases. Science]
+.extrasmall[Caliskan et al. (2017) Semantics derived automatically from language corpora contain human-like biases. Science [doi](https://doi.org/10.1126/science.aal4230)]
 
 ---
 
@@ -267,7 +267,7 @@ $NAS(g, \mathcal{A}, \mathcal{F}) = \frac{mean_{a \in \mathcal{A}} cos (v_g, v_a
 
 `r fontawesome::fa("github")` [rexyai/rsparse](https://github.com/rexyai/rsparse)
 
-.extrasmall[Pennington et al. (2014) GloVe: Global Vectors for Word Representation]
+.extrasmall[Pennington et al. (2014) GloVe: Global Vectors for Word Representation [doi](http://dx.doi.org/10.3115/v1/D14-1162)]
 
 ---
 background-image: url(ra7.png)
@@ -321,7 +321,7 @@ class: inverse, middle, center
 
 Does this sentence reinforce a certain stigma of female German-Turks?
 
-.extrasmall[Smith (2007). Language of the lost: An explication of stigma communication. Communication Theory.]
+.extrasmall[Smith (2007). Language of the lost: An explication of stigma communication. Communication Theory [doi](https://doi.org/10.1111/j.1468-2885.2007.00307.x)]
 
 ---
 
@@ -337,7 +337,7 @@ Does this sentence reinforce a certain stigma of female German-Turks?
 
 .pull-left[
 ![](ra9.png)
-.extrasmall[Garg et al. (2017) Word embeddings quantify 100 years of gender and ethnic stereotypes. PNAS]
+.extrasmall[Garg et al. (2017) Word embeddings quantify 100 years of gender and ethnic stereotypes. PNAS [doi](https://doi.org/10.1073/pnas.1720347115)]
 ]
 
 .pull-right[
@@ -375,5 +375,7 @@ Does this sentence reinforce a certain stigma of female German-Turks?
    * Communication of responsibility
    * Foreigners in other countries vs Foreigners in Germany
    * Validity of implicit measure and scientific instrumentalism
+
+https://chainsawriot.github.io/implicit_presentation/
 
 `r fontawesome::fa("question")`
