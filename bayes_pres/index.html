@@ -4,7 +4,6 @@
     <title>Bayesian multilevel modeling and its application in comparative communication research</title>
     <meta charset="utf-8" />
     <meta name="author" content="Chung-hong Chan, Adrian Rauchfleisch" />
-    <meta name="date" content="2022-05-22" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/tile-view-0.0.14/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view-0.0.14/tile-view.js"></script>
@@ -20,7 +19,6 @@ class: center, middle, inverse, title-slide
 # Bayesian multilevel modeling and its application in comparative communication research
 ## Née ‘Bayesian (Comparative) Journalism Studies’
 ### Chung-hong Chan, Adrian Rauchfleisch
-### 2022-05-22
 
 ---
 
@@ -54,20 +52,18 @@ class: center, middle, inverse, title-slide
 
 **Solution:** Multilevel modeling (R packages: lme4, nlme, glmmTMB)
 
-**Example:** Worlds of Journalism *survey* (random sample of journalists in each country)
+**Example:** Worlds of Journalism **survey**
 
 **Personal-level:**
 
-1. ppa: Perceived Professional Autonomy
-2. EXPRNCE: Experience
+DV: Perceived Professional Autonomy, IV: Experience
 
 **Country-level:**
 
-1. eiu: democracy performance
+IV: eiu: democracy performance
 
 ```r
-lmer4(ppa ~ EXPRNCE + I(eiu^3) + (1|COUNTRY), 
-data = wjs)
+lmer4(ppa ~ EXPRNCE + I(eiu^3) + (1|COUNTRY), data = wjs)
 ```
 
 ---

@@ -2,7 +2,6 @@
 title: "Bayesian multilevel modeling and its application in comparative communication research"
 subtitle: "Née 'Bayesian (Comparative) Journalism Studies'"
 author: "Chung-hong Chan, Adrian Rauchfleisch"
-date: "`r Sys.Date()`"
 params:
   animation: "fade"
   twitter: "chainsawriot"
@@ -50,20 +49,18 @@ mzesalike::use_footer(params)
 
 **Solution:** Multilevel modeling (R packages: lme4, nlme, glmmTMB)
 
-**Example:** Worlds of Journalism *survey* (random sample of journalists in each country)
+**Example:** Worlds of Journalism **survey**
 
 **Personal-level:**
 
-1. ppa: Perceived Professional Autonomy
-2. EXPRNCE: Experience
+DV: Perceived Professional Autonomy, IV: Experience
 
 **Country-level:**
 
-1. eiu: democracy performance
+IV: eiu: democracy performance
 
 ```r
-lmer4(ppa ~ EXPRNCE + I(eiu^3) + (1|COUNTRY), 
-data = wjs)
+lmer4(ppa ~ EXPRNCE + I(eiu^3) + (1|COUNTRY), data = wjs)
 ```
 
 ---
@@ -177,7 +174,7 @@ knitr::include_graphics("lit.png")
 .pull-right[
 ```{r fig5, echo = FALSE, message = FALSE}
 require(ggplot2)
-x <- readRDS("../qmod_condit.RDS")
+x <- readRDS("~/dev/usenews_bayes/qmod_condit.RDS")
 x$`eiu` + xlab("Index of Democracy (mean-centered)") + ylab("Perceived professional autonomy (mean-centered)") + theme_minimal() + scale_color_brewer(palette = "Dark2") + scale_fill_brewer(palette = "Dark2")
 ```
 
