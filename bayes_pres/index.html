@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Bayesian multilevel modeling and its application in comparative communication research</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Chung-hong Chan, Adrian Rauchfleisch" />
+    <meta name="date" content="2022-05-22" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.0.14/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.0.14/tile-view.js"></script>
+    <link href="libs/animate.css-xaringan-3.7.2/animate.fade.css" rel="stylesheet" />
+    <script src="libs/footer-0.0.3/footer.js"></script>
+    <link rel="stylesheet" href="mzes_fonts.css" type="text/css" />
+    <link rel="stylesheet" href="mzes.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Bayesian multilevel modeling and its application in comparative communication research
+## Née ‘Bayesian (Comparative) Journalism Studies’
+### Chung-hong Chan, Adrian Rauchfleisch
+### 2022-05-22
+
+---
+
+
+
+
+.extralarge["The comparative approach attempts to reach conclusions beyond single cases and explains differences and similarities between objects of analysis against the backdrop of their contextual conditions."]
+
+[Esser (2014)](http://dx.doi.org/10.1057/9781137366474_2)
+
+---
+
+# Raison d'être
+
+.extralarge[
+* Non-atomicity
+* Non-stochasticity
+]
+
+---
+
+# Non-atomicity 1
+
+* An article nested in a media outlet nested in a **country** nested in a media system
+
+* A journalist nested in a media outlet nested in a **country** nested in a media system
+
+---
+
+# Non-atomicity 2
+
+**Solution:** Multilevel modeling (R packages: lme4, nlme, glmmTMB)
+
+**Example:** Worlds of Journalism *survey* (random sample of journalists in each country)
+
+**Personal-level:**
+
+1. ppa: Perceived Professional Autonomy
+2. EXPRNCE: Experience
+
+**Country-level:**
+
+1. eiu: democracy performance
+
+```r
+lmer4(ppa ~ EXPRNCE + I(eiu^3) + (1|COUNTRY), 
+data = wjs)
+```
+
+---
+
+# Non-atomicity 3
+
+**Example:** useNews dataset (a complete corpus of news articles; a **census**)
+
+**Outlet-level:**
+
+1. china: Total number of articles about China
+1. n: total number of articles
+
+**Country-level:**
+
+1. trade: trade volume with China
+
+```r
+glmer.nb(china ~ offset(log(n)) + (1|country) + 
+log(trade), data = outlet_data)
+```
+
+Does it work the same?
+
+---
+class: hide-footer
+
+# Non-stochasticity
+
+.pull-left[
+![](clt.gif)&lt;!-- --&gt;
+.extrasmall[Source: Brenda Anderson (Stony Brook)]
+
+]
+
+.pull-right[
+Census data is non-stochastic (no randomization is involved). 
+
+Frequentist inference does not apply.
+
+]
+
+---
+
+# Our solution: Bayesian inference
+
+.pull-left[
+`$$P(\theta | X) \propto  P(\theta) P(X| \theta)$$`
+]
+
+.pull-right[
+
+**Goal:** `\(P(\theta | X)\)`
+
+Our certainty on how likely the estimand `\(\theta\)` is, given the current available data
+
+**Receipe**
+
+1. X (data)
+2. A method to derive `\(P(X| \theta)\)` (MCMC, provided by brms)
+3. `\(P(\theta)\)` **Prior**
+
+.extrasmall[Bürkner, P.-C. (2017). brms: An R Package for Bayesian Multilevel Models Using Stan. Journal of Statistical Software, 80(1), 1–28.]
+
+]
+
+---
+
+# Prior
+
+.large[
+1. 1/7 of communication papers are replication
+2. Expert elicitation
+3. Weakly informative prior
+]
+
+.extrasmall[Keating, D. M., &amp; Totzkay, D. (2019). We do publish (conceptual) replications (sometimes): Publication trends in communication science, 2007–2016. Annals of the International Communication Association, 43(3), 225-239.]
+
+---
+
+# It's almost the same as lme4
+
+```r
+weaklyinformative_prior &lt;- 
+c(prior_string("normal(0, 1)", class = "b"),
+  prior_string("normal(0, 1)",class = "Intercept"))
+
+import_brms &lt;- brm(china~offset(log(n))+(1|country)+
+log(trade),
+          data = outlet_data, 
+		  family = negbinomial(),
+          prior = weaklyinformative_prior, 
+		  sample_prior = TRUE)
+```
+
+---
+
+# Inference at the correct level
+
+.pull-left[
+&lt;img src="lit.png" width="1415" /&gt;
+
+.extrasmall[Hamada, B. I. (2021). Determinants of Journalists’ Autonomy and Safety: Evidence from the Worlds of Journalism Study. Journalism Practice, 1–21. doi:10.1080/17512786.2021.1871861]
+
+]
+
+.pull-right[
+![](index_files/figure-html/fig5-1.png)&lt;!-- --&gt;
+
+]
+
+---
+class: hide-footer
+
+# Model checking through data generation (Posterior predictive checks)
+
+.pull-left[
+&lt;img src="fig3x-1.png" width="2000" /&gt;
+]
+
+
+.pull-right[
+&lt;img src="fig3-1.png" width="2000" /&gt;
+]
+
+---
+class: hide-footer
+
+&lt;img src="clplot-1.png" width="2492" /&gt;
+
+---
+# Contributions
+
+* The Raison d'être of Bayesian analysis for comparative communication research
+    * Non-atomicity (Nested data structure)
+    * Non-stochasticity (No randomization)
+* Recipe
+    * Data
+	* Likelihood function (brms, very similar to lme4)
+	* Prior (can use weakly informative priors)
+* Advantages
+    * Valid inference
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+(function(time) {
+  var d2 = function(number) {
+    return ('0' + number).slice(-2); // left-pad 0 to minutes/seconds
+  },
+
+  time_format = function(total) {
+    var secs = Math.abs(total) / 1000;
+    var h = Math.floor(secs / 3600);
+    var m = Math.floor(secs % 3600 / 60);
+    var s = Math.round(secs % 60);
+    var res = d2(m) + ':' + d2(s);
+    if (h > 0) res = h + ':' + res;
+    return res;  // [hh:]mm:ss
+  },
+
+  slide_number_div = function(i) {
+    return document.getElementsByClassName('remark-slide-number').item(i);
+  },
+
+  current_page_number = function(i) {
+    return slide_number_div(i).firstChild.textContent;  // text "i / N"
+  };
+
+  var timer = document.createElement('span'); timer.id = 'slide-time-left';
+  var time_left = time, k = slideshow.getCurrentSlideIndex(),
+      last_page_number = current_page_number(k);
+
+  setInterval(function() {
+    time_left = time_left - 1000;
+    timer.innerHTML = ' ' + time_format(time_left);
+    if (time_left < 0) timer.style.color = 'red';
+  }, 1000);
+
+  slide_number_div(k).appendChild(timer);
+
+  slideshow.on('showSlide', function(slide) {
+    var i = slide.getSlideIndex(), n = current_page_number(i);
+    // reset timer when a new slide is shown and the page number is changed
+    if (last_page_number !== n) {
+      time_left = time; last_page_number = n;
+      timer.innerHTML = ' ' + time_format(time); timer.style.color = null;
+    }
+    slide_number_div(i).appendChild(timer);
+  });
+})(60000);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
