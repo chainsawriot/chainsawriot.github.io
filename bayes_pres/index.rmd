@@ -47,11 +47,11 @@ mzesalike::use_footer(params)
 
 # Non-atomicity 2
 
-**Solution:** Multilevel modeling (R packages: lme4, nlme, glmmTMB)
+**Solution:** Multilevel modeling aka. HLM, "mixed-effect model" (R packages: lme4, nlme, glmmTMB)
 
 **Example:** Worlds of Journalism **survey**
 
-**Personal-level:**
+**Journalist-level:**
 
 DV: Perceived Professional Autonomy, IV: Experience
 
@@ -64,6 +64,7 @@ lmer4(ppa ~ EXPRNCE + I(eiu^3) + (1|COUNTRY), data = wjs)
 ```
 
 ---
+class: hide-footer
 
 # Non-atomicity 3
 
@@ -71,12 +72,11 @@ lmer4(ppa ~ EXPRNCE + I(eiu^3) + (1|COUNTRY), data = wjs)
 
 **Outlet-level:**
 
-1. china: Total number of articles about China
-1. n: total number of articles
+DV: Total number of articles about China, offset: total number of articles
 
 **Country-level:**
 
-1. trade: trade volume with China
+IV: trade: trade volume with China
 
 ```r
 glmer.nb(china ~ offset(log(n)) + (1|country) + 
@@ -94,14 +94,14 @@ class: hide-footer
 ```{r, fig.width = 35, echo = FALSE}
 knitr::include_graphics("clt.gif")
 ```
-.extrasmall[Source: Brenda Anderson (Stony Brook)]
-
 ]
 
 .pull-right[
 Census data is non-stochastic (no randomization is involved). 
 
-Frequentist inference does not apply.
+Frequentist inference (e.g. p-value, Conference Intervals) __does not__ apply.
+
+.extrasmall[Image source: Brenda Anderson (Stony Brook)]
 
 ]
 
@@ -111,13 +111,14 @@ Frequentist inference does not apply.
 
 .pull-left[
 $$P(\theta | X) \propto  P(\theta) P(X| \theta)$$
-]
-
-.pull-right[
 
 **Goal:** $P(\theta | X)$
 
 Our certainty on how likely the estimand $\theta$ is, given the current available data
+
+]
+
+.pull-right[
 
 **Receipe**
 
@@ -125,7 +126,7 @@ Our certainty on how likely the estimand $\theta$ is, given the current availabl
 2. A method to derive $P(X| \theta)$ (MCMC, provided by brms)
 3. $P(\theta)$ **Prior**
 
-.extrasmall[Bürkner, P.-C. (2017). brms: An R Package for Bayesian Multilevel Models Using Stan. Journal of Statistical Software, 80(1), 1–28.]
+.extrasmall[Bürkner, P.-C. (2017). brms: An R Package for Bayesian Multilevel Models Using Stan. *Journal of Statistical Software*, 80(1), 1–28.]
 
 ]
 
@@ -139,7 +140,7 @@ Our certainty on how likely the estimand $\theta$ is, given the current availabl
 3. Weakly informative prior
 ]
 
-.extrasmall[Keating, D. M., & Totzkay, D. (2019). We do publish (conceptual) replications (sometimes): Publication trends in communication science, 2007–2016. Annals of the International Communication Association, 43(3), 225-239.]
+.extrasmall[Keating, D. M., & Totzkay, D. (2019). We do publish (conceptual) replications (sometimes): Publication trends in communication science, 2007–2016. *Annals of the International Communication Association*, 43(3), 225-239.]
 
 ---
 
@@ -167,7 +168,7 @@ log(trade),
 knitr::include_graphics("lit.png")
 ```
 
-.extrasmall[Hamada, B. I. (2021). Determinants of Journalists’ Autonomy and Safety: Evidence from the Worlds of Journalism Study. Journalism Practice, 1–21. doi:10.1080/17512786.2021.1871861]
+.extrasmall[Hamada, B. I. (2021). *Determinants of Journalists’ Autonomy and Safety: Evidence from the Worlds of Journalism Study.* Journalism Practice, 1–21. doi:10.1080/17512786.2021.1871861]
 
 ]
 
