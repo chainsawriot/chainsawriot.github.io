@@ -16,7 +16,7 @@ format: fakegesis-revealjs
 
 `some code` and some text.
 
-A URL: [www.gesis.org](https://www.gesis.org).
+A URL: [www.gesis.org](https://www.gesis.org/institut/abteilungen/computational-social-science){preview-link="true"}.
 
 ## {auto-animate="true"}
 
