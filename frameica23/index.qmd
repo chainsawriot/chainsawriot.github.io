@@ -5,7 +5,7 @@ author: Chung-hong Chan
 institute: GESIS
 date: today
 date-format: "YYYY-MM-DD"
-footer: "@chainsawriot@emac.ch"
+footer: "chainsawriot.github.io/frameica23/"
 embed-resources: true
 format: fakegesis-revealjs
 ---
@@ -131,7 +131,7 @@ Semetko & Valkenburg (2000)
 :::
 
 ::: {.column width="50%"}
-Topic and Communicative intention are independent and known
+Topic and Communicative intention (frame) are independent and known
 
 :::
 
@@ -245,7 +245,7 @@ plot(conditional_effects(ireadRDS("brms_mod.RDS"), prob = 0.89), plot = FALSE)[[
 * A counterfactual data for benchmarking frame detection methods
 * Methodological implications of the current benchmark: read our paper
 
-::: {style="font-size: 0.3em"}
+::: {style="font-size: 0.7em"}
 (fin.)
 :::
 
