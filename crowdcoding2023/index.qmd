@@ -1,0 +1,129 @@
+---
+title: "Expensive, Slow, Ugly"
+subtitle: "or why I don't use crowdsourcing ever since"
+author: Chung-hong Chan
+institute: GESIS
+date: today
+date-format: "YYYY-MM-DD"
+footer: "Expensive, Slow, Ugly"
+embed-resources: true
+format: fakegesis-revealjs
+---
+
+## Disclaimer: It was 2018
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+Cheap and fast – but is it still good? [link](https://docs.google.com/presentation/d/16HG9iMs6Q3b7bFV1ideXNSY0SnE1wO_vycVrvQpZqyA/edit?usp=sharing)
+
+* The platform is no longer for research use (Figure 8, née Crowdflower)
+* It was before LLM
+
+For [this paper](https://ijoc.org/index.php/ijoc/article/view/13247)
+::::
+
+:::: {.column width="50%"}
+![](ugly0.png)
+
+::: {style="font-size: 0.3em"}
+[source](https://techcrunch.com/2023/06/14/mechanical-turk-workers-are-using-ai-to-automate-being-human/)
+:::
+
+::::
+
+:::::
+
+## 2008
+
+> "We demonstrate the effectiveness of using Amazon Mechanical Turk for a variety of natural language annotation tasks. Our evaluation of non-expert labeler data vs. expert annotations for five tasks found that for many tasks only a small number of nonexpert annotations per item are necessary to equal the performance of an expert annotator."
+
+::: aside
+[Snow, R., O'Connor, B., Jurafsky, D., & Ng, A. Y. (2008, October).](https://aclanthology.org/D08-1027/) Cheap and fast---but is it good?: evaluating non-expert annotations for natural language tasks. In Proceedings of the conference on empirical methods in natural language processing (pp. 254-263). Association for Computational Linguistics.
+:::
+
+## Holy Trinity, *oder?*
+
+![](ugly.png){fig-align="center"}
+
+## My task
+
+![](ugly2.png){fig-align="center"}
+
+## Cheap?
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+![](ugly3.png){fig-align="center"}
+
+::: {style="font-size: 0.3em"}
+[source](https://requester.mturk.com/pricing)
+:::
+
+::::
+
+:::: {.column width="50%"}
+![](ugly4.png){fig-align="center"}
+::::
+
+:::::
+
+## Fast?
+
+![](ugly5.png){fig-align="center"}
+
+## Geotargeting
+
+![](ugly6.png){fig-align="center"}
+
+## Ugly!
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](ugly7.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+![](ugly8.png){fig-align="center"}
+:::
+
+::::
+
+## German speaking coders?
+
+![](ugly9.png){fig-align="center"}
+
+## A €500 mistake
+
+* They located in CH
+* They did the mobile verification
+* They passed the quiz mode
+* They completed their tasks
+
+## A €500 mistake
+
+* ~~They located in CH~~ VPN
+* ~~They did the mobile verification~~ Burner SIM
+* ~~They passed the quiz mode~~ Information sharing
+* ~~They completed their tasks~~ Browser automation
+* They ruined my job and took home €500
+
+## Take-home messages
+
+::::: {.columns}
+
+:::: {.column width="70%"}
+
+* When money is involved, there will be deception
+* Think about alternative ([Guo et al.](https://doi.org/10.1177/1077699019891437))
+* I am brave enough to admit I was stupid. 
+* According to the literature, academic types (except me) never fail ([Lind et al.](https://doi.org/10.1080/19312458.2017.1317338); [Benoit et al.](https://doi.org/10.1017/S0003055416000058); [Haselmayer & Jenny](https://doi.org/10.1007/s11135-016-0412-4)).
+::::
+
+:::: {.column width="30%"}
+![](ugly4.png)
+::::
+
+:::::
