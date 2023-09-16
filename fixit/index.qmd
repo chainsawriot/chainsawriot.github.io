@@ -15,7 +15,7 @@ format: fakegesis-revealjs
 * 448,000 FB comments. 
 * Dependent variable: Identity Disclosure.
 * Independent variable: Likes
-* Independent variable: "Toxicity" (Automatically classified by Google Perspective API)
+* Independent variable: "Toxicity" (Classified by Google Perspective API)
 * F1 = 0.79 (misclassification)
 
 ```r
@@ -82,11 +82,13 @@ Employs error correction methods
 
 * **Y** Dependent variable
 * **X** ("Toxicity"), **Z** (Likes) Independent variables
-* **W** (Proxy) Automatic classifications of either **X** or **Y**
+* **W** (Proxy) Automated classifications of either **X** or **Y**
 
 ## Notation II
 
 * `proxymodel <- glm(Y ~ W + Z, data = fbcomments)`
+
+. . .
 
 In this case, we actually have the ground-truth **X** (human coded toxicity)
 
