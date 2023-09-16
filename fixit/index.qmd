@@ -275,7 +275,7 @@ caret::confusionMatrix(table(w = val_data$w, x = val_data$x),
                        mode = "prec_recall", positive = "1")
 ```
 
-## glm_fix
+## glm_fixit
 
 ```r
 glm_fixit(formula = y ~ x || w + z,
