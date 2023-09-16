@@ -126,9 +126,9 @@ and a century-worth of statistical literature on measurement errors
 
 Use some ground truth data (e.g. manual annotations) to correct for misclassications
 
-* **Correction by missing data imputation (MI)** - X / Y (Blackwell, Honaker, and King, 2017) 
+* **Correction by missing data imputation (MI)** - X / Y [(Blackwell, Honaker, and King, 2017)](https://doi.org/10.1177/0049124115585360)
 
-* **Regression Calibration via Generalized Method of Moments (GMM)** - X Only (Fong & Tyler, 2021) 
+* **Regression Calibration via Generalized Method of Moments (GMM)** - X Only [(Fong & Tyler, 2021)](https://doi.org/10.1017/pan.2020.38)
 
 * **Pseudo-likelihood (PL)** - X / Y (Zhang, 2021) 
 
