@@ -114,7 +114,7 @@ It's complicated.
 
 ![](complicated.png)
 
-## Q: Are we the first one to diagnose the problem?
+## Q: Are we the first to diagnose the problem?
 
 . . .
 
@@ -124,7 +124,7 @@ It's complicated.
 and a century-worth of statistical literature on measurement errors
 :::
 
-## Q: Are we the first one to fix the problem?
+## Q: Are we the first to fix the problem?
 
 . . .
 
