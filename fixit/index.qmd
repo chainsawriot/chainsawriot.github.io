@@ -76,7 +76,7 @@ Employs error correction methods
 
 . . .
 
-**Q: Is misclassication *really* a threat to validity?**
+**Q: Is misclassification *really* a threat to validity?**
 
 ## Notation I
 
@@ -106,6 +106,8 @@ $$\beta_{W} ~ \beta_{X}$$
 
 ## Why?
 
+. . .
+
 It's complicated.
 
 . . .
@@ -126,7 +128,7 @@ and a century-worth of statistical literature on measurement errors
 
 . . .
 
-Use some ground truth data (e.g. manual annotations) to correct for misclassications
+Use some ground truth data (e.g. manual annotations) to correct for misclassifications
 
 * **Correction by missing data imputation (MI)** - X / Y [(Blackwell, Honaker, and King, 2017)](https://doi.org/10.1177/0049124115585360)
 
