@@ -223,7 +223,7 @@ More simulations in the paper
 
 . . .
 
-`[Insert a picture of Bob the Builder here, but can't due to lack of copyright clearance] `
+`[Insert a picture of Bob the Builder here, but no copyright clearance] `
 
 ::: {.r-fit-text}
 Yes We Can!
