@@ -108,7 +108,7 @@ $$\beta_{W} ~ \beta_{X}$$
 
 . . .
 
-It's complicated.
+It's more complicated than just one number, e.g. F1.
 
 . . .
 
