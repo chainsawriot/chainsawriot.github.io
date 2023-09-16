@@ -1,0 +1,302 @@
+---
+title: "Misclassification causes bias in regression"
+subtitle: "Can we fix it? Yes we can!"
+author: Nathan TeBlunthuis, Valerie Hase, Chung-hong Chan
+institute: University of Michigan, LMU Munich, GESIS
+date: "2023-09-18"
+date-format: "YYYY-MM-DD"
+footer: "https://chainsawriot.github.io/fixit"
+embed-resources: true
+format: fakegesis-revealjs
+---
+
+## A (typical) Scenario
+
+* 448,000 FB comments. 
+* Dependent variable: Identity Disclosure.
+* Independent variable: Likes
+* Independent variable: "Toxicity" (Automatically classified by Google Perspective API)
+* F1 = 0.79 (misclassification)
+
+```r
+glm(identity ~ likes + toxicity, data = fbcomments)
+```
+
+. . .
+
+**Q: What would you do?**
+
+## What researchers actually do
+
+. . .
+
+Literature review
+
+## {auto-animate="true"}
+
+Using Supervised Machine Learning
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄
+
+## {auto-animate="true"}
+
+Misclassification as a threat to validity
+
+📝📝📝📝📝📝📝📝📝📝📄
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄
+
+## {auto-animate="true"}
+
+Employs error correction methods
+
+📜📝📝📝📝📝📝📝📝📝📄
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄📄📄📄
+
+📄📄📄📄📄📄📄📄
+
+. . .
+
+**Q: Is misclassication *really* a threat to validity?**
+
+## Notation I
+
+* **Y** Dependent variable
+* **X** ("Toxicity"), **Z** (Likes) Independent variables
+* **W** (Proxy) Automatic classifications of either **X** or **Y**
+
+## Notation II
+
+* `proxymodel <- glm(Y ~ W + Z, data = fbcomments)`
+
+In this case, we actually have the ground-truth **X** (human coded toxicity)
+
+* `actualmodel <- glm(Y ~ X + Z, data = fbcomments)`
+
+. . .
+
+**Q: How different are proxy model and actual model?**
+
+$$\beta_{W} ~ \beta_{X}$$
+
+## Comparison: all over the place
+
+![](real_example.png)
+
+## Why?
+
+It's complicated.
+
+. . .
+
+![](complicated.png)
+
+## Q: Are we the first one to diagnose the problem?
+
+. . .
+
+* **Regression attenuation by (measurement) errors** (Spearman, 1904) 
+
+::: {style="font-size: 0.3em"}
+and a century-worth of statistical literature on measurement errors
+:::
+
+## Q: Are we the first one to fix the problem?
+
+. . .
+
+Use some ground truth data (e.g. manual annotations) to correct for misclassications
+
+* **Correction by missing data imputation (MI)** - X / Y (Blackwell, Honaker, and King, 2017) 
+
+* **Regression Calibration via Generalized Method of Moments (GMM)** - X Only (Fong & Tyler, 2021) 
+
+* **Pseudo-likelihood (PL)** - X / Y (Zhang, 2021) 
+
+## Q: Do they work in all of these situations?
+
+![](complicated.png)
+
+. . .
+
+We didn't know.
+
+## Q: Do you have a method that works in all situations?
+
+We think so.
+
+. . .
+
+Our proposal: **Maximum Likelihood Adjustment (MLA)**
+
+. . .
+
+Jointly fit the product of the three models via maximum likelihood (MLE).
+
+* **Main model:** Y ~ X + Z
+* **Proxy model:** W ~ X + Y + Z
+* **Truth model (optional, for proxy X):** X ~ 1
+
+::: {style="font-size: 0.3em"}
+These are default; can be finely specified
+:::
+
+## Evaluation: MCMC
+
+Show only the following setup
+
+* N = 10,000
+* Only 200 ground truth data
+* 73% accuracy
+
+More simulations in the paper
+
+. . .
+
+**Comparing:** Automatic classifications (no correction, use W as X/Y), Manual Annotations only (i.e. n = 200), GMM, MI, PL, and MLA.
+
+## Situation 1/2 : Differential error
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+![](situation1.png)
+
+:::
+
+::: {.column width="60%"}
+
+![](sim1.png)
+
+:::
+
+::::
+
+
+## Situation 2/2: Systematic error
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+![](situation2.png)
+
+:::
+
+::: {.column width="60%"}
+
+![](sim2.png)
+
+:::
+
+::::
+
+## Q: Can we fix it?
+
+. . .
+
+`[Insert a picture of Bob the Builder here, but can't due to lack of copyright clearance] `
+
+::: {.r-fit-text}
+Yes We Can!
+:::
+
+## Q: Are you also "We"?
+
+. . .
+
+```r
+remotes::install_github("groceryheist/misclassificationmodels")
+```
+
+```{r, include = FALSE}
+library(misclassificationmodels)
+```
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+head(research_data)
+nrow(research_data)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+head(val_data)
+nrow(val_data)
+```
+
+:::
+
+::::
+
+## "Validate, Validate, Validate"
+
+```{r}
+#| echo: true
+caret::confusionMatrix(table(w = val_data$w, x = val_data$x),
+                       mode = "prec_recall", positive = "1")
+```
+
+## glm_fix
+
+```r
+glm_fixit(formula = y ~ x || w + z,
+          data = research_data,
+          data2 = val_data)
+```
+
+. . .
+
+```{r}
+readRDS("res.RDS")
+```
+
+## Summary
+
+* Misclassification **is** a threat to validity in regression
+* "Validate, validate, validate" **isn't** enough
+* Let's fix it by our versatile method: MLA
+
+**Preprint:** [https://arxiv.org/abs/2307.06483](https://arxiv.org/abs/2307.06483)
+
+**R package:** [https://github.com/groceryheist/misclassificationmodels](https://github.com/groceryheist/misclassificationmodels)
+
+. . .
+
+::: {style="font-size: 0.6em"}
+**Brought to you by** [Nathan TeBlunthuis](https://teblunthuis.cc/), [Valerie Hase](https://valerie-hase.com), [Chung-hong Chan](https://chainsawriot.com)
+:::
