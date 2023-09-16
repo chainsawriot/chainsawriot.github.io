@@ -291,9 +291,13 @@ readRDS("res.RDS")
 
 ## Summary
 
+. . .
+
 * Misclassification **is** a threat to validity in regression
 * "Validate, validate, validate" **isn't** enough
 * Let's fix it by our versatile method: MLA
+
+. . .
 
 **Preprint:** [https://arxiv.org/abs/2307.06483](https://arxiv.org/abs/2307.06483)
 
