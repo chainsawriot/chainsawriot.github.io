@@ -144,7 +144,7 @@ Use some ground truth data (e.g. manual annotations) to correct for misclassific
 
 We didn't know.
 
-## Q: Do you have a method that works in all situations?
+## Q: Do we have a method that works in all situations?
 
 We think so.
 
