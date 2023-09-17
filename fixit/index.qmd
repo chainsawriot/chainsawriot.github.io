@@ -14,9 +14,7 @@ format: fakegesis-revealjs
 
 * 448,000 FB comments. 
 * Dependent variable: Identity Disclosure.
-* Independent variable: Likes
-* Independent variable: "Toxicity" (Classified by Google Perspective API)
-* F1 = 0.79 (misclassification)
+* Independent variable: Likes, "Toxicity" (Classified by Perspective API, **F1 = 0.79**)
 
 ```r
 glm(identity ~ likes + toxicity, data = fbcomments)
@@ -25,12 +23,6 @@ glm(identity ~ likes + toxicity, data = fbcomments)
 . . .
 
 **Q: What would you do?**
-
-## What researchers actually do
-
-. . .
-
-Literature review
 
 ## {auto-animate="true"}
 
@@ -86,21 +78,19 @@ Employs error correction methods
 
 ## Notation II
 
-* `proxymodel <- glm(Y ~ W + Z, data = fbcomments)`
+* proxymodel <- glm(Y ~ W + Z, data = fbcomments)
 
 . . .
 
 In this case, we actually have the ground-truth **X** (human coded toxicity)
 
-* `actualmodel <- glm(Y ~ X + Z, data = fbcomments)`
+* actualmodel <- glm(Y ~ X + Z, data = fbcomments)
 
 . . .
 
 **Q: How different are proxy model and actual model?**
 
-$$\beta_{W} ~ \beta_{X}$$
-
-## Comparison: all over the place
+## Comparison
 
 ![](real_example.png)
 
@@ -146,8 +136,6 @@ We didn't know.
 
 ## Q: Do we have a method that works in all situations?
 
-We think so.
-
 . . .
 
 Our proposal: **Maximum Likelihood Adjustment (MLA)**
@@ -166,13 +154,9 @@ These are default; can be finely specified
 
 ## Evaluation: MCMC
 
-Show only the following setup
-
 * N = 10,000
 * Only 200 ground truth data
 * 73% accuracy
-
-More simulations in the paper
 
 . . .
 
@@ -295,7 +279,7 @@ readRDS("res.RDS")
 
 * Misclassification **is** a threat to validity in regression
 * "Validate, validate, validate" **isn't** enough
-* Let's fix it by our versatile method: MLA
+* Fix it by our versatile method: MLA
 
 . . .
 
