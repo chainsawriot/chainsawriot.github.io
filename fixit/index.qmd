@@ -107,21 +107,13 @@ It's more complicated than just one number, e.g. F1.
 
 ![](complicated.png)
 
-## Q: Are we the first to diagnose the problem?
-
-. . .
-
-* **Regression attenuation by (measurement) errors** (Spearman, 1904) 
-
-::: {style="font-size: 0.3em"}
-and a century-worth of statistical literature on measurement errors
-:::
-
 ## Q: Are we the first to fix the problem?
 
 . . .
 
 Use some ground truth data (e.g. manual annotations) to correct for misclassifications
+
+. . .
 
 * **Correction by missing data imputation (MI)** - X / Y [(Blackwell, Honaker, and King, 2017)](https://doi.org/10.1177/0049124115585360)
 
