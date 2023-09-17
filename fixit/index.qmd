@@ -16,7 +16,7 @@ format: fakegesis-revealjs
 * Dependent variable: Identity Disclosure.
 * Independent variable: Likes, "Toxicity" (Classified by Perspective API, **F1 = 0.79**)
 
-```r
+```{.r code-line-numbers="false"}
 glm(identity ~ likes + toxicity, data = fbcomments)
 ```
 
@@ -78,13 +78,16 @@ Employs error correction methods
 
 ## Notation II
 
-* proxymodel <- glm(Y ~ W + Z, data = fbcomments)
-
+```{.r code-line-numbers="false"}
+proxymodel <- glm(Y ~ W + Z, data = fbcomments)
+```
 . . .
 
-In this case, we actually have the ground-truth **X** (human coded toxicity)
+We have the ground-truth **X** (human-coded toxicity)
 
-* actualmodel <- glm(Y ~ X + Z, data = fbcomments)
+```{.r code-line-numbers="false"}
+actualmodel <- glm(Y ~ X + Z, data = fbcomments)
+```
 
 . . .
 
@@ -217,11 +220,12 @@ Yes We Can!
 
 . . .
 
-```r
+```{.r code-line-numbers="false"}
 remotes::install_github("groceryheist/misclassificationmodels")
 ```
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 library(misclassificationmodels)
 ```
 
@@ -232,6 +236,7 @@ library(misclassificationmodels)
 ::: {.column width="50%"}
 
 ```{r}
+#| code-line-numbers: false
 #| echo: true
 head(research_data)
 nrow(research_data)
@@ -243,6 +248,7 @@ nrow(research_data)
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 head(val_data)
 nrow(val_data)
 ```
@@ -255,13 +261,14 @@ nrow(val_data)
 
 ```{r}
 #| echo: true
+#| code-line-numbers: false
 caret::confusionMatrix(table(w = val_data$w, x = val_data$x),
                        mode = "prec_recall", positive = "1")
 ```
 
 ## glm_fixit
 
-```r
+```{.r code-line-numbers="|1|"}
 glm_fixit(formula = y ~ x || w + z,
           data = research_data,
           data2 = val_data)
