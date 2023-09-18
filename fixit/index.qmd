@@ -272,7 +272,7 @@ glm_fixit(formula = y ~ x || w + z,
 readRDS("res.RDS")
 ```
 
-## Summary
+## Contributions
 
 . . .
 
