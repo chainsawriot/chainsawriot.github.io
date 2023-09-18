@@ -147,7 +147,7 @@ Jointly fit the product of the three models via maximum likelihood (MLE).
 These are default; can be finely specified
 :::
 
-## Evaluation: MCMC
+## Evaluation: Monte Carlo
 
 * N = 10,000
 * Only 200 ground truth data
