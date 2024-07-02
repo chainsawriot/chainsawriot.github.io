@@ -548,7 +548,7 @@ das Motto des DFB für die WM 2014
 <br><br><br>
 
 ::: {style="font-size: 0.7em"}
-Thank you: Thomas Leeper, Gerrit-Jan Schutten, Peter Brohan, Detlef Steuer, David Schoch, rOpenSci, all `rio` and `readODS` contributors and users. 
+Thank you: Thomas Leeper, Gerrit-Jan Schutten, Peter Brohan, Detlef Steuer, Jason Becker, David Schoch, rOpenSci, all `rio` and `readODS` contributors and users. 
 
 More about me: [https://www.chainsawriot.com/](https://www.chainsawriot.com/)
 :::
