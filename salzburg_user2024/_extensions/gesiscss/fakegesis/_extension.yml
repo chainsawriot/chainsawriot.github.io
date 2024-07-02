@@ -1,0 +1,37 @@
+title: Fake GESIS Presentation Template
+author: Chung-hong Chan
+version: 0.0.1
+quarto-required: ">=1.2.231"
+contributes:
+  formats:
+    revealjs:
+      slide-number: c
+      progress: true
+      highlight-style: github
+      theme: fakegesis.scss
+      footer: "[www.gesis.org](http://www.gesis.org)"
+      logo: logo_gesis.svg
+      format-resources: ["fancy.png","thanks.png"]
+      title-slide-attributes: 
+        data-background-image: title-background-nohouse.png
+        data-background-size: 100% 100%
+      template-partials:
+      - title-slide.html
+      include-after: |
+        <script type="text/javascript">
+          Reveal.on('ready', event => {
+            if (event.indexh === 0) {
+              document.querySelector("div.has-logo > svg.slide-logo").style.opacity = 0;
+            }
+          });
+          Reveal.addEventListener('slidechanged', (event) => {
+            if (event.indexh === 0) {
+              Reveal.configure({ slideNumber: null });
+              document.querySelector("div.has-logo > svg.slide-logo").style.opacity = 0;
+            }
+            if (event.indexh === 1) { 
+              Reveal.configure({ slideNumber: 'c' });
+              document.querySelector("div.has-logo > svg.slide-logo").style.opacity = 1;
+            }
+          });
+        </script>

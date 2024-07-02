@@ -1,0 +1,554 @@
+---
+title: "10 years of rio and readODS"
+subtitle: "Maintaining the I/O infrastructure of R"
+author: Chung-hong Chan
+institute: GESIS
+date: 2024-07-10
+date-format: "YYYY-MM-DD"
+footer: "chainsawriot.github.io/salzburg_user2024"
+embed-resources: true
+format: fakegesis-revealjs
+---
+
+## Why you should care about I/O
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+![](img/base.png)
+
+::: {style="font-size: 0.3em"}
+Source: R for Data Science
+:::
+
+::::
+
+:::: {.column width="60%"}
+
+> "First, you must import your data into R. This typically means that you take data stored in a file, database, or web application programming interface (API) and load it into a data frame in R. **If you can’t get your data into R, you can’t do data science on it!**"
+
+::::
+
+:::::
+
+## Also I/O
+
+![](img/dependency.png)
+
+::: {style="font-size: 0.3em"}
+Source: [https://xkcd.com/2347/](https://xkcd.com/2347/)
+:::
+
+
+
+## Pop quiz: Meet the Nebraskans {auto-animate="true"}
+
+Who maintain these packages?
+
+* `haven`
+* `readr`, `readxl`
+* `writexl`, `jsonlite`
+* `data.table`
+* `yaml`
+* `openxlsx`
+* `foreign`
+
+## Pop quiz: Meet the Nebraskans {auto-animate="true"}
+
+Who maintain these packages?
+
+* `haven` Hadley Wickham
+* `readr`, `readxl` 
+* `writexl`, `jsonlite`
+* `data.table`
+* `yaml`
+* `openxlsx`
+* `foreign`
+
+## Pop quiz: Meet the Nebraskans {auto-animate="true"}
+
+Who maintain these packages?
+
+* `haven` Hadley Wickham
+* `readr`, `readxl` Jennifer Bryan
+* `writexl`, `jsonlite`
+* `data.table`
+* `yaml`
+* `openxlsx`
+* `foreign`
+
+## Pop quiz: Meet the Nebraskans {auto-animate="true"}
+
+Who maintain these packages?
+
+* `haven` Hadley Wickham
+* `readr`, `readxl` Jennifer Bryan
+* `writexl`, `jsonlite` Jeroen Ooms
+* `data.table`
+* `yaml`
+* `openxlsx`
+* `foreign`
+
+## Pop quiz: Meet the Nebraskans {auto-animate="true"}
+
+Who maintain these packages?
+
+* `haven` Hadley Wickham
+* `readr`, `readxl` Jennifer Bryan
+* `writexl`, `jsonlite` Jeroen Ooms
+* `data.table` Tyson Barrett 
+* `yaml`
+* `openxlsx`
+* `foreign`
+
+## Pop quiz: Meet the Nebraskans {auto-animate="true"}
+
+Who maintain these packages?
+
+* `haven` Hadley Wickham
+* `readr`, `readxl` Jennifer Bryan
+* `writexl`, `jsonlite` Jeroen Ooms
+* `data.table` Tyson Barrett 
+* `yaml` Shawn Garbett
+* `openxlsx`
+* `foreign`
+
+## Pop quiz: Meet the Nebraskans {auto-animate="true"}
+
+Who maintain these packages?
+
+* `haven` Hadley Wickham
+* `readr`, `readxl` Jennifer Bryan
+* `writexl`, `jsonlite` Jeroen Ooms
+* `data.table` Tyson Barrett 
+* `yaml` Shawn Garbett
+* `openxlsx` 🇦🇹 Philipp Schauberger
+* `foreign`
+
+## Pop quiz: Meet the Nebraskans {auto-animate="true"}
+
+Who maintain these packages?
+
+* `haven` Hadley Wickham
+* `readr`, `readxl` Jennifer Bryan
+* `writexl`, `jsonlite` Jeroen Ooms
+* `data.table` Tyson Barrett 
+* `yaml` Shawn Garbett
+* `openxlsx` 🇦🇹 Philipp Schauberger
+* `foreign` R Core Team
+
+## Hello from ~~Nebraska~~ Mannheim!
+
+Before 2013, data import and export
+
+```r
+write.csv(iris, "iris.csv")
+saveRDS(iris, "iris.rds")
+save(iris, "iris.Rdata")
+# 2013: No way to write to spss
+
+x <- read.csv("iris.csv")
+x <- readRDS("iris.rds")
+x <- read.spss("iris.sav")
+load("iris.Rdata")
+```
+
+## Wickham (2010) {auto-animate="true"}
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+![](img/string.png)
+
+::: {style="font-size: 0.3em"}
+Wickham (2010)
+:::
+
+::::
+
+:::: {.column width="60%"}
+
+```r
+## From this
+text <- "she dances on the sand"
+grepl("sand$", text)
+strsplit(text, "[dD]ances?")
+```
+
+::::
+
+:::::
+
+## Wickham (2010) {auto-animate="true"}
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+![](img/string.png)
+
+::: {style="font-size: 0.3em"}
+Wickham (2010)
+:::
+
+::::
+
+:::: {.column width="60%"}
+
+```r
+## From this
+text <- "she dances on the sand"
+grepl("sand$", text)
+strsplit(text, "[dD]ances?")
+## To this
+library(stringr)
+str_detect(text, "sand$")
+str_split(text, "[dD]ances?")
+```
+
+::::
+
+:::::
+
+
+## `rio`, since 2013
+
+```r
+library(rio)
+export(iris, "iris.csv")
+export(iris, "iris.rds")
+export(iris, "iris.sav")
+
+x <- import("iris.csv")
+x <- import("iris.rds")
+x <- import("iris.sav")
+```
+
+## `rio` version 0.1.1 2013-08-26 14:02 CEST
+
+```r
+import <- function(file="", format=NULL, header=TRUE, ... ) {
+  format <- .guess(file, format)
+  x <- switch(format,
+              txt=read.table(file=file, sep="\t", header=header, ...), ##tab-seperate txt file
+              rds=readRDS(file=file, ...),
+              csv=read.csv(file=file, ...),
+              dta=read.dta(file=file, ...),
+              sav=read.spss(file=file,to.data.frame=TRUE, ...),
+              mtp=read.mtp(file=file, ...),
+              rec=read.epiinfo(file=file, ...),
+              stop("Unknown file format")
+              )
+  return(x)
+}
+```
+
+## `rio` development
+
+* 2015 Feb: Transfer maintainership to Thomas Leeper
+* 2015 Mar: Add support for ODS (OpenDocument Spreadsheet)
+* 2016 Jan: Use S3 class (no longer `switch()`) by Jason Becker
+* 2016 - 2023: [Add many supported formats](https://github.com/gesistsa/rio?tab=readme-ov-file#supported-file-formats)
+
+## Supported formats (partial list)
+
+![](img/formats.png)
+
+::: {style="font-size: 0.3em"}
+[Full list](https://github.com/gesistsa/rio?tab=readme-ov-file#supported-file-formats)
+:::
+
+## `rio` development
+
+::::: {.columns}
+
+:::: {.column width="80%"}
+
+* 2023 Aug: 10 years
+* 2023 Aug: Transfer maintainership back to me
+* 2023 Aug: Maintain collectively by GESIS Transparent Social Analytics Team
+* 2023 Sep: `rio` 1.0.0
+
+::::
+
+:::: {.column width="20%"}
+![](img/rio_logo.png){height=200}
+::::
+
+:::::
+
+
+## `rio` in real world 1
+
+* Used by multiple organizations: WHO, Médecins Sans Frontières etc.
+* In data science education
+
+## `rio` in real world 2
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+![](img/book1_cover.png){height=500}
+::::
+
+:::: {.column width="50%"}
+![](img/book1.png){height=500}
+::::
+
+:::::
+
+## `rio` in real world 3
+
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+![](img/book2_cover.png){height=500}
+::::
+
+:::: {.column width="50%"}
+![](img/book2.png)
+::::
+
+:::::
+
+## `rio` development {auto-animate="true"}
+
+* 2015 Feb: Transfer maintainership to Thomas Leeper
+* 2016 Jan: Use S3 class (no longer `switch()`) by Jason Becker
+* 2016 - 2023: [Add many supported formats](https://github.com/gesistsa/rio?tab=readme-ov-file#supported-file-formats)
+
+## `rio` development {auto-animate="true"}
+
+* 2015 Feb: Transfer maintainership to Thomas Leeper
+* 2015 Mar: Add support for ODS (OpenDocument Spreadsheet)
+* 2016 Jan: Use S3 class (no longer `switch()`) by Jason Becker
+* 2016 - 2023: [Add many supported formats](https://github.com/gesistsa/rio?tab=readme-ov-file#supported-file-formats)
+
+## OpenDocument Spreadsheet
+
+* Spreadsheet format, ISO/IEC 26300
+* Truly open format
+* LibreOffice, Google Sheets, Microsoft Office etc.
+* Technology: Zipped XML file (like xlsx)
+* Also "Flat ODS" (fods), XML without compression
+* Adoption: NATO, EU, and many governments
+
+## Example: UK Gov
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+![](img/ukgov1.png)
+::::
+
+:::: {.column width="50%"}
+![](img/ukgov2.png)
+::::
+
+:::::
+
+## `readODS`
+
+::::: {.columns}
+
+:::: {.column width="80%"}
+
+* Created by Gerrit-Jan Schutten in 2014
+* Maintained by me since 2016
+* Peer reviewed and accepted by rOpenSci since 2022-06-24
+* Emulate `readxl::read_excel()` and `writexl::write_xlsx()`
+
+::::
+
+:::: {.column width="20%"}
+![](img/read_ods_logo.png){height=200}
+::::
+:::::
+
+
+## `readODS` prior 2.0.0
+
+* Based on `XML`, and then `xml2`, in pure R
+* OK for very small data, not so much for "large data"
+
+## `readODS` issue 49
+
+![](img/issue49.png)
+
+## `readODS` issue 71
+
+![](img/issue71.png)
+
+* 70 MB ODS -> 1.3GB XML
+
+## `readODS` issue 71
+
+* As CSV via `data.table::fread()` - 1s
+* As XLSX via `readxl::read_excel()` - 2s
+* As ODS via LibreOffice ~ 15s
+
+Other options (not working)
+
+* Google Sheets, Python `odfpy` (Also Julia `OdsIO.jl`), JS `SheetJS`
+
+## *Projekt 71*
+
+> "I'll devote my 2023 to the project I tentatively called "Projekt 71". The idea is simple: I want to have a way that can read the aforementioned "jts0501.ods" directly as an R data frame without memory issues; but yet pass at least 80% of the current unit tests of `readODS`. So, I am embarking on solving just one Github issue of `readODS`. I will put other of my R packages into maintenance mode and focus only on this."
+
+::: {style="font-size: 0.3em"}
+[My Projekt 71 manifesto](https://chainsawriot.com/postmannheim/2022/12/26/projekt71.html)
+:::
+
+## Peter Brohan is our hero
+
+* In July 2023, Peter rewrote `readODS::read_ods()` in C++ (RapidXML)
+* Significant speed up and reduction in memory footprint
+* He tackled the *Projekt 71*
+* I switched to tackle issue 49 (Writing speed)
+
+## Detlef Steuer is also our hero
+
+* Detlef proposed a speedy solution to write XML using base R without `xml2`
+* I rewrote his solution in C++
+
+## Benchmark I
+
+Reading speed: 5539 x 11
+
+```{r}
+barplot(c(8.9, 0.462), horiz = TRUE, names.arg = c("readODS 1.7.3", "readODS 2.3.1"))
+```
+
+## Benchmark II
+
+Writing speed: 3000 x 8
+
+```{r}
+barplot(c(46.428, 0.053), horiz = TRUE, names.arg = c("readODS 1.7.3", "readODS 2.3.1"))
+```
+
+## In summary
+
+* Issue 71: "jts0501.ods" is readable with a modest computer in 120s (was impossible)
+* Issue 49: "80000 x 9" can be written in < 2s (was > 30 mins)
+
+## So, are we done yet?
+
+. . .
+
+>  "Software, unlike papers or grants, is never done."
+
+::: {style="font-size: 0.3em"}
+[Free as in mummies](https://chainsawriot.com/postmannheim/2023/09/29/mummies.html)
+:::
+
+## Issues
+
+::::: {.columns}
+
+:::: {.column width="80%"}
+
+* Type guessing, not 100% the same as `readxl` - working on `minty`
+* Speed vs `readxl` (and other formats)
+
+::::
+
+:::: {.column width="20%"}
+![](img/minty_logo.png){height=200}
+::::
+
+:::::
+
+
+## `rio`-based comparison {auto-animate="true"}
+
+`Lahman::Batting` (11,2164 x 22)
+
+| Rank | Format | Export | Import | Size | Accuracy |
+|------|--------|--------|--------|------|----------|
+| 4    | csv    | 1      | 1      | 1    | 2        |
+
+::: {style="font-size: 0.3em"}
+[Benchmark of R file formats using rio and friends](https://chainsawriot.com/postmannheim/2023/09/21/benchmark.html)
+:::
+
+## `rio`-based comparison {auto-animate="true"}
+
+| Rank | Format  | Export | Import | Size | Accuracy |
+|------|---------|--------|--------|------|----------|
+| 1    | feather | 0.9    | 0.3    | 0.5  | 0        |
+| 2    | parquet | 3.6    | 0.4    | 0.3  | 0        |
+| 3    | qs      | 1.7    | 0.7    | 0.2  | 2        |
+| 4    | csv     | 1      | 1      | 1    | 2        |
+
+::: {style="font-size: 0.3em"}
+[Benchmark of R file formats using rio and friends](https://chainsawriot.com/postmannheim/2023/09/21/benchmark.html)
+:::
+
+## `rio`-based comparison {auto-animate="true"}
+
+| Rank | Format  | Export | Import | Size | Accuracy |
+|------|---------|--------|--------|------|----------|
+| 1    | feather | 0.9    | 0.3    | 0.5  | 0        |
+| 2    | parquet | 3.6    | 0.4    | 0.3  | 0        |
+| 3    | qs      | 1.7    | 0.7    | 0.2  | 2        |
+| 4    | csv     | 1      | 1      | 1    | 2        |
+| ...  |         |        |        |      |          |
+| 16   | xlsx    | 141.4  | 36.3   | 1.3  | 21       |
+
+
+::: {style="font-size: 0.3em"}
+[Benchmark of R file formats using rio and friends](https://chainsawriot.com/postmannheim/2023/09/21/benchmark.html)
+:::
+
+## `rio`-based comparison {auto-animate="true"}
+
+| Rank | Format  | Export | Import | Size | Accuracy |
+|------|---------|--------|--------|------|----------|
+| 1    | feather | 0.9    | 0.3    | 0.5  | 0        |
+| 2    | parquet | 3.6    | 0.4    | 0.3  | 0        |
+| 3    | qs      | 1.7    | 0.7    | 0.2  | 2        |
+| 4    | csv     | 1      | 1      | 1    | 2        |
+| 16   | xlsx    | 141.4  | 36.3   | 1.3  | 21       |
+| 23   | fods    | 77.3   | 119.7  | 42.2 | 21       |
+| 25   | ods     | 258.2  | 253.7  | 0.8  | 21       |
+
+::: {style="font-size: 0.3em"}
+[Benchmark of R file formats using rio and friends](https://chainsawriot.com/postmannheim/2023/09/21/benchmark.html)
+:::
+
+## 10 years of `rio` and `readODS` {auto-animate="true"}
+
+## 10 years of `rio` and `readODS` {auto-animate="true"}
+
+> "A good beginning requires enthusiasm, a good ending requires discipline."
+
+::: {style="font-size: 0.3em"}
+The Motto of the German Football Association for Word Cup 2014
+:::
+
+## 10 years of `rio` and `readODS` {auto-animate="true"}
+
+> "Ein guter Anfang braucht Begeisterung, ein gutes Ende Disziplin."
+
+::: {style="font-size: 0.3em"}
+das Motto des DFB für die WM 2014 
+:::
+
+## 10 years of `rio` and `readODS` {auto-animate="true"}
+
+> "Ein guter Anfang braucht Begeisterung, ein gutes Ende Disziplin."
+
+::: {style="font-size: 0.3em"}
+das Motto des DFB für die WM 2014 
+:::
+
+<br><br><br>
+
+::: {style="font-size: 0.7em"}
+Thank you: Thomas Leeper, Gerrit-Jan Schutten, Peter Brohan, Detlef Steuer, David Schoch, rOpenSci, all `rio` and `readODS` contributors and users. 
+
+More about me: [https://www.chainsawriot.com/](https://www.chainsawriot.com/)
+:::
