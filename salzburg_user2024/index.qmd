@@ -153,65 +153,6 @@ x <- read.spss("iris.sav")
 load("iris.Rdata")
 ```
 
-## Wickham (2010) {auto-animate="true"}
-
-::::: {.columns}
-
-:::: {.column width="40%"}
-
-![](img/string.png)
-
-::: {style="font-size: 0.3em"}
-Wickham (2010)
-:::
-
-::::
-
-:::: {.column width="60%"}
-
-```r
-## From this
-text <- "she dances on the sand"
-grepl("sand$", text)
-strsplit(text, "[dD]ances?")
-```
-
-::::
-
-:::::
-
-## Wickham (2010) {auto-animate="true"}
-
-::::: {.columns}
-
-:::: {.column width="40%"}
-
-![](img/string.png)
-
-::: {style="font-size: 0.3em"}
-Wickham (2010)
-:::
-
-::::
-
-:::: {.column width="60%"}
-
-```r
-## From this
-text <- "she dances on the sand"
-grepl("sand$", text)
-strsplit(text, "[dD]ances?")
-## To this
-library(stringr)
-str_detect(text, "sand$")
-str_split(text, "[dD]ances?")
-```
-
-::::
-
-:::::
-
-
 ## `rio`, since 2013
 
 ```r
@@ -266,7 +207,6 @@ import <- function(file="", format=NULL, header=TRUE, ... ) {
 :::: {.column width="80%"}
 
 * 2023 Aug: 10 years
-* 2023 Aug: Transfer maintainership back to me
 * 2023 Aug: Maintain collectively by GESIS Transparent Social Analytics Team
 * 2023 Sep: `rio` 1.0.0
 
@@ -278,13 +218,7 @@ import <- function(file="", format=NULL, header=TRUE, ... ) {
 
 :::::
 
-
 ## `rio` in real world 1
-
-* Used by multiple organizations: WHO, Médecins Sans Frontières etc.
-* In data science education
-
-## `rio` in real world 2
 
 ::::: {.columns}
 
@@ -298,7 +232,7 @@ import <- function(file="", format=NULL, header=TRUE, ... ) {
 
 :::::
 
-## `rio` in real world 3
+## `rio` in real world 2
 
 
 ::::: {.columns}
@@ -328,11 +262,9 @@ import <- function(file="", format=NULL, header=TRUE, ... ) {
 
 ## OpenDocument Spreadsheet
 
-* Spreadsheet format, ISO/IEC 26300
-* Truly open format
+* Truly open format (ISO/IEC 26300)
 * LibreOffice, Google Sheets, Microsoft Office etc.
 * Technology: Zipped XML file (like xlsx)
-* Also "Flat ODS" (fods), XML without compression
 * Adoption: NATO, EU, and many governments
 
 ## Example: UK Gov
@@ -371,7 +303,7 @@ import <- function(file="", format=NULL, header=TRUE, ... ) {
 ## `readODS` prior 2.0.0
 
 * Based on `XML`, and then `xml2`, in pure R
-* OK for very small data, not so much for "large data"
+* Was in a bad state due to performance
 
 ## `readODS` issue 49
 
@@ -385,13 +317,16 @@ import <- function(file="", format=NULL, header=TRUE, ... ) {
 
 ## `readODS` issue 71
 
-* As CSV via `data.table::fread()` - 1s
-* As XLSX via `readxl::read_excel()` - 2s
-* As ODS via LibreOffice ~ 15s
-
-Other options (not working)
+Not Working also
 
 * Google Sheets, Python `odfpy` (Also Julia `OdsIO.jl`), JS `SheetJS`
+
+Working but
+
+* LibreOffice ~ 15s
+* Export as ... first by LibreOffice and then 
+    * CSV via `data.table::fread()` - 1s
+	* XLSX via `readxl::read_excel()` - 2s
 
 ## *Projekt 71*
 
@@ -403,9 +338,7 @@ Other options (not working)
 
 ## Peter Brohan is our hero
 
-* In July 2023, Peter rewrote `readODS::read_ods()` in C++ (RapidXML)
-* Significant speed up and reduction in memory footprint
-* He tackled the *Projekt 71*
+* In July 2023, Peter rewrote `readODS::read_ods()` in C++ (RapidXML) - super speed improvement
 * I switched to tackle issue 49 (Writing speed)
 
 ## Detlef Steuer is also our hero
@@ -552,3 +485,66 @@ Thank you: Thomas Leeper, Gerrit-Jan Schutten, Peter Brohan, Detlef Steuer, Jaso
 
 More about me: [https://www.chainsawriot.com/](https://www.chainsawriot.com/)
 :::
+
+## Wickham (2010) {auto-animate="true"}
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+![](img/string.png)
+
+::: {style="font-size: 0.3em"}
+Wickham (2010)
+:::
+
+::::
+
+:::: {.column width="60%"}
+
+```r
+## From this
+text <- "she dances on the sand"
+grepl("sand$", text)
+strsplit(text, "[dD]ances?")
+```
+
+::::
+
+:::::
+
+## Wickham (2010) {auto-animate="true"}
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+![](img/string.png)
+
+::: {style="font-size: 0.3em"}
+Wickham (2010)
+:::
+
+::::
+
+:::: {.column width="60%"}
+
+```r
+## From this
+text <- "she dances on the sand"
+grepl("sand$", text)
+strsplit(text, "[dD]ances?")
+## To this
+library(stringr)
+str_detect(text, "sand$")
+str_split(text, "[dD]ances?")
+```
+
+::::
+
+:::::
+
+## `rio` in real world 3
+
+* Used by multiple organizations: WHO, Médecins Sans Frontières etc.
+* In data science education
