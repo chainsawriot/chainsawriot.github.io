@@ -12,24 +12,15 @@ format: fakegesis-revealjs
 
 ## Why you should care about I/O
 
-::::: {.columns}
-
-:::: {.column width="40%"}
 ![](img/base.png)
 
 ::: {style="font-size: 0.3em"}
-Source: R for Data Science
+Source: [R for Data Science](https://r4ds.hadley.nz/intro)
 :::
 
-::::
-
-:::: {.column width="60%"}
+. . .
 
 > "First, you must import your data into R. This typically means that you take data stored in a file, database, or web application programming interface (API) and load it into a data frame in R. **If you can’t get your data into R, you can’t do data science on it!**"
-
-::::
-
-:::::
 
 ## Also I/O
 
@@ -49,78 +40,6 @@ Who maintain these packages?
 * `data.table`
 * `yaml`
 * `openxlsx`
-* `foreign`
-
-## Pop quiz: Meet the Nebraskans {auto-animate="true"}
-
-Who maintain these packages?
-
-* `haven` Hadley Wickham
-* `readr`, `readxl` 
-* `writexl`, `jsonlite`
-* `data.table`
-* `yaml`
-* `openxlsx`
-* `foreign`
-
-## Pop quiz: Meet the Nebraskans {auto-animate="true"}
-
-Who maintain these packages?
-
-* `haven` Hadley Wickham
-* `readr`, `readxl` Jennifer Bryan
-* `writexl`, `jsonlite`
-* `data.table`
-* `yaml`
-* `openxlsx`
-* `foreign`
-
-## Pop quiz: Meet the Nebraskans {auto-animate="true"}
-
-Who maintain these packages?
-
-* `haven` Hadley Wickham
-* `readr`, `readxl` Jennifer Bryan
-* `writexl`, `jsonlite` Jeroen Ooms
-* `data.table`
-* `yaml`
-* `openxlsx`
-* `foreign`
-
-## Pop quiz: Meet the Nebraskans {auto-animate="true"}
-
-Who maintain these packages?
-
-* `haven` Hadley Wickham
-* `readr`, `readxl` Jennifer Bryan
-* `writexl`, `jsonlite` Jeroen Ooms
-* `data.table` Tyson Barrett 
-* `yaml`
-* `openxlsx`
-* `foreign`
-
-## Pop quiz: Meet the Nebraskans {auto-animate="true"}
-
-Who maintain these packages?
-
-* `haven` Hadley Wickham
-* `readr`, `readxl` Jennifer Bryan
-* `writexl`, `jsonlite` Jeroen Ooms
-* `data.table` Tyson Barrett 
-* `yaml` Shawn Garbett
-* `openxlsx`
-* `foreign`
-
-## Pop quiz: Meet the Nebraskans {auto-animate="true"}
-
-Who maintain these packages?
-
-* `haven` Hadley Wickham
-* `readr`, `readxl` Jennifer Bryan
-* `writexl`, `jsonlite` Jeroen Ooms
-* `data.table` Tyson Barrett 
-* `yaml` Shawn Garbett
-* `openxlsx` 🇦🇹 Philipp Schauberger
 * `foreign`
 
 ## Pop quiz: Meet the Nebraskans {auto-animate="true"}
@@ -150,6 +69,64 @@ x <- readRDS("iris.rds")
 x <- read.spss("iris.sav")
 load("iris.Rdata")
 ```
+
+## Wickham (2010) {auto-animate="true"}
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+![](img/string.png)
+
+::: {style="font-size: 0.3em"}
+Wickham (2010)
+:::
+
+::::
+
+:::: {.column width="60%"}
+
+```r
+## From this
+text <- "she dances on the sand"
+grepl("sand$", text)
+strsplit(text, "[dD]ances?")
+```
+
+::::
+
+:::::
+
+## Wickham (2010) {auto-animate="true"}
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+![](img/string.png)
+
+::: {style="font-size: 0.3em"}
+Wickham (2010)
+:::
+
+::::
+
+:::: {.column width="60%"}
+
+```r
+## From this
+text <- "she dances on the sand"
+grepl("sand$", text)
+strsplit(text, "[dD]ances?")
+## To this
+library(stringr)
+str_detect(text, "sand$")
+str_split(text, "[dD]ances?")
+```
+
+::::
+
+:::::
 
 ## `rio`, since 2013
 
@@ -230,20 +207,6 @@ import <- function(file="", format=NULL, header=TRUE, ... ) {
 
 :::::
 
-## `rio` in real world 2
-
-
-::::: {.columns}
-
-:::: {.column width="50%"}
-![](img/book2_cover.png){height=500}
-::::
-
-:::: {.column width="50%"}
-![](img/book2.png)
-::::
-
-:::::
 
 ## `rio` development {auto-animate="true"}
 
@@ -285,8 +248,7 @@ import <- function(file="", format=NULL, header=TRUE, ... ) {
 
 :::: {.column width="80%"}
 
-* Created by Gerrit-Jan Schutten in 2014
-* Maintained by me since 2016
+* Created by Gerrit-Jan Schutten in 2014, Maintained by me since 2016
 * Peer reviewed and accepted by rOpenSci since 2022-06-24
 * Emulate `readxl::read_excel()` and `writexl::write_xlsx()`
 
@@ -311,13 +273,15 @@ import <- function(file="", format=NULL, header=TRUE, ... ) {
 
 ![](img/issue71.png)
 
-* 70 MB ODS -> 1.3GB XML
-
 ## `readODS` issue 71
 
-Not Working also
+* 70 MB ODS -> 1.3GB XML
 
-* Google Sheets, Python `odfpy` (Also Julia `OdsIO.jl`), JS `SheetJS`
+. . .
+
+* Not Working also:Google Sheets, Python `odfpy` (Also Julia's wrapper: `OdsIO.jl`), JS `SheetJS`
+
+. . .
 
 Working but
 
@@ -336,20 +300,24 @@ Working but
 
 ## Peter Brohan is our hero
 
+::: {.incremental}
 * In July 2023, Peter rewrote `readODS::read_ods()` in C++ (RapidXML) - super speed improvement
 * I switched to tackle issue 49 (Writing speed)
+:::
 
 ## Detlef Steuer is also our hero
 
+::: {.incremental}
 * Detlef proposed a speedy solution to write XML using base R without `xml2`
 * I rewrote his solution in C++
+:::
 
 ## Benchmark I
 
 Reading speed: 5539 x 11
 
 ```{r}
-barplot(c(8.9, 0.462), horiz = TRUE, names.arg = c("readODS 1.7.3", "readODS 2.3.1"))
+barplot(c(8.9, 0.462), horiz = TRUE, names.arg = c("readODS 1.7.3", "readODS 2.3.1"), xlab = "Seconds")
 ```
 
 ## Benchmark II
@@ -357,7 +325,7 @@ barplot(c(8.9, 0.462), horiz = TRUE, names.arg = c("readODS 1.7.3", "readODS 2.3
 Writing speed: 3000 x 8
 
 ```{r}
-barplot(c(46.428, 0.053), horiz = TRUE, names.arg = c("readODS 1.7.3", "readODS 2.3.1"))
+barplot(c(46.428, 0.053), horiz = TRUE, names.arg = c("readODS 1.7.3", "readODS 2.3.1"), xlab = "Seconds")
 ```
 
 ## In summary
@@ -492,61 +460,17 @@ Thank you:
 
 More about me: [https://www.chainsawriot.com/](https://www.chainsawriot.com/)
 :::
+## `rio` in real world 2
 
-## Wickham (2010) {auto-animate="true"}
-
-::::: {.columns}
-
-:::: {.column width="40%"}
-
-![](img/string.png)
-
-::: {style="font-size: 0.3em"}
-Wickham (2010)
-:::
-
-::::
-
-:::: {.column width="60%"}
-
-```r
-## From this
-text <- "she dances on the sand"
-grepl("sand$", text)
-strsplit(text, "[dD]ances?")
-```
-
-::::
-
-:::::
-
-## Wickham (2010) {auto-animate="true"}
 
 ::::: {.columns}
 
-:::: {.column width="40%"}
-
-![](img/string.png)
-
-::: {style="font-size: 0.3em"}
-Wickham (2010)
-:::
-
+:::: {.column width="50%"}
+![](img/book2_cover.png){height=500}
 ::::
 
-:::: {.column width="60%"}
-
-```r
-## From this
-text <- "she dances on the sand"
-grepl("sand$", text)
-strsplit(text, "[dD]ances?")
-## To this
-library(stringr)
-str_detect(text, "sand$")
-str_split(text, "[dD]ances?")
-```
-
+:::: {.column width="50%"}
+![](img/book2.png)
 ::::
 
 :::::
