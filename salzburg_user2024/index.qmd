@@ -39,8 +39,6 @@ Source: R for Data Science
 Source: [https://xkcd.com/2347/](https://xkcd.com/2347/)
 :::
 
-
-
 ## Pop quiz: Meet the Nebraskans {auto-animate="true"}
 
 Who maintain these packages?
@@ -478,10 +476,19 @@ das Motto des DFB für die WM 2014
 das Motto des DFB für die WM 2014 
 :::
 
-<br><br><br>
+::: {style="font-size: 0.4em"}
+Thank you: 
 
-::: {style="font-size: 0.7em"}
-Thank you: Thomas Leeper, Gerrit-Jan Schutten, Peter Brohan, Detlef Steuer, Jason Becker, David Schoch, rOpenSci, all `rio` and `readODS` contributors and users. 
+* Thomas Leeper (for maintaining `rio` from 2015 to 2023)
+* Gerrit-Jan Schutten (for creating `readODS`)
+* Peter Brohan (for the C++ implementation of `read_ods`)
+* Detlef Steuer (for the quick XML generation algorithm)
+* Jason Becker (for the sustained contribution to `rio`)
+* David Schoch (for the contribution to `rio` and leading [the GESIS TSA Team](https://github.com/gesistsa))
+* Hadley Wickham, Jennifer Bryan (for allowing me to fork some code from `readr`)
+* rOpenSci (for managing the infrastructure to support the development of `readODS`)
+* All developers / maintainers of the I/O infrastructure
+* All `rio` and `readODS` contributors and users. 
 
 More about me: [https://www.chainsawriot.com/](https://www.chainsawriot.com/)
 :::
