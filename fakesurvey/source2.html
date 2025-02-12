@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Björn Rohr">
+<meta name="author" content="Barbara Felderer">
+<meta name="author" content="Henning Silber">
+<meta name="author" content="Jessica Daikeler">
+<meta name="author" content="Joss Roßmann">
+<meta name="author" content="Jette Schröder">
+<meta name="dcterms.date" content="2024-12-01">
+
+<title>When are non-probability surveys fit for my purpose? – GESIS Guides</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7e6f1cd7014c343ccf2b75fa0c32076c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./logos/logo_gesis_en.png" alt="GESIS logo." class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./source.html"> 
+<span class="menu-text">from pdf</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./source2.html" aria-current="page"> 
+<span class="menu-text">from MS Word</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./source3.html"> 
+<span class="menu-text">from rmd</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#what-are-non-probability-surveys" id="toc-what-are-non-probability-surveys" class="nav-link" data-scroll-target="#what-are-non-probability-surveys">What are non-probability surveys?</a>
+  <ul class="collapse">
+  <li><a href="#examples-of-non-probability-surveys" id="toc-examples-of-non-probability-surveys" class="nav-link" data-scroll-target="#examples-of-non-probability-surveys">2.1 Examples of non-probability surveys</a>
+  <ul class="collapse">
+  <li><a href="#volunteer-sampling" id="toc-volunteer-sampling" class="nav-link" data-scroll-target="#volunteer-sampling">Volunteer Sampling</a></li>
+  <li><a href="#river-sampling" id="toc-river-sampling" class="nav-link" data-scroll-target="#river-sampling">River Sampling</a></li>
+  <li><a href="#snowball-sampling-and-respondent-driven-sampling" id="toc-snowball-sampling-and-respondent-driven-sampling" class="nav-link" data-scroll-target="#snowball-sampling-and-respondent-driven-sampling">Snowball Sampling and Respondent Driven Sampling</a></li>
+  </ul></li>
+  <li><a href="#characteristics-of-probability-surveys" id="toc-characteristics-of-probability-surveys" class="nav-link" data-scroll-target="#characteristics-of-probability-surveys">2.2 Characteristics of probability surveys</a></li>
+  <li><a href="#characteristics-of-non-probability-surveys" id="toc-characteristics-of-non-probability-surveys" class="nav-link" data-scroll-target="#characteristics-of-non-probability-surveys">2.3 Characteristics of non-probability surveys</a></li>
+  </ul></li>
+  <li><a href="#why-non-probability-surveys-cannot-be-used-to-infer-from-the-survey-to-the-target-population" id="toc-why-non-probability-surveys-cannot-be-used-to-infer-from-the-survey-to-the-target-population" class="nav-link" data-scroll-target="#why-non-probability-surveys-cannot-be-used-to-infer-from-the-survey-to-the-target-population">Why non-probability surveys cannot be used to infer from the survey to the target population</a>
+  <ul class="collapse">
+  <li><a href="#inference-from-non-probability-surveys-rely-on-too-strong-and-untestable-assumptions" id="toc-inference-from-non-probability-surveys-rely-on-too-strong-and-untestable-assumptions" class="nav-link" data-scroll-target="#inference-from-non-probability-surveys-rely-on-too-strong-and-untestable-assumptions">3.1. Inference from non-probability surveys rely on (too) strong and untestable assumptions</a></li>
+  <li><a href="#representation-errors-can-not-be-differentiated" id="toc-representation-errors-can-not-be-differentiated" class="nav-link" data-scroll-target="#representation-errors-can-not-be-differentiated">3.2. Representation errors can not be differentiated</a></li>
+  <li><a href="#weighting-is-likely-to-fail" id="toc-weighting-is-likely-to-fail" class="nav-link" data-scroll-target="#weighting-is-likely-to-fail">3.3. Weighting is likely to fail</a></li>
+  <li><a href="#quotas-are-no-solution" id="toc-quotas-are-no-solution" class="nav-link" data-scroll-target="#quotas-are-no-solution">3.4. Quotas are no solution</a></li>
+  <li><a href="#a-higher-number-of-respondents-does-not-guarantee-lower-bias" id="toc-a-higher-number-of-respondents-does-not-guarantee-lower-bias" class="nav-link" data-scroll-target="#a-higher-number-of-respondents-does-not-guarantee-lower-bias">3.5. A higher number of respondents does not guarantee lower bias</a></li>
+  <li><a href="#estimates-of-precision-need-a-lot-of-assumptions" id="toc-estimates-of-precision-need-a-lot-of-assumptions" class="nav-link" data-scroll-target="#estimates-of-precision-need-a-lot-of-assumptions">3.6. Estimates of precision need a lot of assumptions</a></li>
+  <li><a href="#conclusion-on-the-generalizability-of-results" id="toc-conclusion-on-the-generalizability-of-results" class="nav-link" data-scroll-target="#conclusion-on-the-generalizability-of-results">3.7. Conclusion on the generalizability of results</a></li>
+  </ul></li>
+  <li><a href="#when-are-non-probability-surveys-fit-for-purpose" id="toc-when-are-non-probability-surveys-fit-for-purpose" class="nav-link" data-scroll-target="#when-are-non-probability-surveys-fit-for-purpose">When are non-probability surveys fit for purpose?</a></li>
+  <li><a href="#recommendations-for-fit-for-purpose-settings" id="toc-recommendations-for-fit-for-purpose-settings" class="nav-link" data-scroll-target="#recommendations-for-fit-for-purpose-settings">Recommendations for fit-for-purpose settings</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="source2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">When are non-probability surveys fit for my purpose?</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Björn Rohr </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            GESIS – Leibniz Institute for the Social Sciences
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Barbara Felderer </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            GESIS – Leibniz Institute for the Social Sciences
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Henning Silber </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            GESIS – Leibniz Institute for the Social Sciences
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jessica Daikeler </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            GESIS – Leibniz Institute for the Social Sciences
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Joss Roßmann </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            GESIS – Leibniz Institute for the Social Sciences
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jette Schröder </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            GESIS – Leibniz Institute for the Social Sciences
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 1, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>The affordability of non-probability surveys, especially online surveys, has made them a popular alternative to probability surveys in social science research. However, their quality is questionable, and inferences based on non-probability surveys rely on strong, hard-to-test, and often unrealistic assumptions, such as that every population unit has a chance to participate in the survey. Commonly applied tools to improve accuracy, like adjustment weighting or the use of quotas, are very unlikely able to eliminate or sufficiently reduce the (self-) selection bias in non-probability surveys, as it is hard to identify and measure all variables needed. The use of non-probability surveys should thus be carefully considered and limited to specific (non-inferential) purposes. These include, among others, exploratory studies where generating hypotheses is the primary aim, survey experiments where internal validity is prioritized over external representativeness, and studies targeting hard-to-reach populations for which probability surveys are impractical or even impossible to conduct. This survey guideline aims to provide guidance for researchers to critically assess whether non-probability surveys are fit-for-purpose for their own research projects and to evaluate whether the use of non-probability surveys aligns with the specific goals and constraints of the studies at hand.</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In recent years, non-probability surveys have risen in popularity in empirical social science, which is not least due to the increasing use of the Internet as a means of conducting surveys. Although non-probability surveys are not tied to the online mode, it is particularly easy to quickly survey many people online. Despite their various limitations, non-probability (online) surveys are frequently used because of their low cost per interview and shorter field periods compared to most probability-based surveys. This guideline aims to provide an overview of the limitations associated with non-probability surveys and helps readers to make informed decisions on when and how to use them appropriately. We start by outlining fundamental principles of probability surveys, followed by a definition of non-probability surveys accompanied by examples. Next, we discuss various problems that are inherent to non-probability surveys. We then consider situations in which non-probability surveys might be fit for a specific purpose. Finally, we provide a summary as well as warnings for conducting or using non-probability surveys.</p>
+</section>
+<section id="what-are-non-probability-surveys" class="level1">
+<h1>What are non-probability surveys?</h1>
+<p>In this section, we first give some common examples of non-probability surveys. We then give an initial overview of the characteristics of probability surveys and conclude with the differences from non-probability surveys, as non-probability surveys are best defined by distinguishing them from probability surveys.</p>
+<section id="examples-of-non-probability-surveys" class="level2">
+<h2 data-anchor-id="examples-of-non-probability-surveys">2.1 Examples of non-probability surveys</h2>
+<p>The following section provides an overview of often-used types of non-probability surveys in social science research. The typology is mainly based on the AAPOR task-force report by <span class="citation" data-cites="Baker2013">Baker et al. (<a href="#ref-Baker2013" role="doc-biblioref">2013</a>)</span> on “Non-Probability Sampling.”</p>
+<section id="volunteer-sampling" class="level3">
+<h3 data-anchor-id="volunteer-sampling">Volunteer Sampling</h3>
+<p>In Volunteer Sampling, advertisements for the survey are fielded on web pages, in newspapers, or by using similar tools, and interested individuals select themselves into the set of respondents <span class="citation" data-cites="Baker2013 StatisticsCanada2021">(see <a href="#ref-Baker2013" role="doc-biblioref">Baker et al., 2013</a>; <a href="#ref-StatisticsCanada2021" role="doc-biblioref">Statistics Canada, 2021, p. 34</a>)</span>. Individuals who are interested in participating are invited to register on a survey’s website or directly to participate in a survey voluntarily.</p>
+<p>Volunteer Sampling can be conducted in any survey mode. It is frequently used to recruit members of <em>opt-in</em> or <em>online access panels</em> <span class="citation" data-cites="Callegaro2014 StatisticsCanada2021">(see <a href="#ref-Callegaro2014" role="doc-biblioref">Callegaro et al., 2014</a>; <a href="#ref-StatisticsCanada2021" role="doc-biblioref">Statistics Canada, 2021, p. 35</a>)</span>. Registered respondents' information is stored by the survey agency, and this list is used as some kind of replacement for a sampling frame to invite them to additional surveys in the future. However, this replacement of a sampling frame is based on an arbitrary selection and may differ systematically from the target population in many characteristics. A second application of Volunteer Sampling is <em>crowd-sourcing</em> (e.g., Amazon Mechanical Turk), where registered individuals are paid to complete different tasks, such as participating in a survey. Crowd-sourcing is different from an opt-in panel in that the volunteers are not mainly recruited on the platform to participate in surveys but to do any possible online tasks, one of which could be filling in a survey. Another practical example of volunteer samples is <em>student samples</em>, where surveys are conducted at universities with university students who are recruited online or in person. Volunteer sampling can also be conducted in malls or other public places where interviewers approach passers-by and ask them to participate in the survey.</p>
+</section>
+<section id="river-sampling" class="level3">
+<h3 data-anchor-id="river-sampling">River Sampling</h3>
+<p>River Sampling is a form of Volunteer Sampling that is exclusively conducted online. Advertisements are fielded during visits to websites or when conducting other online activities. For example, river samples may be advertised in apps or on social media. <span class="citation" data-cites="Baker2013">Baker et al. (<a href="#ref-Baker2013" role="doc-biblioref">2013, p. 18</a>)</span> describe river samples as opt-in web samples that intercept possible respondents online, doing other things <span class="citation" data-cites="Baker2010">(see also <a href="#ref-Baker2010" role="doc-biblioref">Baker et al., 2010, p. 14</a>)</span>. Potential participants are often approached via banners or pop-ups to invite them to participate in the survey. <span class="citation" data-cites="Callegaro2014">Callegaro et al. (<a href="#ref-Callegaro2014" role="doc-biblioref">2014</a>)</span> differentiate river samples from access panels: In contrast to non-probability panels, the advertisement leads directly to a survey without any registration step. Initial screening questions can still be implemented to allow quota sampling. The next time the same respondents see a similar ad, it may lead them to a different survey.</p>
+<p><em>Social media sampling</em> is a common type of River Sampling. Previously gathered information on the users by the social media platform may be used to send survey advertisements specifically to target population members.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="snowball-sampling-and-respondent-driven-sampling" class="level3">
+<h3 data-anchor-id="snowball-sampling-and-respondent-driven-sampling">Snowball Sampling and Respondent Driven Sampling</h3>
+<p>Snowball Sampling is another method to generate a non-probability survey that is particularly suitable to sample persons of hard-to-reach societal groups <span class="citation" data-cites="Bacher2019 Lohr2022 StatisticsCanada2021">(e.g., <a href="#ref-Bacher2019" role="doc-biblioref">Bacher et al., 2019</a>; <a href="#ref-Lohr2022" role="doc-biblioref">Lohr, 2022</a>; <a href="#ref-StatisticsCanada2021" role="doc-biblioref">Statistics Canada, 2021, p. 35</a>)</span>, such as minorities or respondents with special health conditions. Here, an initial sample is collected using either non-probability or probability methods. In the following step, the respondents of the survey themselves hint at or invite additional respondents. Snowball Sampling is often used by asking respondents of hard-to-reach populations (e.g., refugees) to provide contact information of other members of the same group. One follows this approach several times until the desired number of respondents is reached. Respondent Driven Sampling is a method very similar to Snowball Sampling, with the difference that respondents (seeds) invite additional respondents with the help of coupons or special links. This allows researchers for every further respondent to know who invited them <span class="citation" data-cites="Lee2017">(<a href="#ref-Lee2017" role="doc-biblioref">Lee et al., 2017</a>)</span>. When certain assumptions are met, it is possible that Respondent Driven Sampling can lead to a probability survey <span class="citation" data-cites="Lee2017">(<a href="#ref-Lee2017" role="doc-biblioref">Lee et al., 2017</a>)</span>. However, one of these assumptions requires long enough chains of survey invitations, which are often not given due to selective nonresponse, leading to some chains ending far too early <span class="citation" data-cites="Gile2015 Lee2017">(<a href="#ref-Gile2015" role="doc-biblioref">Gile et al., 2015</a>; <a href="#ref-Lee2017" role="doc-biblioref">Lee et al., 2017</a>)</span>. Additionally, for both Snowball Sampling and Respondent Driven Sampling, it may make a difference whether they start using a probability or non-probability survey <span class="citation" data-cites="Goodman2011">(<a href="#ref-Goodman2011" role="doc-biblioref">Goodman, 2011</a>)</span>, although, even when starting with a probability survey, it likely leads to a non-probability survey.</p>
+</section>
+</section>
+<section id="characteristics-of-probability-surveys" class="level2">
+<h2 data-anchor-id="characteristics-of-probability-surveys">2.2 Characteristics of probability surveys</h2>
+<p>A probability survey is based on a random sample of units from the target population. The <em>target population</em> is defined as “the complete collection of observations we want to study” <span class="citation" data-cites="Lohr2022">(<a href="#ref-Lohr2022" role="doc-biblioref">Lohr, 2022, p. 4</a>)</span>. This could be, for example, all German citizens living in private households that are older than 17 years. If the target population is large, surveying the entire target population would be unfeasible within a given time frame, too expensive or inefficient, so usually only a sample of the units is selected. A <em>sample</em> is a subset of the target population. The units of the sample are studied to infer the target population. In some cases, lists of units of the target population are available from which the sample can be drawn. These <em>sampling frames</em> might be lists of pupils in a school or the residents of a specific city from official registers. In other cases, sampling is based on a small list of randomly selected addresses, which are a starting point, to conduct random routes sampling <span class="citation" data-cites="Bauer2016">(<a href="#ref-Bauer2016" role="doc-biblioref">Bauer, 2016</a>)</span>. Random routes selection can either be done by generating a list of addresses that is afterward handed over to interviewers to contact the residents, or by the interviewers in the same step as the contacting. The <em>inclusion probability</em> is a target population unit’s probability of being selected for a specific sample <span class="citation" data-cites="Cochran1977">(e.g., <a href="#ref-Cochran1977" role="doc-biblioref">Cochran, 1977</a>)</span>. For a sample to be called a <em>probability sample</em>, units are selected randomly from the target population. As a crucial prerequisite for probability surveys, every unit in the target population must have a positive and known inclusion probability. If this is not fulfilled, inferences from the sample to the target population are not valid.</p>
+<p>In the simplest form of a probability sample, a <em>simple random sample</em>, the inclusion probability is equal for every unit of the target population. Inclusion probabilities in complex random samples are non-zero and known but not equal, which must be accounted for by applying design weights to draw valid inferences. It is usually not possible to conduct an interview with every unit drawn so that the final sample of actual respondents (the net sample) differs from the sample originally drawn (the gross sample). Both can lead to errors in the inference from probability surveys. It is important to recognize possible errors in order to minimize errors when inferring from surveys to the population. The representation side of Groves' Total Survey Error framework [TSE; <span class="citation" data-cites="Groves2010">R. M. Groves &amp; Lyberg (<a href="#ref-Groves2010" role="doc-biblioref">2010</a>)</span>] makes it possible to systematically consider errors in sampling and the realization of the net sample - i.e., the representation of the population. In the following section, we will go through the individual sources of error to discuss whether they are applicable to non-probability surveys later on.</p>
+<p>First, coverage error is the source of error that stems from differences between the population and the sample frame. For example, if a sample frame (from which the sample is drawn) does not cover the whole population, meaning that some members of the population have zero probability to be selected into the sample (undercoverage) this is a form of coverage error. The opposite can also be true if the sample frame covers persons that are not part of the target population (overcoverage).</p>
+<p>Second, sampling error <span class="citation" data-cites="Groves2009">(<a href="#ref-Groves2009" role="doc-biblioref">R. Groves et al., 2009</a>)</span> describes errors that arise when the sample is drawn from the sampling frame. In some instances, the sample may differ from the target population by design. For example, it could be that one region is oversampled to guarantee a higher sample size needed for statistical analyses. If the sample is not a simple random sample, for example, because respondents have unequal probabilities of being selected into the sample, the statistical analysis needs to take that into account, for instance, by applying design weights.</p>
+<p>The third error type of the TSE is called nonresponse error. Nonrespondents are sampled units who are eligible for participation but did not participate in the survey for any reason (e.g., non-contact, refusal). The amount of nonrespondents in relation to the number of eligible sample units is often quantified in terms of a response rate (RR<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>).</p>
+<p>All of the types of errors can turn into bias, if they are systematic, meaning that some individuals have a higher propensity than others to be covered on the sampling frame, drawn for the sample, and/or to participate in a survey <span class="citation" data-cites="Rubin1976 Groves2006">(<a href="#ref-Groves2006" role="doc-biblioref">R. M. Groves, 2006</a>; e.g., <a href="#ref-Rubin1976" role="doc-biblioref">Rubin, 1976</a>)</span>. If the reasons for not responding to a survey are not associated with the variables of interest (i.e., the error is not systematic for the variable of interest), the <em>separate cause model</em> holds <span class="citation" data-cites="Groves2006">(the nonresponse models discussed in this section can be found in <a href="#ref-Groves2006" role="doc-biblioref">R. M. Groves, 2006</a>)</span>, and no nonresponse bias is to be expected for this variable. However, when the same characteristics are associated with responding to a survey and the variable of interest, the <em>common cause model</em> holds. In this situation, nonresponse bias in the estimation of the variable of interest is very likely but may be reduced by adjustment weights that incorporate the characteristics that cause nonresponse and relate to the variable of interest. If the propensity to respond depends on the variable of interest itself, the <em>survey variable cause model</em> is true, which leads to nonresponse bias in estimation that can not be eliminated by any adjustment method.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>To address nonresponse bias in probability surveys, there are well-established <em>adjustment weighting methods</em>. One method would be to derive adjustment weights that make use of benchmark data, which is an essentially error-free external data source (e.g., Census data), and weight the survey respondents in a way that the distribution of survey respondents matches the distribution of the target population for all variables that are available from the benchmark data and the survey data. These variables are usually called auxiliary variables that are usually not equal to the variables of interest. Another method would be to use auxiliary variables that are available for the survey respondents and nonrespondents to model the nonresponse process and derive adjustment weights. Both methods need auxiliary variables that are highly correlated to the variables of interest and the nonresponse mechanism. To be effective, nonresponse weights ideally need to incorporate all variables that are related to both the nonresponse and the variable of interest. In addition, the nonresponse must not depend on the variable of interest itself.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+</section>
+<section id="characteristics-of-non-probability-surveys" class="level2">
+<h2 data-anchor-id="characteristics-of-non-probability-surveys">2.3 Characteristics of non-probability surveys</h2>
+<p>The most important difference between probability and non-probability surveys is that in the latter the requirements for inclusion probabilities are violated. In the absence of a proper sampling frame, the probability of inclusion is unknown for the members of the stated target population, and large parts of the target population have a zero probability of inclusion <span class="citation" data-cites="Callegaro2015">(<a href="#ref-Callegaro2015" role="doc-biblioref">Callegaro et al., 2015</a>)</span>. If an online survey is, for example, advertised on a news website, it can not be known which members of the target population have a chance of seeing the advertisement and how high their propensity to see it is.</p>
+<p>In non-probability surveys, the process of inclusion is unknown, as there is no sampling frame and thus no sampling stage. The inclusion is often highly (self-) selective and dependent on the characteristics of the participants, meaning that participants with some characteristics might be overrepresented in the survey, while others might be underrepresented or even completely missing. One example would be a survey of the German population, which is recruited only online, e.g., in an online access panel, underrepresenting respondents less familiar with the internet. Lacking a proper sampling process with a well-defined sampling frame, the error types of the TSE, such as coverage error, sampling error, and nonresponse error, cannot be distinguished, quantified, nor properly corrected by traditional adjustment procedures. Moreover, bias caused by the survey invitation process and self-selection, for example, getting access to the survey or refusing to participate in the survey, are impossible to disentangle. For instance, consider, a river sample recruited via Facebook advertisements. Population members who do not use Facebook can not participate in the survey, which can cause coverage bias if the target population is not defined as Facebook users. Facebook users who are shown the advertisement but decide not to participate might introduce selection bias. It is impossible to disentangle these biases because only information is available on survey participants and not on invited Facebook users. In addition, for many non-probability surveys, response rates are impossible to calculate. Even in cases in which the exact number of survey invitations as well as the number of refused invitations is known, for example, if members of an access panel are invited to participate in a specific survey, the unknowable selection probabilities in the panel recruitment steps make them an uninformative indicator of nonresponse <span class="citation" data-cites="TheAmericanAssociation2023">(<a href="#ref-TheAmericanAssociation2023" role="doc-biblioref">The American Association for Public Opinion Research, 2023, p. 78</a>)</span>. The high amount of selectivity when recruiting for a non-probability survey makes it highly likely for survey variables to be systematically different from the population value due to (self-) selection bias. In addition, it is very unlikely to know in advance and observe all variables needed to correct for selection bias caused by potentially multiple and largely unknown mechanisms. The success of adjustment weights to correct for this potentially big amount of self-selection bias in the estimation is not guaranteed and is rather doubtful, as we will discuss in Section 3.1.</p>
+</section>
+</section>
+<section id="why-non-probability-surveys-cannot-be-used-to-infer-from-the-survey-to-the-target-population" class="level1">
+<h1>Why non-probability surveys cannot be used to infer from the survey to the target population</h1>
+<section id="inference-from-non-probability-surveys-rely-on-too-strong-and-untestable-assumptions" class="level2">
+<h2 data-anchor-id="inference-from-non-probability-surveys-rely-on-too-strong-and-untestable-assumptions">3.1. Inference from non-probability surveys rely on (too) strong and untestable assumptions</h2>
+<p>As stated above, statistical inference from the sample to the target population is only valid if every respondent from the target population has a positive and known probability of being included in the sample. These requirements are not met for non-probability surveys. However, even for probability surveys, a random sample does not lead to a random sample of survey responents if the response rate is not 100% <span class="citation" data-cites="Lohr2023">(e.g., <a href="#ref-Lohr2023" role="doc-biblioref">Lohr, 2023, p. 5</a>)</span>. Systematic nonresponse can lead to nonresponse bias. For probabilistic surveys, however, a broad strand exists in the literature on under which conditions valid inference is possible, even for surveys that suffer from nonresponse. In the following, we discuss two key assumptions made to draw valid inferences if not every sampled individual responds to the survey. These are: the assumptions of <em>ignorability</em> and <em>positivity</em> <span class="citation" data-cites="Mercer2017 Rosenbaum1983">(e.g., <a href="#ref-Mercer2017" role="doc-biblioref">A. W. Mercer et al., 2017</a>; <a href="#ref-Rosenbaum1983" role="doc-biblioref">Rosenbaum &amp; Rubin, 1983</a>)</span>.</p>
+<p><em>Ignorability (A1)</em> means in the survey setting that all mechanisms by which the respondents are selected for the survey are independent of the variables of interest, either unconditionally or conditional upon observed covariates that are associated with participation and the variable of interest, the so-called confounding variables. It is important to note that if only conditional ignorability can be assumed, the results must be weighted, using the confounders as auxiliary variables. Let us, for example, assume that our variable of interest (e.g., technical competence) dependends on Internet use, which also affects survey participation. Non-participation is only ignorable conditional on Internet use. When accounting for differences in Internet use between the survey respondents and the target population with the help of weighting, the ignorability assumption is fulfilled. However, if we did not measure Internet use, or if non-participation depends on other unknown or unmeasured characteristics that are not part of the weighting process, we will encounter non-ignorable bias in target population inference that can not be fully corrected.</p>
+<p>For <em>positivity (A2),</em> all possible subgroups defined by confounding variables must be represented in the survey. Let us assume that technical competence is not only dependent on Internet use but also on age and that these characteristics also affect survey participation. Let us further assume that both confounders are measured in the survey. In such a case, adjustment weights can reduce bias in the variable of interest, e.g., technical competence, if we know the distribution of age and Internet use in the target population, for example, from a census (that has little or almost no error). If, however, there is, no Internet user of 70 years or older in the survey (but does exist in the target population) no weighting procedure can account for subgroups that are entirely missing from the survey.</p>
+<p>For non-probability surveys, it is very likely that these assumptions are not fulfilled <span class="citation" data-cites="Valliant2011">(<a href="#ref-Valliant2011" role="doc-biblioref">Valliant &amp; Dever, 2011, p. 134</a>)</span>, but it is also impossible to examine whether they actually are fulfilled for any non-probability survey because there could always be an unknown uncontrolled confounder that might stem from self-selection or sample selection <span class="citation" data-cites="Lohr2023">(<a href="#ref-Lohr2023" role="doc-biblioref">Lohr, 2023, p. 8</a>)</span>.</p>
+</section>
+<section id="representation-errors-can-not-be-differentiated" class="level2">
+<h2 data-anchor-id="representation-errors-can-not-be-differentiated">3.2. Representation errors can not be differentiated</h2>
+<p>For non-probability surveys, as discussed in Section 2.2, different kinds of representation error (i.e., bias due to coverage error, sampling error, or nonresponse error) can, in general, not be distinguished. In the absence of a sampling frame, let alone a sample, coverage error or nonresponse error are not meaningful concepts. Therefore, many researchers use the term (self-)selection bias when discussing the representation error in non-probability surveys <span class="citation" data-cites="Baker2013 Kohler2019b">(<a href="#ref-Baker2013" role="doc-biblioref">Baker et al., 2013</a>; <a href="#ref-Kohler2019b" role="doc-biblioref">Kohler et al., 2019</a>)</span>. As the selection into the sample in non-probability surveys often depends mainly on self-selection <span class="citation" data-cites="Callegaro2015">(see, for example, <a href="#ref-Callegaro2015" role="doc-biblioref">Callegaro et al., 2015, p. 8</a>)</span> or arbitrary selection by the recruiter or interviewer, unequal selection probabilities are common but cannot be mitigated because they are unknown. This is also the case for respondents sampled randomly from a source that suffers from selection bias <span class="citation" data-cites="Baker2010">(e.g., <a href="#ref-Baker2010" role="doc-biblioref">Baker et al., 2010, p. 36</a>)</span>. In many non-probability surveys, one source of selection bias lies in the decision to visit the place or website within the exact time frame when one advertises or conducts the survey. To take a survey sampled on a news website, for example, respondents who visit the news website daily for one hour might have a higher chance of seeing the advertisement and participating in the survey than respondents who visit the website only once a week. Similarly, respondents who do not have access to the Internet or the specific website, do not have a chance to participate in the survey.</p>
+<p>Nonresponse is a form of reverse self-selection <span class="citation" data-cites="Lehdonvirta2020">(<a href="#ref-Lehdonvirta2020" role="doc-biblioref">Lehdonvirta et al., 2020, p. 139</a>)</span>, caused, for example, by declined or unanswered survey invitations. However, in many non-probability surveys, for example using river sampling, invitations are not sent directly to individuals, so knowing who has seen the invitation (e.g., the ad in social media surveys) and did not participate is impossible <span class="citation" data-cites="Baker2013">(<a href="#ref-Baker2013" role="doc-biblioref">Baker et al., 2013</a>)</span>. Even if it would be possible to determine who has seen an invitation, the characteristics that lead to ignoring a survey advertisement are likely different from those that lead to ignoring a direct survey invitation. In general, the participants can be expected to be a very small and rather selective group of those who could participate, potentially leading to larger and more complex biases than in probability surveys, where the potential number of participants is much smaller and limited to the sample <span class="citation" data-cites="Valliant2011">(<a href="#ref-Valliant2011" role="doc-biblioref">Valliant &amp; Dever, 2011, p. 134</a>)</span>. In addition to some potential respondents not answering the survey, the opposite problem can also exist in many non-probability surveys. As <span class="citation" data-cites="Lohr2022">Lohr (<a href="#ref-Lohr2022" role="doc-biblioref">2022</a>)</span> states, in a probability survey, target population members are (normally) only able to participate once and only if they are eligible respondents. However, in a non-probability survey, it is often possible to malevolently participate more than once or motivate others to participate and answer in a certain way to influence the results of the survey toward a specific outcome <span class="citation" data-cites="Bethlehem2015">(see also <a href="#ref-Bethlehem2015" role="doc-biblioref">Bethlehem, 2015</a>)</span>, and those malevolent participants may be hard to identify. Regarding online surveys, it is even possible for malevolent actors to program bots to participate in the survey either with the intention of receiving the incentive or to influence survey results <span class="citation" data-cites="Goodrich2023">(<a href="#ref-Goodrich2023" role="doc-biblioref">Goodrich et al., 2023</a>)</span>. With the recent technologies, those bots might be very hard or even impossible to differentiate from real respondents <span class="citation" data-cites="Hoehne2024">(<a href="#ref-Hoehne2024" role="doc-biblioref">Höhne et al., 2024</a>)</span>.</p>
+<p>In some non-probability surveys (e.g., online access panel or student samples), potential participants are asked directly to participate by mail or another method. Here, calculating a response rate may be possible, but we recommend avoiding the term response rate in the context of non-probability surveys and instead suggest different terms, such as a “participation rate” <span class="citation" data-cites="Baker2013 TheAmericanAssociation2023">(see also, <a href="#ref-Baker2013" role="doc-biblioref">Baker et al., 2013</a>; <a href="#ref-TheAmericanAssociation2023" role="doc-biblioref">The American Association for Public Opinion Research, 2023</a>)</span>. As mentioned above, online access panel members are usually not randomly selected in the first place, and the fact that the access panel is nonprobability-based should be reflected in a terminology that is different than the terminology for probability-based surveys.</p>
+</section>
+<section id="weighting-is-likely-to-fail" class="level2">
+<h2 data-anchor-id="weighting-is-likely-to-fail">3.3. Weighting is likely to fail</h2>
+<p>In probability surveys, design and adjustment weights are applied to account for unequal selection probabilities and systematic nonresponse. However, for adjustment weights to completely remove nonresponse bias, a number of requirements must be met, for example, that all auxiliary variables related to nonresponse and the variable of interest are included in the weighting process. This assumption is only testable if the true target population value (or at least a strong benchmark approximating the true target population value) for all variables of interest is available <span class="citation" data-cites="Lohr2023">(<a href="#ref-Lohr2023" role="doc-biblioref">Lohr, 2023, p. 8</a>)</span>. In practical applications, it is very unlikely that the requirement is met. While weighting might still partially reduce bias, it is also possible that bias will increase <span class="citation" data-cites="Yeager2011">(see, e.g., <a href="#ref-Yeager2011" role="doc-biblioref">Yeager et al., 2011</a>)</span>. Weighting is, however, more likely to be successful in probability surveys because, it only has to correct for bias due to nonresponse and capture characteristics related to the response decision, while the selection bias in nonprobability surveys might be affected by many decisions of potential participants, which each might be correlated with other characteristics. In other words, the ignorability (A1) assumption might be harder to fulfill in non-probability surveys because of the potentially higher number of mechanisms affecting survey participation. Additionally, the positivity assumption (A1) might also be harder to fulfill because efforts are made in probability surveys to target sampled individuals <span class="citation" data-cites="Lohr2023">(<a href="#ref-Lohr2023" role="doc-biblioref">Lohr, 2023, p. 6</a>)</span>. Therefore, one can assume that missing population subgroups entirely is less likely in probability than in non-probability surveys.</p>
+<p>For non-probability surveys, design weights cannot exist per definition. However, adjustment weights are sometimes proposed to mitigate all kinds of bias simultaneously <span class="citation" data-cites="Baker2013 Callegaro2015">(e.g., <a href="#ref-Baker2013" role="doc-biblioref">Baker et al., 2013, p. 70</a>; <a href="#ref-Callegaro2015" role="doc-biblioref">Callegaro et al., 2015, p. 183</a>)</span>. This means that the auxiliary variables need not only to be correlated to the nonresponse mechanisms but also to an unknown number of other selection mechanisms, making the ignorability assumption (A1) even more complicated to fulfill. At present, there is little reliable knowledge about whether and which weighting methods generally work for non-probability surveys <span class="citation" data-cites="Cornesse2020a">(<a href="#ref-Cornesse2020a" role="doc-biblioref">Cornesse &amp; Blom, 2020, p. 21</a>)</span>. In general, there is large evidence that the success of weighting is far less affected by the specific weighting method than by the variables included in the weighting process <span class="citation" data-cites="Mercer2018">(see, for example, <a href="#ref-Mercer2018" role="doc-biblioref">A. Mercer et al., 2018</a>)</span>. More research is needed in this area. This is in contrast to probability surveys, where weighting is well-established and based on a large body of literature <span class="citation" data-cites="Edelman2023">(e.g., <a href="#ref-Edelman2023" role="doc-biblioref">Edelman, 2023</a>)</span>.</p>
+</section>
+<section id="quotas-are-no-solution" class="level2">
+<h2 data-anchor-id="quotas-are-no-solution">3.4. Quotas are no solution</h2>
+<p>A common attempt to introduce control into the sample selection of non-probability surveys is to apply quota sampling. In quota sampling, reference data are used to get information on the composition of the target population regarding selected quota variables, and the survey is conducted in a way that the composition of survey respondents regarding the quota variables matches their composition in the target population. The most popular quota variables are demographic variables, but some other variables might also be used, for example, the proportion of persons in the target population with Internet access. Then, the sample selection process aims to recruit a sample that matches those quotas. Quotas can be as simple as one or more univariate distributions but also cross-tabulated distributions (e.g., by age and gender).</p>
+<p>In opt-in panels, quota sampling can be done by using known information on the panel members to only invite respondents according to those quotas. If we know, for example, that the target population consists of 55% female and 45% male persons a quota would demand that 55% of respondents are women.</p>
+<p>Only when the quota variables are (highly) correlated with the selection mechanisms and the variables of interest, the accuracy of estimates for the variables of interest can be improved as well. Quotas implicitly assume that all characteristics that affect participation are captured in the quota. This assumption is very unrealistic, and it is nearly impossible to implement quotas for all needed variables, as it is impossible to know exactly what characteristics should be included. Only if all selection mechanisms are addressed in a quota (fulfilling the ignorability assumption), and the quota can be fulfilled (i.e., fulfilling the positivity assumption) accurate survey results can be achieved. One should be aware of these limitations when assessing results from surveys that are, for example, advertised as being representative of age, gender, and education.</p>
+</section>
+<section id="a-higher-number-of-respondents-does-not-guarantee-lower-bias" class="level2">
+<h2 data-anchor-id="a-higher-number-of-respondents-does-not-guarantee-lower-bias">3.5. A higher number of respondents does not guarantee lower bias</h2>
+<p>Proponents of non-probability surveys might argue that the possibility of reaching large sample sizes very quickly can make up for (some) problems with non-probability surveys, which is, however, not true <span class="citation" data-cites="Meng2018">(<a href="#ref-Meng2018" role="doc-biblioref">Meng, 2018</a>)</span>. This misconception might stem from the fact that for probability surveys, larger sample sizes improve the precision of estimates. They also increase the ability to draw inferences even for subgroups that are rare in the target population.</p>
+<p>The accuracy of an estimate depends on two factors: precision and bias. A typical measure of precision in a probability survey is the standard deviation, and a typical measure for the bias is the difference (e.g., in mean) of the survey estimate from the target population value. The Mean Squared Error (MSE) of an estimate, a common measure of accuracy, includes bias and precision <span class="citation" data-cites="Kohler2019a">(e.g., <a href="#ref-Kohler2019a" role="doc-biblioref">Kohler, 2019</a>, Equation 5 on p. 153)</span>. The precision of a survey estimate is related to the sample size, that is, for a given estimate, the precision increases as the sample size increases. When the sample size is large, precision increases and the influence of a small number of outliers will be reduced.</p>
+<p>While larger sample sizes increase precision, there is no guarantee that they reduce bias. If, for example, an estimate has a high precision due to a large sample size but also a large bias, that survey will only allow to precisely measure biased parameters(s). This is also true for a non-probability survey that covers especially large proportions of the target population <span class="citation" data-cites="Meng2018">(e.g., <a href="#ref-Meng2018" role="doc-biblioref">Meng, 2018</a>)</span>. <span class="citation" data-cites="Meng2018">Meng (<a href="#ref-Meng2018" role="doc-biblioref">2018</a>)</span> argues that the required sample size for a non-probability sample to reach a similarly low MSE as a small probability survey mainly depends on the correlation of the variable of interest with the probability of being part of the sample. Even a very small correlation (e.g., 0.05) can be a huge problem, leading to the need for a tremendous-sized set of respondents (i.e., more than half of the target population size) to produce results as accurate as a much smaller simple random survey (i.e., 400 respondents, independent of target population size).</p>
+</section>
+<section id="estimates-of-precision-need-a-lot-of-assumptions" class="level2">
+<h2 data-anchor-id="estimates-of-precision-need-a-lot-of-assumptions">3.6. Estimates of precision need a lot of assumptions</h2>
+<p>There is no statistical formula that allows to estimate precision for non-probability surveys. Variance formulas and the like that are derived for probability sampling cannot simply be transferred to non-probability surveys. There are, however, some commonly used methods to cope with this problem. Examples include using jackknife or bootstrap procedures to estimate precision <span class="citation" data-cites="Elliott2017">(e.g., <a href="#ref-Elliott2017" role="doc-biblioref">Elliott &amp; Valliant, 2017</a>)</span>.</p>
+<p>In jackknife variance estimation, the variance is calculated in a repeated procedure. One case is removed from the sample for the first step, and the estimate (e.g., mean, median, etc.) is calculated. Then, the same step is repeated by leaving the second case out of the original sample, and so forth. This procedure is repeated for every case in the survey. Finally, the gathered list of estimates is used to calculate the variance or confidence interval <span class="citation" data-cites="Quenouille1956">(e.g., <a href="#ref-Quenouille1956" role="doc-biblioref">Quenouille, 1956</a>)</span>. Using the bootstrap method <span class="citation" data-cites="Efron1979">(<a href="#ref-Efron1979" role="doc-biblioref">Efron, 1979</a>)</span>, repeated samples (around 2,000-10,000) are drawn from the original sample with replacement. Then again, the estimate is calculated for every bootstrap sample, and the measure of uncertainty is calculated from these estimates. Later, a Bayesian bootstrap was presented as an alternative to the standard bootstrap method <span class="citation" data-cites="Rubin1981">(e.g., <a href="#ref-Rubin1981" role="doc-biblioref">Rubin, 1981</a>)</span>.</p>
+<p>Both resampling methods were above described only in their most simple form, which assumes simple random sampling. In practical applications, every step in the sampling design, including quotas and all weighting steps, must be accounted for in every replication <span class="citation" data-cites="mcpheedata">(<a href="#ref-mcpheedata" role="doc-biblioref">McPhee et al., 2022</a>)</span>. Such methods are commonly used to estimate the precision of estimates from probability surveys. For nonprobability surveys that lack a proper sampling design and thus design weights, and as their adjustment weights may not include all needed auxiliary variables, they are “likely to be too narrow.” <span class="citation" data-cites="mcpheedata">(<a href="#ref-mcpheedata" role="doc-biblioref">McPhee et al., 2022</a>)</span>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+</section>
+<section id="conclusion-on-the-generalizability-of-results" class="level2">
+<h2 data-anchor-id="conclusion-on-the-generalizability-of-results">3.7. Conclusion on the generalizability of results</h2>
+<p>As we discussed in the previous sections, there are many potential sources of bias in non-probability surveys. Also, it is rarely possible to detect these biases or determine their extent. In contrast to probability surveys, no well-established theory, like sampling theory, allows for statistical inference <span class="citation" data-cites="Callegaro2015 Vehovar2016">(e.g., <a href="#ref-Callegaro2015" role="doc-biblioref">Callegaro et al., 2015, pp. 52–56</a>; <a href="#ref-Vehovar2016" role="doc-biblioref">Vehovar et al., 2016, p. 332</a>)</span>. As we can never be sure whether the assumptions needed for an estimate to be accurate are fulfilled (A.1, A.2), the estimates of the survey may or may not be extremely biased, without us being able to know. This is even the case when quotas or weights are used. Under these conditions, it is impossible to generalize the results from a non-probability survey without an unreasonable risk of bias.</p>
+<p>In contrast to generalizing the survey to the target population (e.g., expecting external validity), it can be less problematic to expect internal validity when using an experimental design within the survey <span class="citation" data-cites="Baker2013 Kohler2019a Mercer2017">(e.g., <a href="#ref-Baker2013" role="doc-biblioref">Baker et al., 2013, p. 41</a>; <a href="#ref-Kohler2019a" role="doc-biblioref">Kohler, 2019</a>; <a href="#ref-Mercer2017" role="doc-biblioref">A. W. Mercer et al., 2017, p. 254</a>)</span>. Using non-probability surveys for experiments will be discussed in section 4.1.</p>
+</section>
+</section>
+<section id="when-are-non-probability-surveys-fit-for-purpose" class="level1">
+<h1>When are non-probability surveys fit for purpose?</h1>
+<p>Non-probability surveys can be valuable in the social science tool kit if used for a proper purpose, for example, when statistical inference is not the aim of the project <span class="citation" data-cites="Cornesse2020b Kohler2023">(e.g., <a href="#ref-Cornesse2020b" role="doc-biblioref">Cornesse et al., 2020</a>; <a href="#ref-Kohler2023" role="doc-biblioref">Kohler &amp; Post, 2023</a>)</span>. <span class="citation" data-cites="Baker2013">Baker et al. (<a href="#ref-Baker2013" role="doc-biblioref">2013</a>)</span> discuss that non-probability surveys may be viable for testing some theoretical concepts if internal validity is given. Even a non-probability survey is internally valid if an experimental design is used for which survey participants are randomly selected into treatment or control groups. In a correctly implemented survey experiment, the effect a treatment has for the survey participants can be estimated without bias. In theory, there might even be situations, where external validity is given. However, this is only the case if the treatment effect is homogeneous for the target group <span class="citation" data-cites="Kohler2019a">(<a href="#ref-Kohler2019a" role="doc-biblioref">Kohler, 2019</a>)</span>, i.e., the treatment effect does not vary by any characteristics of individuals in the target group. In such a situation the ignorability and the positivity assumptions are fulfilled. <span class="citation" data-cites="Kohler2019a">Kohler (<a href="#ref-Kohler2019a" role="doc-biblioref">2019</a>)</span> suggested testing the homogeneity of the treatment effect with the data at hand. This can be done by splitting the set of respondents into various subgroups (e.g., male and female) and testing whether the treatment effect differs between these subgroups. To test this, additional information should be collected when conducting the survey to split the survey participants into several subgroups and the sample size must be large enough to reach a sufficient sample size in the subgroups. Nonetheless, this method can only falsify the homogeneity assumption and is restricted to the population subgroups that are captured in this subgroup analysis. Therefore, the method can only provide initial insights and indicate apparent violations, while the generalizability of the results can not be guaranteed. To confirm findings, experiments should be replicated with a probability survey, if possible.</p>
+<p>Another fitness-for-purpose example would be an explorative study that aims to generate hypotheses rather than testing them. In such a case, a non-probability survey could provide first insights. In a subsequent step, a probability survey can be conducted to test the derived hypotheses for the general target population. Similarly, non-probability surveys are valuable for qualitative research, and they are frequently used to pretest survey questionnaires, e.g., the implementation of filtering and randomization of questions <span class="citation" data-cites="Jerit2023">(<a href="#ref-Jerit2023" role="doc-biblioref">Jerit &amp; Barabas, 2023, p. 10</a>)</span>.</p>
+<p>Additionally, in some cases, the target population of a study may be very hard to reach with probability samples. Hard-to-reach populations are populations that are either (1) <em>hard to sample,</em> (2) <em>hard to identify,</em> (3) <em>hard to find and contact,</em> (4) <em>hard to persuade, or</em> (5) <em>hard to interview</em> <span class="citation" data-cites="Tourangeau2014">(<a href="#ref-Tourangeau2014" role="doc-biblioref">Tourangeau, 2014, Chapter 1</a>)</span>. To address the first three types, and potentially the fourth, Snowball Sampling &amp; Respondent Driven Sampling could be a solution where the sampling process is in parts driven by the respondents <span class="citation" data-cites="Lohr2022 Lee2017">(<a href="#ref-Lee2017" role="doc-biblioref">Lee et al., 2017</a>; <a href="#ref-Lohr2022" role="doc-biblioref">Lohr, 2022, p. 505</a>)</span>. This is because respondents of a special population, for example, members of the LGBTQIA+ community, might know and be able to invite other members of that population. Being invited by some other respondents who one trusts might also have positive effects on participation rates.</p>
+<p>Although Snowball Sampling can reduce the cost of surveying hard-to-reach respondents it still leads to a non-probability sample, with biases of unknown magnitude. For example, the set of respondents might only include respondents who bond with others of the same population, leading to the exclusion or underrepresentation of more isolated individuals <span class="citation" data-cites="Sadler2010">(e.g., <a href="#ref-Sadler2010" role="doc-biblioref">Sadler et al., 2010</a>)</span>. Therefore, generalizing the results is still highly problematic. In the case of hard-to-reach populations, it is likely even harder to evaluate potential bias than for surveys of the general population due to the limited amount of available benchmark information. However, for some hard-to-reach populations, non-probability surveys may be the only practical or affordable option to gather insights <span class="citation" data-cites="Jerit2023">(<a href="#ref-Jerit2023" role="doc-biblioref">Jerit &amp; Barabas, 2023, p. 11</a>)</span>.</p>
+<p><span class="citation" data-cites="Kohler2023">Kohler &amp; Post (<a href="#ref-Kohler2023" role="doc-biblioref">2023, p. 84</a>)</span> add another aspect to the debate regarding the usage of non-probability surveys. The authors agree with the previous points, for example, that non-probability surveys may be viable for explorative studies or special populations in social sciences. However, the authors warn that even in the case of fitness-for-purpose it is not appropriate to naively communicate findings from non-probability surveys in media to a larger audience outside of the scientific fields not trained to evaluate the validity of such findings. The same is true when the results are expected to be used to inform political decision-making processes. The authors argue that accurate results are especially important in those processes because careless generalization of results from non-probability surveys could harm general trust in scientific results or lead to misguided political decision-making.</p>
+</section>
+<section id="recommendations-for-fit-for-purpose-settings" class="level1">
+<h1>Recommendations for fit-for-purpose settings</h1>
+<p>When considering using a non-probability survey it is crucial to make sure that it is fit for the desired purpose. If the survey is to be used to draw inferences to a general population, non-probability surveys are not an appropriate choice, as they are likely biased to an unknown and potentially substantial degree. This is especially true for topics that are of high interest to the broad population, that are likely to be discussed in the media, or that aim to influence political decisions <span class="citation" data-cites="Kohler2023">(<a href="#ref-Kohler2023" role="doc-biblioref">Kohler &amp; Post, 2023</a>)</span>. In these situations, it is especially important that the results are as accurate as possible because they can impact public opinion and public trust in scientific findings. However, if, for example, one aims to test questionnaires, develop hypotheses, include experiments for which internal validity is most relevant, or survey a special sub-population that is hard to reach, non-probability surveys may be an adequate option.</p>
+<p>In case non-probability surveys are considered to be fit-for-purpose, there are several aspects to keep in mind when communicating the findings. <span class="citation" data-cites="Baker2013">Baker et al. (<a href="#ref-Baker2013" role="doc-biblioref">2013</a>)</span> recommend being as transparent as possible about the survey process and carefully documenting every step toward the final set of respondents. This allows the expert to make an informed judgment about the quality of the data and the reliability of the findings. Providing extensive documentation can be complicated, as some of the organizations that collect the survey data do not report transparently how respondents were recruited, and some even outsource the data collection, making transparency even harder or impossible to achieve <span class="citation" data-cites="Jerit2023">(e.g., <a href="#ref-Jerit2023" role="doc-biblioref">Jerit &amp; Barabas, 2023, p. 14</a>)</span>.</p>
+<p>In addition, <span class="citation" data-cites="Callegaro2015">Callegaro et al. (<a href="#ref-Callegaro2015" role="doc-biblioref">2015, p. 55</a>)</span> suggest that if using non-probability survey data for statistical inference (i.e., in fit-for-purpose situations such as hard-to-reach populations), clearly acknowledge that the inference may be poor or invalid. Another important recommendation from the literature is to use diverting terminology when talking about non-probability surveys instead of probability surveys <span class="citation" data-cites="Baker2013 Callegaro2015 Vehovar2016">(e.g., <a href="#ref-Baker2013" role="doc-biblioref">Baker et al., 2013</a>; <a href="#ref-Callegaro2015" role="doc-biblioref">Callegaro et al., 2015</a>; <a href="#ref-Vehovar2016" role="doc-biblioref">Vehovar et al., 2016</a>)</span>. Examples are the use of “indication” or “approximate” instead of “estimate”, or “participation rate” instead of “response rate.”</p>
+<p>The documentation of the data should include an assessment of how the set of respondents compares to the target population of interest <span class="citation" data-cites="Baker2013 Cornesse2020b Rohr2024">(e.g., by benchmark comparisons, <a href="#ref-Baker2013" role="doc-biblioref">Baker et al., 2013</a>; <a href="#ref-Cornesse2020b" role="doc-biblioref">Cornesse et al., 2020</a>; <a href="#ref-Rohr2024" role="doc-biblioref">Rohr et al., 2024</a>)</span>. Importantly, the assessment should not be based on variables that were used for quotation as they are by definition distributed to exactly match the target population. Similarly, weighting variables should be excluded when comparing distributions after weighting. Additionally, checks for treatment homogeneity are recommended for experimental research <span class="citation" data-cites="Kohler2019a">(e.g., <a href="#ref-Kohler2019a" role="doc-biblioref">Kohler, 2019</a>)</span>. In this vein, the scientific journal <em>Survey Research Methods</em> demands specific steps to assess the external validity of results before submitting a paper based on non-probability surveys <span class="citation" data-cites="SurveyResearchMethods2023">(<a href="#ref-SurveyResearchMethods2023" role="doc-biblioref">Survey Research Methods, 2023</a>)</span>.</p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Bacher2019" class="csl-entry" role="listitem">
+Bacher, J., Lemcke, J., Quatember, A., &amp; Schmich, P. (2019). Probability and nonprobability sampling: Representative surveys of hard-to-reach and hard-to-ask populations. <em>Current Surveys Between the Poles of Theory and Practice</em>, <em>1</em>(1), 1–18. <a href="https://doi.org/10.13094/SMIF-2019-00018">https://doi.org/10.13094/SMIF-2019-00018</a>
+</div>
+<div id="ref-Baker2010" class="csl-entry" role="listitem">
+Baker, R., Blumberg, S. J., Brick, J. M., Couper, M. P., Courtright, M., Dennis, J. M., Dillman, D., Frankel, M. R., Garland, P., &amp; Committee, with members including P. for the A. E. C. by a. T. F. operating under the auspices of the A. S. (2010). Research synthesis: AAPOR report on online panels. <em>Public Opinion Quarterly</em>, <em>74</em>(4), 711–781. <a href="https://doi.org/10.1093/poq/nfq048">https://doi.org/10.1093/poq/nfq048</a>
+</div>
+<div id="ref-Baker2013" class="csl-entry" role="listitem">
+Baker, R., Brick, J. M., Bates, N. A., Battaglia, M., Couper, M. P., Dever, J. A., Gile, K. J., &amp; Tourangeau, R. (2013). Report of the AAPOR task force on non-probability sampling 128. <em>AAPOR Task Force on Non-Probability Sampling</em>, 1–128.
+</div>
+<div id="ref-Bauer2016" class="csl-entry" role="listitem">
+Bauer, J. J. (2016). Biases in random route surveys. <em>Journal of Survey Statistics and Methodology</em>, <em>4</em>(2), 263–287. <a href="https://doi.org/10.1093/jssam/smw012">https://doi.org/10.1093/jssam/smw012</a>
+</div>
+<div id="ref-Bethlehem2015" class="csl-entry" role="listitem">
+Bethlehem, J. (2015). Essay: Sunday shopping— the case of three surveys. <em>Survey Research Methods</em>, <em>9</em>(3), 221–230. <a href="https://doi.org/10.18148/SRM/2015.V9I3.6202">https://doi.org/10.18148/SRM/2015.V9I3.6202</a>
+</div>
+<div id="ref-Callegaro2014" class="csl-entry" role="listitem">
+Callegaro, M., Baker, R., Bethlehem, J., Goritz, A. S., Krosnick, J. A., &amp; Lavrakas, P. J. (2014). Online panel research: History, concepts, applications and a look at the future. In <em>Online panel research: A data quality perspective</em> (pp. 1–22). <a href="https://doi.org/10.1002/9781118763520.ch1">https://doi.org/10.1002/9781118763520.ch1</a>
+</div>
+<div id="ref-Callegaro2015" class="csl-entry" role="listitem">
+Callegaro, M., Lozar Manfreda, K., &amp; Vehovar, V. (2015). <em>Web survey methodology</em>. SAGE. <a href="https://doi.org/10.4135/9781529799651">https://doi.org/10.4135/9781529799651</a>
+</div>
+<div id="ref-Cochran1977" class="csl-entry" role="listitem">
+Cochran, W. G. (1977). <em>Sampling techniques</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-Cornesse2020a" class="csl-entry" role="listitem">
+Cornesse, C., &amp; Blom, A. G. (2020). Response quality in nonprobability and probability-based online panels. <em>Sociological Methods &amp; Research</em>, <em>49</em>(1), 1–20. <a href="https://doi.org/10.1177/0049124120914940">https://doi.org/10.1177/0049124120914940</a>
+</div>
+<div id="ref-Cornesse2020b" class="csl-entry" role="listitem">
+Cornesse, C., Blom, A. G., Dutwin, D., Krosnick, J. A., De Leeuw, E. D., Legleye, S., Pasek, J., Pennay, D., Phillips, B., &amp; Sakshaug, J. W. (2020). A review of conceptual approaches and empirical evidence on probability and nonprobability sample survey research. <em>Journal of Survey Statistics and Methodology</em>, <em>8</em>(1), 4–36. <a href="https://doi.org/10.1093/jssam/smz041">https://doi.org/10.1093/jssam/smz041</a>
+</div>
+<div id="ref-Edelman2023" class="csl-entry" role="listitem">
+Edelman, M. (2023). Not really a new paradigm for polling. <em>Harvard Data Science Review</em>, <em>5</em>(3), 1–10. <a href="https://doi.org/10.1162/99608f92.33fb61ba">https://doi.org/10.1162/99608f92.33fb61ba</a>
+</div>
+<div id="ref-Efron1979" class="csl-entry" role="listitem">
+Efron, B. (1979). Bootstrap methods: Another look at the jackknife. <em>The Annals of Statistics</em>, <em>7</em>(1), 1–26. <a href="https://doi.org/10.1214/aos/1176344552">https://doi.org/10.1214/aos/1176344552</a>
+</div>
+<div id="ref-Elliott2017" class="csl-entry" role="listitem">
+Elliott, M. R., &amp; Valliant, R. (2017). Inference for nonprobability samples. <em>Statistical Science</em>, <em>32</em>(2), 249–264. <a href="https://doi.org/10.1214/16-STS598">https://doi.org/10.1214/16-STS598</a>
+</div>
+<div id="ref-Felderer2024" class="csl-entry" role="listitem">
+Felderer, B. (2024). Nonresponse bias analysis. <em>GESIS – Leibniz-Institut Für Sozialwissenschaften (GESIS Survey Guidelines)</em>.
+</div>
+<div id="ref-Gabler2016" class="csl-entry" role="listitem">
+Gabler, S., Kolb, J.-P., Sand, M., &amp; Zins, S. (2016). Weighting. <em>GESIS Survey Guidelines</em>. https://doi.org/<a href="https://doi.org/10.15465/gesis-sg_en_007">https://doi.org/10.15465/gesis-sg_en_007</a>
+</div>
+<div id="ref-Gile2015" class="csl-entry" role="listitem">
+Gile, K. J., Johnston, L. G., &amp; Salganik, M. J. (2015). Diagnostics for respondent-driven sampling. <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em>, <em>178</em>(1), 241–269. <a href="https://doi.org/10.1111/rssa.12059">https://doi.org/10.1111/rssa.12059</a>
+</div>
+<div id="ref-Goodman2011" class="csl-entry" role="listitem">
+Goodman, L. A. (2011). Comment: On respondent-driven sampling and snowball sampling in hard-to-reach populations and snowball sampling not in hard-to-reach populations. <em>Sociological Methodology</em>, <em>41</em>(1), 347–353. <a href="https://doi.org/10.1111/j.1467-9531.2011.01242.x">https://doi.org/10.1111/j.1467-9531.2011.01242.x</a>
+</div>
+<div id="ref-Goodrich2023" class="csl-entry" role="listitem">
+Goodrich, B., Fenton, M., Penn, J., Bovay, J., &amp; Mountain, T. (2023). Battling bots: Experiences and strategies to mitigate fraudulent responses in online surveys. <em>Applied Economic Perspectives and Policy</em>, <em>45</em>(2), 762–784. <a href="https://doi.org/10.1002/aepp.13353">https://doi.org/10.1002/aepp.13353</a>
+</div>
+<div id="ref-Groves2006" class="csl-entry" role="listitem">
+Groves, R. M. (2006). Nonresponse rates and nonresponse bias in household surveys. <em>Public Opinion Quarterly</em>, <em>70</em>(5), 646–675. <a href="https://doi.org/10.1093/poq/nfl033">https://doi.org/10.1093/poq/nfl033</a>
+</div>
+<div id="ref-Groves2010" class="csl-entry" role="listitem">
+Groves, R. M., &amp; Lyberg, L. (2010). Total survey error: Past, present, and future. <em>Public Opinion Quarterly</em>, <em>74</em>(5), 849–879. <a href="https://doi.org/10.1093/poq/nfq065">https://doi.org/10.1093/poq/nfq065</a>
+</div>
+<div id="ref-Groves2009" class="csl-entry" role="listitem">
+Groves, R., Fowler Jr, F. J., Couper, M. P., Lepkowski, J. M., Singer, E., &amp; Tourangeau, R. (2009). <em>Survey methodology</em>. John Wiley &amp; Sons, Inc.
+</div>
+<div id="ref-Hoehne2024" class="csl-entry" role="listitem">
+Höhne, J. K., Claassen, J., Shahania, S., &amp; Broneske, D. (2024). Bots in web survey interviews: A showcase. <em>International Journal of Market Research</em>, <em>14707853241297009</em>, 1–10. <a href="https://doi.org/10.1177/14707853241297009">https://doi.org/10.1177/14707853241297009</a>
+</div>
+<div id="ref-Jerit2023" class="csl-entry" role="listitem">
+Jerit, J., &amp; Barabas, J. (2023). Are nonprobability surveys fit for purpose? <em>Public Opinion Quarterly</em>. <a href="https://doi.org/10.1093/poq/nfad037">https://doi.org/10.1093/poq/nfad037</a>
+</div>
+<div id="ref-Koch2015" class="csl-entry" role="listitem">
+Koch, A., &amp; Blohm, M. (2015). Nonresponse bias. <em>Mannheim, GESIS – Leibniz-Institut Für Sozialwissenschaften (GESIS Survey Guidelines)</em>. <a href="https://doi.org/10.15465/gesis-sg_004">https://doi.org/10.15465/gesis-sg_004</a>
+</div>
+<div id="ref-Kohler2019a" class="csl-entry" role="listitem">
+Kohler, U. (2019). Possible uses of nonprobability sampling for the social sciences. <em>Survey Methods: Insights from the Field</em>, <em>1</em>(1), 1–12. <a href="https://doi.org/10.13094/SMIF-2019-00014">https://doi.org/10.13094/SMIF-2019-00014</a>
+</div>
+<div id="ref-Kohler2019b" class="csl-entry" role="listitem">
+Kohler, U., Kreuter, F., &amp; Stuart, E. A. (2019). Nonprobability sampling and causal analysis. <em>Annual Review of Statistics and Its Application</em>, <em>6</em>(1), 149–172. <a href="https://doi.org/10.1146/annurev-statistics-030718-104951">https://doi.org/10.1146/annurev-statistics-030718-104951</a>
+</div>
+<div id="ref-Kohler2023" class="csl-entry" role="listitem">
+Kohler, U., &amp; Post, J. C. (2023). Welcher zweck heiligt die mittel? Bemerkungen zur repräsentativitätsdebatte in der meinungsforschung. <em>Zeitschrift Für Soziologie</em>, <em>52</em>(1), 67–88. <a href="https://doi.org/10.1515/zfsoz-2023-2001">https://doi.org/10.1515/zfsoz-2023-2001</a>
+</div>
+<div id="ref-Lee2017" class="csl-entry" role="listitem">
+Lee, S., Suzer-Gurtekin, T., Wagner, J., &amp; Valliant, R. (2017). Total survey error and respondent driven sampling: Focus on nonresponse and measurement errors in the recruitment process and the network size reports and implications for inferences. <em>Journal of Official Statistics</em>, <em>33</em>(2), 335–366. <a href="https://doi.org/10.1515/jos-2017-0017">https://doi.org/10.1515/jos-2017-0017</a>
+</div>
+<div id="ref-Lehdonvirta2020" class="csl-entry" role="listitem">
+Lehdonvirta, V., Oksanen, A., Räsänen, P., &amp; Blank, G. (2020). Social media, web, and panel surveys: Using non‐probability samples in social and policy research. <em>Policy &amp; Internet</em>, <em>13</em>(1), 134–155. <a href="https://doi.org/10.1002/poi3.238">https://doi.org/10.1002/poi3.238</a>
+</div>
+<div id="ref-Lohr2022" class="csl-entry" role="listitem">
+Lohr, S. L. (2022). <em>Sampling: Design and analysis</em>. Chapman; Hall/CRC.
+</div>
+<div id="ref-Lohr2023" class="csl-entry" role="listitem">
+Lohr, S. L. (2023). Assuming a nonresponse model does not make it true. <em>Harvard Data Science Review</em>, <em>5</em>(3), 1–10. <a href="https://doi.org/10.1162/99608f92.2b901b7f">https://doi.org/10.1162/99608f92.2b901b7f</a>
+</div>
+<div id="ref-mcpheedata" class="csl-entry" role="listitem">
+McPhee, C., Barlas, F., Brigham, N., Darling, J., Dutwin, D., Jackson, C., Jackson, M., Little, R., Lorenz, E., Marlar, J., Mercer, A., Scanlon, P. J., Weiss, S., &amp; Wronski, L. (2022). <em>Data quality metrics for online samples: Considerations for study design and analysis</em>.
+</div>
+<div id="ref-Meng2018" class="csl-entry" role="listitem">
+Meng, X.-L. (2018). Statistical paradises and paradoxes in big data (i): Law of large populations, big data paradox, and the 2016 US presidential election. <em>The Annals of Applied Statistics</em>, <em>12</em>(2), 685–726. <a href="https://doi.org/10.1214/18-AOAS1161SF">https://doi.org/10.1214/18-AOAS1161SF</a>
+</div>
+<div id="ref-Mercer2017" class="csl-entry" role="listitem">
+Mercer, A. W., Kreuter, F., Keeter, S., &amp; Stuart, E. A. (2017). Theory and practice in nonprobability surveys: Parallels between causal inference and survey inference. <em>Public Opinion Quarterly</em>, <em>81</em>(S1), 250–271. <a href="https://doi.org/10.1093/poq/nfw060">https://doi.org/10.1093/poq/nfw060</a>
+</div>
+<div id="ref-Mercer2018" class="csl-entry" role="listitem">
+Mercer, A., Lau, A., &amp; Kennedy, C. (2018). For weighting online opt-in samples, what matters most? <em>Pew Research Center Methods</em>. <a href="https://www.pewresearch.org/methods/2018/01/26/for-weighting-online-opt-in-samples-what-matters-most/">https://www.pewresearch.org/methods/2018/01/26/for-weighting-online-opt-in-samples-what-matters-most/</a>
+</div>
+<div id="ref-Potzschke2023S" class="csl-entry" role="listitem">
+Pötzschke, S., Weiß, B., Daikeler, J., Silber, H., &amp; Beuthner, C. (2023). A guideline on how to recruit respondents for online surveys using facebook and instagram: Using hard-to-reach health workers as an example. <em>Survey Guidelines</em>. <a href="https://doi.org/10.15465/GESIS-SG_EN_045">https://doi.org/10.15465/GESIS-SG_EN_045</a>
+</div>
+<div id="ref-Quenouille1956" class="csl-entry" role="listitem">
+Quenouille, M. H. (1956). Notes on bias in estimation. <em>Biometrika</em>, <em>43</em>(3), 353–360. <a href="https://doi.org/10.2307/2332914">https://doi.org/10.2307/2332914</a>
+</div>
+<div id="ref-Rohr2024" class="csl-entry" role="listitem">
+Rohr, B., Silber, H., &amp; Felderer, B. (2024). Comparing the accuracy of univariate, bivariate, and multivariate estimates across probability and nonprobability surveys with population benchmarks. <em>Sociological Methodology</em>. <a href="https://doi.org/10.1177/00811750241280963">https://doi.org/10.1177/00811750241280963</a>
+</div>
+<div id="ref-Rosenbaum1983" class="csl-entry" role="listitem">
+Rosenbaum, P. R., &amp; Rubin, D. B. (1983). The central role of the propensity score in observational studies for causal effects. <em>Biometrika</em>, <em>70</em>(1), 41–55. <a href="https://doi.org/10.1093/biomet/70.1.41">https://doi.org/10.1093/biomet/70.1.41</a>
+</div>
+<div id="ref-Rubin1976" class="csl-entry" role="listitem">
+Rubin, D. B. (1976). Inference and missing data. <em>Biometrika</em>, <em>63</em>(3), 581–592. <a href="https://doi.org/10.1093/biomet/63.3.581">https://doi.org/10.1093/biomet/63.3.581</a>
+</div>
+<div id="ref-Rubin1981" class="csl-entry" role="listitem">
+Rubin, D. B. (1981). The bayesian bootstrap. <em>The Annals of Statistics</em>, <em>9</em>(1), 130–134. <a href="https://doi.org/10.1214/aos/1176345338">https://doi.org/10.1214/aos/1176345338</a>
+</div>
+<div id="ref-Sadler2010" class="csl-entry" role="listitem">
+Sadler, G. R., Lee, H.-C., Lim, R. S.-H., &amp; Fullerton, J. (2010). Research article: Recruitment of hard-to-reach population subgroups via adaptations of the snowball sampling strategy. <em>Nursing &amp; Health Sciences</em>, <em>12</em>(3), 369–374. <a href="https://doi.org/10.1111/j.1442-2018.2010.00541.x">https://doi.org/10.1111/j.1442-2018.2010.00541.x</a>
+</div>
+<div id="ref-Sand2020" class="csl-entry" role="listitem">
+Sand, T., Matthias und Kunz. (2020). Gewichtung in der praxis. <em>Mannheim, GESIS – Leibniz-Institut Für Sozialwissenschaften (GESIS Survey Guidelines)</em>. <a href="https://doi.org/10.15465/gesis-sg_030">https://doi.org/10.15465/gesis-sg_030</a>
+</div>
+<div id="ref-Stadtmueller2019" class="csl-entry" role="listitem">
+Stadtmüller, S., Silber, H., Daikeler, J., Martin, S., Sand, M., Schmich, P., Schröder, J., Struminskaya, B., Weyandt, K. W., &amp; Zabal, A. (2019). Adaptation of the AAPOR final disposition codes for the german survey context. <em>Mannheim, GESIS - Leibniz Institute for the Social Sciences (GESIS - Survey Guidelines)</em>. <a href="https://doi.org/10.15465/gesis-sg_en_026">https://doi.org/10.15465/gesis-sg_en_026</a>
+</div>
+<div id="ref-StatisticsCanada2021" class="csl-entry" role="listitem">
+Statistics Canada. (2021). Statistics: Power from data! <em>12, 1-116</em>. <a href="https://www150.statcan.gc.ca/n1/edu/power-pouvoir/ch13/nonprob/5214898-eng.htm">https://www150.statcan.gc.ca/n1/edu/power-pouvoir/ch13/nonprob/5214898-eng.htm</a>
+</div>
+<div id="ref-SurveyResearchMethods2023" class="csl-entry" role="listitem">
+Survey Research Methods. (2023). <em>Journal of the european survey research association</em>. <a href="https://ojs.ub.uni-konstanz.de/srm/about">https://ojs.ub.uni-konstanz.de/srm/about</a>
+</div>
+<div id="ref-TheAmericanAssociation2023" class="csl-entry" role="listitem">
+The American Association for Public Opinion Research. (2023). Standard definitions—final dispositions of case codes and outcome rates for surveys. <em>10th Edition</em>. <a href="https://aapor.org/standards-and-ethics/standard-definitions/">https://aapor.org/standards-and-ethics/standard-definitions/</a>
+</div>
+<div id="ref-Tourangeau2014" class="csl-entry" role="listitem">
+Tourangeau, R. (2014). Hard to survey populations. In <em>Cambridge university press</em> (pp. 3–21).
+</div>
+<div id="ref-Valliant2011" class="csl-entry" role="listitem">
+Valliant, R., &amp; Dever, J. A. (2011). Estimating propensity adjustments for volunteer web surveys. <em>Sociological Methods &amp; Research</em>, <em>40</em>(1), 105–137. <a href="https://doi.org/10.1177/0049124110392533">https://doi.org/10.1177/0049124110392533</a>
+</div>
+<div id="ref-Vehovar2016" class="csl-entry" role="listitem">
+Vehovar, V., Toepoel, V., &amp; Steinmetz, S. (2016). Non-probability sampling. In <em>The sage handbook of survey methodology</em> (pp. 329–346).
+</div>
+<div id="ref-Yeager2011" class="csl-entry" role="listitem">
+Yeager, D. S., Krosnick, J. A., Chang, L., Javitz, H. S., Levendusky, M. S., Simpser, A., &amp; Wang, R. (2011). Comparing the accuracy of RDD telephone surveys and internet surveys conducted with probability and non-probability samples. <em>Public Opinion Quarterly</em>, <em>75</em>(4), 709–747. <a href="https://doi.org/10.1093/poq/nfr020">https://doi.org/10.1093/poq/nfr020</a>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>See the survey guideline by <span class="citation" data-cites="Potzschke2023S">Pötzschke et al. (<a href="#ref-Potzschke2023S" role="doc-biblioref">2023</a>)</span> for more detailed information on social media sampling.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See the survey guideline by <span class="citation" data-cites="Stadtmueller2019">Stadtmüller et al. (<a href="#ref-Stadtmueller2019" role="doc-biblioref">2019</a>)</span> for more details on response rate calculation<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>More detailed information about the concept and analysis of nonresponse bias can be found in the survey guidelines by <span class="citation" data-cites="Koch2015">Koch &amp; Blohm (<a href="#ref-Koch2015" role="doc-biblioref">2015</a>)</span> and <span class="citation" data-cites="Felderer2024">Felderer (<a href="#ref-Felderer2024" role="doc-biblioref">2024</a>)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>More information on weighting can be found in the survey guidelines by <span class="citation" data-cites="Gabler2016">Gabler et al. (<a href="#ref-Gabler2016" role="doc-biblioref">2016</a>)</span> and <span class="citation" data-cites="Sand2020">Sand (<a href="#ref-Sand2020" role="doc-biblioref">2020</a>)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>More information and recommendations on transparent reporting of precision in non-probability surveys can be found in the AAPOR Task Force Report on “Data Quality Metrics for Online Samples” by <span class="citation" data-cites="mcpheedata">McPhee et al. (<a href="#ref-mcpheedata" role="doc-biblioref">2022</a>)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{rohr2024,
+  author = {Rohr, Björn and Felderer, Barbara and Silber, Henning and
+    Daikeler, Jessica and Roßmann, Joss and Schröder, Jette},
+  publisher = {GESIS Leibniz-Institute for the Social Sciences},
+  title = {When Are Non-Probability Surveys Fit for My Purpose?},
+  date = {2024-12-01},
+  address = {Mannheim},
+  doi = {10.15465/gesis-sg_en_050},
+  langid = {en},
+  abstract = {The affordability of non-probability surveys, especially
+    online surveys, has made them a popular alternative to probability
+    surveys in social science research. However, their quality is
+    questionable, and inferences based on non-probability surveys rely
+    on strong, hard-to-test, and often unrealistic assumptions, such as
+    that every population unit has a chance to participate in the
+    survey. Commonly applied tools to improve accuracy, like adjustment
+    weighting or the use of quotas, are very unlikely able to eliminate
+    or sufficiently reduce the (self-) selection bias in non-probability
+    surveys, as it is hard to identify and measure all variables needed.
+    The use of non-probability surveys should thus be carefully
+    considered and limited to specific (non-inferential) purposes. These
+    include, among others, exploratory studies where generating
+    hypotheses is the primary aim, survey experiments where internal
+    validity is prioritized over external representativeness, and
+    studies targeting hard-to-reach populations for which probability
+    surveys are impractical or even impossible to conduct. This survey
+    guideline aims to provide guidance for researchers to critically
+    assess whether non-probability surveys are fit-for-purpose for their
+    own research projects and to evaluate whether the use of
+    non-probability surveys aligns with the specific goals and
+    constraints of the studies at hand.}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-rohr2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Rohr, B., Felderer, B., Silber, H., Daikeler, J., Roßmann, J., &amp;
+Schröder, J. (2024). When are non-probability surveys fit for my
+purpose? In <em>GESIS Survey Guidelines</em>. GESIS Leibniz-Institute
+for the Social Sciences. <a href="https://doi.org/10.15465/gesis-sg_en_050">https://doi.org/10.15465/gesis-sg_en_050</a>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><strong>Standort Mannheim</strong><br>
+GESIS - Leibniz-Institut für Sozialwissenschaften<br>
+B6, 4-5<br>
+68159 Mannheim<br>
+Telefon: +49-(0)621-1246-0<br>
+Fax: +49-(0)621-1246-100</p>
+</div>   
+    <div class="nav-footer-center">
+<p><strong>Standort Köln</strong><br>
+GESIS - Leibniz-Institut für Sozialwissenschaften<br>
+Unter Sachsenhausen 6-8<br>
+50667 Köln<br>
+Telefon: +49-(0)221-47694-0<br>
+Fax: +49-(0)221-47694-199</p>
+</div>
+    <div class="nav-footer-right">
+<p>Impressum Datenschutz</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
